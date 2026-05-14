@@ -30,12 +30,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-          cache: pip
-
       - name: Check whether backend code exists yet
         id: backend_exists
         run: |
@@ -46,6 +40,14 @@ jobs:
             echo "ready=false" >> "$GITHUB_OUTPUT"
             echo "::notice::backend/requirements.txt or backend/pyproject.toml not found. Backend code lands in Batch 3. Skipping checks for now."
           fi
+
+      - name: Set up Python
+        if: steps.backend_exists.outputs.ready == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
 
       - name: Install dependencies
         if: steps.backend_exists.outputs.ready == 'true'
@@ -84,12 +86,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-          cache: pip
-
       - name: Check whether ingestion code exists yet
         id: ingestion_exists
         run: |
@@ -99,6 +95,14 @@ jobs:
             echo "ready=false" >> "$GITHUB_OUTPUT"
             echo "::notice::ingestion/requirements.txt not found. Ingestion scripts land in Batches 1-2. Skipping checks for now."
           fi
+
+      - name: Set up Python
+        if: steps.ingestion_exists.outputs.ready == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: ingestion/requirements.txt
 
       - name: Install dependencies
         if: steps.ingestion_exists.outputs.ready == 'true'

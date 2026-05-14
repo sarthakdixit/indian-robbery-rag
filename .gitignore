@@ -20,6 +20,8 @@ var/
 wheels/
 .installed.cfg
 
+errors.txt
+
 # Virtual environments
 .venv/
 venv/
