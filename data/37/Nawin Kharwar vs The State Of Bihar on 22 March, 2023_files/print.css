@@ -1,0 +1,21 @@
+/* ==========================================================================
+   PRINT STYLES
+   Clean, minimal print styles for document pages
+   ========================================================================== */
+@media print {
+  /* Hide UI elements */
+  .main-header,
+  .header-container,
+  .mobile-menu,
+  .homepage-footer,
+  #printdoc,
+  .docoptions {
+    display: none !important;
+  }
+
+  /* Optimize body for print */
+  body {
+    margin: 0;
+    padding: 0;
+  }
+}

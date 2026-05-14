@@ -1,0 +1,139 @@
+name: backend-ci
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "backend/**"
+      - "ingestion/**"
+      - "eval/**"
+      - ".github/workflows/backend-ci.yml"
+  pull_request:
+    paths:
+      - "backend/**"
+      - "ingestion/**"
+      - "eval/**"
+      - ".github/workflows/backend-ci.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Lint, typecheck, test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Check whether backend code exists yet
+        id: backend_exists
+        run: |
+          if [ -f "backend/requirements.txt" ] && [ -f "backend/pyproject.toml" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+            echo "Backend scaffolding present — running full checks."
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::backend/requirements.txt or backend/pyproject.toml not found. Backend code lands in Batch 3. Skipping checks for now."
+          fi
+
+      - name: Install dependencies
+        if: steps.backend_exists.outputs.ready == 'true'
+        working-directory: backend
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
+
+      - name: Ruff lint
+        if: steps.backend_exists.outputs.ready == 'true'
+        working-directory: backend
+        run: ruff check .
+
+      - name: Ruff format check
+        if: steps.backend_exists.outputs.ready == 'true'
+        working-directory: backend
+        run: ruff format --check .
+
+      - name: Mypy strict
+        if: steps.backend_exists.outputs.ready == 'true'
+        working-directory: backend
+        run: mypy .
+
+      - name: Pytest
+        if: steps.backend_exists.outputs.ready == 'true'
+        working-directory: backend
+        run: pytest -x --tb=short
+
+  ingestion-check:
+    name: Ingestion scripts lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Check whether ingestion code exists yet
+        id: ingestion_exists
+        run: |
+          if [ -f "ingestion/requirements.txt" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::ingestion/requirements.txt not found. Ingestion scripts land in Batches 1-2. Skipping checks for now."
+          fi
+
+      - name: Install dependencies
+        if: steps.ingestion_exists.outputs.ready == 'true'
+        working-directory: ingestion
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          if [ -f ../backend/requirements-dev.txt ]; then pip install -r ../backend/requirements-dev.txt; fi
+
+      - name: Ruff lint
+        if: steps.ingestion_exists.outputs.ready == 'true'
+        working-directory: ingestion
+        run: ruff check .
+
+      - name: Mypy strict
+        if: steps.ingestion_exists.outputs.ready == 'true'
+        working-directory: ingestion
+        run: mypy .
+
+  normalize-script-check:
+    name: scripts/normalize_filenames.py syntax check
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verify normalize script is syntactically valid
+        run: python -m py_compile scripts/normalize_filenames.py
+
+      - name: Verify normalize script CLI parses
+        run: python scripts/normalize_filenames.py --help

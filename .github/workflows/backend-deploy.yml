@@ -1,0 +1,95 @@
+name: backend-deploy
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "backend/**"
+      - "data/**"
+      - "ingestion/**"
+      - ".github/workflows/backend-deploy.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: backend-deploy
+  cancel-in-progress: false
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    name: Build and deploy to Azure Container Apps
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: production
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check whether deploy is ready
+        id: deploy_ready
+        run: |
+          missing=""
+          if [ ! -f "backend/Dockerfile" ]; then missing="${missing}backend/Dockerfile, "; fi
+          if [ -z "${{ vars.AZURE_CLIENT_ID }}" ]; then missing="${missing}AZURE_CLIENT_ID, "; fi
+          if [ -z "${{ vars.AZURE_TENANT_ID }}" ]; then missing="${missing}AZURE_TENANT_ID, "; fi
+          if [ -z "${{ vars.AZURE_SUBSCRIPTION_ID }}" ]; then missing="${missing}AZURE_SUBSCRIPTION_ID, "; fi
+          if [ -z "${{ vars.AZURE_RESOURCE_GROUP }}" ]; then missing="${missing}AZURE_RESOURCE_GROUP, "; fi
+          if [ -z "${{ vars.AZURE_CONTAINER_APP_NAME }}" ]; then missing="${missing}AZURE_CONTAINER_APP_NAME, "; fi
+          if [ -z "${{ vars.AZURE_CONTAINER_REGISTRY }}" ]; then missing="${missing}AZURE_CONTAINER_REGISTRY, "; fi
+
+          if [ -n "$missing" ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Deploy skipped. Missing prerequisites: ${missing%, }"
+            echo "::notice::Backend Dockerfile lands in Batch 5. Azure resources land in Batch 7. OIDC setup is documented in infra/azure-oidc-setup.md."
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Azure login via OIDC
+        if: steps.deploy_ready.outputs.ready == 'true'
+        uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Log in to Azure Container Registry
+        if: steps.deploy_ready.outputs.ready == 'true'
+        run: az acr login --name "${{ vars.AZURE_CONTAINER_REGISTRY }}"
+
+      - name: Build and push image
+        if: steps.deploy_ready.outputs.ready == 'true'
+        id: build
+        run: |
+          IMAGE_TAG="${{ vars.AZURE_CONTAINER_REGISTRY }}.azurecr.io/indian-robbery-rag-backend:${{ github.sha }}"
+          docker build -t "$IMAGE_TAG" -f backend/Dockerfile .
+          docker push "$IMAGE_TAG"
+          echo "image_tag=$IMAGE_TAG" >> "$GITHUB_OUTPUT"
+
+      - name: Update Container App revision
+        if: steps.deploy_ready.outputs.ready == 'true'
+        uses: azure/container-apps-deploy-action@v2
+        with:
+          resourceGroup: ${{ vars.AZURE_RESOURCE_GROUP }}
+          containerAppName: ${{ vars.AZURE_CONTAINER_APP_NAME }}
+          imageToDeploy: ${{ steps.build.outputs.image_tag }}
+
+      - name: Smoke test deployed endpoint
+        if: steps.deploy_ready.outputs.ready == 'true' && vars.BACKEND_HEALTH_URL != ''
+        run: |
+          echo "Waiting 30s for new revision to become active..."
+          sleep 30
+          for attempt in 1 2 3 4 5; do
+            if curl -sf "${{ vars.BACKEND_HEALTH_URL }}" > /dev/null; then
+              echo "Health check passed on attempt $attempt."
+              exit 0
+            fi
+            echo "Attempt $attempt failed; retrying in 10s..."
+            sleep 10
+          done
+          echo "::error::Health check failed after 5 attempts. New revision may be unhealthy."
+          exit 1

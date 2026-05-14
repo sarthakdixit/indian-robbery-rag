@@ -1,0 +1,121 @@
+version: 2
+updates:
+  # GitHub Actions versions
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "ci"
+      include: scope
+    labels:
+      - dependencies
+      - github-actions
+
+  # Backend Python dependencies
+  - package-ecosystem: pip
+    directory: /backend
+    schedule:
+      interval: weekly
+      day: monday
+      time: "07:00"
+      timezone: Asia/Kolkata
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "deps(backend)"
+      include: scope
+    labels:
+      - dependencies
+      - backend
+    groups:
+      azure-sdk:
+        patterns:
+          - "azure-*"
+      pydantic:
+        patterns:
+          - "pydantic*"
+      fastapi:
+        patterns:
+          - "fastapi"
+          - "uvicorn*"
+          - "starlette"
+      testing:
+        patterns:
+          - "pytest*"
+          - "coverage*"
+          - "httpx"
+      linting:
+        patterns:
+          - "ruff"
+          - "mypy"
+          - "types-*"
+
+  # Ingestion Python dependencies (separate from backend; runs offline only)
+  - package-ecosystem: pip
+    directory: /ingestion
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "deps(ingestion)"
+      include: scope
+    labels:
+      - dependencies
+      - ingestion
+
+  # Frontend Node dependencies
+  - package-ecosystem: npm
+    directory: /frontend
+    schedule:
+      interval: weekly
+      day: monday
+      time: "07:00"
+      timezone: Asia/Kolkata
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "deps(frontend)"
+      include: scope
+    labels:
+      - dependencies
+      - frontend
+    groups:
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
+      vite:
+        patterns:
+          - "vite"
+          - "@vitejs/*"
+      tanstack:
+        patterns:
+          - "@tanstack/*"
+      shadcn-radix:
+        patterns:
+          - "@radix-ui/*"
+          - "class-variance-authority"
+          - "clsx"
+          - "tailwind-merge"
+          - "lucide-react"
+      tailwind:
+        patterns:
+          - "tailwindcss"
+          - "@tailwindcss/*"
+          - "postcss"
+          - "autoprefixer"
+      testing:
+        patterns:
+          - "vitest"
+          - "@testing-library/*"
+          - "@vitest/*"
+          - "jsdom"
+      linting:
+        patterns:
+          - "eslint"
+          - "eslint-*"
+          - "@typescript-eslint/*"
+          - "prettier"
+          - "typescript"

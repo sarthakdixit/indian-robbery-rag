@@ -1,0 +1,23 @@
+# This file exists so the `infra/` directory is tracked by git before
+
+# Bicep templates and deploy scripts land in Batch 7.
+
+#
+
+# Batch 7 will add:
+
+# - main.bicep, parameters.json
+
+# - modules/ (cosmos, key-vault, container-apps, container-registry, static-web-app, log-analytics, budget-alerts)
+
+# - automation/ (auto-stop runbook PowerShell)
+
+# - deploy.sh, teardown.sh
+
+# - post-deploy-checklist.md
+
+# - README.md
+
+#
+
+# See ../design.md §12, Batch 7 for the full plan.

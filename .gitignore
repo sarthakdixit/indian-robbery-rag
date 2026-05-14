@@ -1,0 +1,134 @@
+# ====== Python ======
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+*.egg
+.eggs/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+.installed.cfg
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# Testing & coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
+
+# Type checking
+.mypy_cache/
+.pyre/
+.pytype/
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# ====== Node / Frontend ======
+node_modules/
+.pnpm-store/
+.npm/
+.yarn/
+.pnp.*
+
+# Build outputs
+frontend/dist/
+frontend/build/
+frontend/.vite/
+
+# ====== Environment & secrets ======
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+secrets.json
+
+# Keep example env files
+!.env.example
+
+# ====== Docker ======
+docker-compose.override.yml
+.docker/
+
+# ====== IDE / Editor ======
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json.example
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ====== OS ======
+.Trash-*
+ehthumbs.db
+
+# ====== Logs ======
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# ====== Project-specific ======
+
+# Built ChromaDB index — rebuilt by `make ingest`, not committed.
+chroma_db/
+*.chroma
+
+# BM25 index — also a build artifact.
+bm25.pkl
+
+# Normalized chunks output from ingestion.
+chunks.jsonl
+
+# Local SQLite database (used by the local DocumentStore adapter).
+local_data/
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+
+# Eval run outputs (the inputs in eval/*.jsonl are committed; outputs are not).
+eval/results/*.json
+!eval/results/.gitkeep
+eval/results/raw/
+
+# Azure CLI / Terraform local state
+.azure/
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# ====== NOT ignored (deliberately committed) ======
+# data/                  <- raw corpus IS committed (acts at root + numbered judgment folders)
+# sources.yaml           <- manifest IS committed
+# AGENT.md, AGENT-frontend.md, design.md  <- planning docs ARE committed

@@ -1,0 +1,116 @@
+name: frontend-ci
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "frontend/**"
+      - "staticwebapp.config.json"
+      - ".github/workflows/frontend-ci.yml"
+  pull_request:
+    paths:
+      - "frontend/**"
+      - "staticwebapp.config.json"
+      - ".github/workflows/frontend-ci.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Lint, typecheck, test, build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check whether frontend code exists yet
+        id: frontend_exists
+        run: |
+          if [ -f "frontend/package.json" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+            echo "Frontend scaffolding present — running full checks."
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::frontend/package.json not found. Frontend ships as a single ZIP in Batch 6. Skipping checks for now."
+          fi
+
+      - name: Set up pnpm
+        if: steps.frontend_exists.outputs.ready == 'true'
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Set up Node.js
+        if: steps.frontend_exists.outputs.ready == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: pnpm
+          cache-dependency-path: frontend/pnpm-lock.yaml
+
+      - name: Install dependencies
+        if: steps.frontend_exists.outputs.ready == 'true'
+        working-directory: frontend
+        run: pnpm install --frozen-lockfile
+
+      - name: TypeScript strict check
+        if: steps.frontend_exists.outputs.ready == 'true'
+        working-directory: frontend
+        run: pnpm tsc --noEmit
+
+      - name: ESLint
+        if: steps.frontend_exists.outputs.ready == 'true'
+        working-directory: frontend
+        run: pnpm eslint . --max-warnings=0
+
+      - name: Prettier format check
+        if: steps.frontend_exists.outputs.ready == 'true'
+        working-directory: frontend
+        run: pnpm prettier --check .
+
+      - name: Vitest
+        if: steps.frontend_exists.outputs.ready == 'true'
+        working-directory: frontend
+        run: pnpm test --run
+
+      - name: Production build
+        if: steps.frontend_exists.outputs.ready == 'true'
+        working-directory: frontend
+        env:
+          VITE_API_BASE_URL: http://localhost:8000
+          VITE_TURNSTILE_SITE_KEY: 1x00000000000000000000AA
+          VITE_ENVIRONMENT: local
+        run: pnpm build
+
+      - name: Report bundle size
+        if: steps.frontend_exists.outputs.ready == 'true'
+        working-directory: frontend
+        run: |
+          if [ -d "dist" ]; then
+            BUNDLE_SIZE=$(du -sh dist | cut -f1)
+            echo "::notice::Frontend bundle size: $BUNDLE_SIZE (target: <200KB gzipped main JS)"
+            ls -lh dist/assets/ 2>/dev/null || true
+          fi
+
+  swa-config-check:
+    name: staticwebapp.config.json syntax check
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate JSON
+        run: |
+          if [ -f "staticwebapp.config.json" ]; then
+            python3 -c "import json; json.load(open('staticwebapp.config.json'))"
+            echo "staticwebapp.config.json: valid JSON"
+          else
+            echo "::notice::staticwebapp.config.json not present yet."
+          fi

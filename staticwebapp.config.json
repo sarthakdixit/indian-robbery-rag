@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json.schemastore.org/staticwebapp.config.json",
+  "routes": [
+    {
+      "route": "/api/*",
+      "rewrite": "https://CONTAINER_APP_FQDN_PLACEHOLDER/api/*",
+      "allowedRoles": ["anonymous"]
+    },
+    {
+      "route": "/admin",
+      "allowedRoles": ["anonymous"]
+    },
+    {
+      "route": "/admin/*",
+      "allowedRoles": ["anonymous"]
+    },
+    {
+      "route": "/*",
+      "allowedRoles": ["anonymous"]
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": [
+      "/api/*",
+      "/assets/*",
+      "*.{css,js,svg,png,jpg,jpeg,webp,ico,woff,woff2}"
+    ]
+  },
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/index.html",
+      "statusCode": 200
+    }
+  },
+  "globalHeaders": {
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+  },
+  "mimeTypes": {
+    ".json": "application/json",
+    ".webmanifest": "application/manifest+json"
+  },
+  "platform": {
+    "apiRuntime": "node:20"
+  }
+}
