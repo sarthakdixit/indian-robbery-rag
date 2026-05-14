@@ -57,7 +57,7 @@ jobs:
 
       - name: Set up pnpm
         if: steps.deploy_ready.outputs.ready == 'true'
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
         with:
           version: 9
 
