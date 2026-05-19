@@ -27,6 +27,7 @@ import argparse
 import json
 import logging
 import sys
+import traceback
 from pathlib import Path
 
 import yaml
@@ -120,7 +121,22 @@ def normalize_judgment(
 ) -> tuple[NormalizedJudgment | None, bool]:
     html_path = entry.html_path(data_root)
     logger.info("judgment %s: extracting %s", entry.folder, html_path.name)
-    result = extract_judgment(html_path)
+    try:
+        result = extract_judgment(html_path)
+    except Exception as e:
+        # bs4/lxml occasionally crashes on malformed Indian Kanoon HTML in
+        # ways that surface as AttributeError, TypeError, or ValueError. One
+        # bad file should not abort the whole normalize run; the failure is
+        # logged with full traceback and the judgment is skipped so subsequent
+        # entries still get processed. This judgment will be missing from
+        # normalized.jsonl until either the HTML is replaced or the parser
+        # is patched to handle the case.
+        logger.error(
+            "judgment %s: parser crashed (%s: %s) — skipping",
+            entry.folder, type(e).__name__, e,
+        )
+        logger.error("judgment %s: full traceback:\n%s", entry.folder, traceback.format_exc())
+        return None, False
 
     for w in result.warnings:
         logger.warning("judgment %s: %s", entry.folder, w)

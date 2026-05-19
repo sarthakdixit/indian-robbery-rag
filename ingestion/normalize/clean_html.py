@@ -54,10 +54,20 @@ def strip_noise(soup: BeautifulSoup) -> None:
         for tag in soup.find_all(tag_name):
             tag.decompose()
 
-    for tag in soup.find_all(class_=True):
-        classes = tag.get("class") or []
+    # bs4 with lxml can produce tags whose .attrs is None when parsing
+    # malformed Indian Kanoon HTML. That breaks soup.find_all(class_=True)
+    # itself, because internally bs4 calls tag.get("class") which dereferences
+    # tag.attrs.get(...). To avoid the crash, iterate every tag and inspect
+    # attrs defensively rather than asking bs4 to filter for us.
+    for tag in soup.find_all(True):
+        attrs = getattr(tag, "attrs", None)
+        if not attrs:
+            continue
+        classes = attrs.get("class") or []
         if isinstance(classes, str):
             classes = [classes]
+        if not classes:
+            continue
         combined = " ".join(classes).lower()
         if any(needle in combined for needle in NOISE_CLASS_SUBSTRINGS):
             tag.decompose()

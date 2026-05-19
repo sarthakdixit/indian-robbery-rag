@@ -1,0 +1,32 @@
+# Ingestion pipeline dependencies.
+#
+# Pinned to versions verified working as of project bring-up (May 2026).
+# Bumping anything here requires re-running the full pipeline and the
+# ingestion smoke tests; libraries in this list have all surfaced
+# breaking changes between minor versions historically (esp. google-genai
+# and chromadb).
+
+# Google Gemini API — generation (classifier) + embeddings.
+# Pinned at 2.x; 1.x had an entirely different module layout (the old
+# google-generativeai package), so a careless upgrade would silently
+# break the classifier.
+google-genai>=2.0,<3.0
+
+# Vector database. Index format and metadata validation are version-sensitive;
+# pin to 1.5 line. Major version bumps have historically required reindexing.
+chromadb>=1.5,<2.0
+
+# BM25 keyword index. Actively maintained successor to rank-bm25.
+bm25s>=0.3,<1.0
+
+# Corpus normalization.
+beautifulsoup4>=4.12,<5.0
+lxml>=5.0,<7.0      # bs4 backend; faster + more forgiving than html.parser
+pdfplumber>=0.11,<1.0
+
+# Manifest + config.
+PyYAML>=6.0,<7.0
+pydantic>=2.5,<3.0
+
+# Stdlib pinning notes: sqlite3 (embedding cache), hashlib, struct, pathlib,
+# argparse, logging, re — all stdlib, no pin needed.
