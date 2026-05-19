@@ -1,0 +1,1454 @@
+corpus_version: 2026.05.14
+schema_version: '1'
+acts:
+- act_id: bns_2023
+  act_name: Bharatiya Nyaya Sanhita, 2023
+  short_name: BNS
+  filename: bns_2023.pdf
+  source_url: https://www.indiacode.nic.in/bitstream/123456789/20062/1/a2023-45.pdf
+  retrieved_date: 2026-05-14
+  sha256: ff92dcc72778944011807644b6033b1140ddbe6d7e9f82ac32fd419dae03aa86
+- act_id: ipc_1860
+  act_name: Indian Penal Code, 1860
+  short_name: IPC
+  filename: ipc_1860.pdf
+  source_url: https://www.indiacode.nic.in/bitstream/123456789/4219/1/THE-INDIAN-PENAL-CODE-1860.pdf
+  retrieved_date: 2026-05-14
+  sha256: de4e710af30ef968474a17e2e7d3d147daf2175e15c98137983eb101a46ec80e
+- act_id: bnss_2023
+  act_name: Bharatiya Nagarik Suraksha Sanhita, 2023
+  short_name: BNSS
+  filename: bnss_2023.pdf
+  source_url: https://www.indiacode.nic.in/bitstream/123456789/20340/1/bnss,_2023.pdf
+  retrieved_date: 2026-05-14
+  sha256: 8047fe1de6092e23240d059b45cab8d4d93a1b77fa5de7f91ec12ac662c56512
+judgments:
+- folder: '01'
+  case_id: briefly_stated_the_facts_of_the_present_vs_unknown_on_31_may_2023
+  case_name: Briefly Stated The Facts Of The Present v. Unknown
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: briefly_stated_the_facts_of_the_present_vs_unknown_on_31_may_2023.html
+  pdf_filename: briefly_stated_the_facts_of_the_present_vs_unknown_on_31_may_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 9849fd43bce0f5ecd0132b7f9c6714870c24b3815bdc0abf63115cdbbcaa660b
+  pdf_sha256: 3b4080af7125c6b0760f371d8f2b898d786e8f47152ef963ff2ca2027286cb5b
+  relevance_classifier_status: approved
+  relevance_score: 0.7
+  classifier_reasoning: The judgment is substantively about robbery as it deals with charges under Sections 392 and 397 of
+    the Indian Penal Code, indicating the court's analysis will likely focus on the elements of robbery and its aggravated
+    form.
+  manual_review_notes: null
+- folder: '02'
+  case_id: state_vs_vikas_gupta_on_29_november_2023
+  case_name: State v. Vikas Gupta
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: state_vs_vikas_gupta_on_29_november_2023.html
+  pdf_filename: state_vs_vikas_gupta_on_29_november_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 104cfad2394ae60f6128ba44a93113e4f3bc9b4bd665dc2e5fafa0b988cb2ae4
+  pdf_sha256: f2dccd58d299b7945d98165e8a3ea2ff6fd5130789ddf5f3f86e9bdbcb21b2da
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '03'
+  case_id: state_vs_mukesh_kumar_on_18_november_2023
+  case_name: State v. Mukesh Kumar
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: state_vs_mukesh_kumar_on_18_november_2023.html
+  pdf_filename: state_vs_mukesh_kumar_on_18_november_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: f9134733920b4b023d549aab719860b33a6c9e257bc2695a731558a4b81995e6
+  pdf_sha256: 5b3dcc938cb8c3769025befeb3dd8634636e2ad714aadae8db1af5520d8f9b62
+  relevance_classifier_status: approved
+  relevance_score: 0.7
+  classifier_reasoning: The judgment is substantively about robbery and dacoity as it deals with charges under Sections 395
+    and 397 of the Indian Penal Code, and the court's decision involves the acquittal of several accused for these offences.
+  manual_review_notes: null
+- folder: '04'
+  case_id: state_vs_yogendar_montu_on_31_october_2023
+  case_name: State v. Yogendar Montu
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: state_vs_yogendar_montu_on_31_october_2023.html
+  pdf_filename: state_vs_yogendar_montu_on_31_october_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 7b0610c4d6d9dcc40f7b287d7e1a7b7d065a60e50e8c86073b5eefc7e548cb17
+  pdf_sha256: c9bb7d32f3f3a5093afacf449e097edf1be71a9dbac26ee2a7a17e2df1128cc3
+  relevance_classifier_status: approved
+  relevance_score: 0.7
+  classifier_reasoning: The judgment substantively deals with charges of robbery and dacoity (Sections 392, 395, 397 IPC)
+    and the court's final order acquits the accused of these charges.
+  manual_review_notes: 'classifier failure: Gemini call failed: ClientError: 400 INVALID_ARGUMENT. {''error'': {''code'':
+    400, ''message'': ''Invalid JSON payload received. Unknown name "additional_properties" at \''generation_config.response_schema\'':
+    Cannot find field.'', ''status'': ''INVALID_ARGUMENT'', ''details'': [{''@type'': ''type.googleapis.com/google.rpc.BadRequest'',
+    ''fieldViolations'': [{''field'': ''generation_config.response_schema'', ''description'': ''Invalid JSON payload received.
+    Unknown name "additional_properties" at \''generation_config.response_schema\'': Cannot find field.''}]}]}} | classifier
+    failure: Gemini call failed: ClientError: 404 NOT_FOUND. {''error'': {''code'': 404, ''message'': ''models/gemini-1.5-flash
+    is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the
+    list of available models and their supported methods.'', ''status'': ''NOT_FOUND''}}'
+- folder: '05'
+  case_id: state_vs_sanjay_on_20_october_2023
+  case_name: State v. Sanjay
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: state_vs_sanjay_on_20_october_2023.html
+  pdf_filename: state_vs_sanjay_on_20_october_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 90923c111d3c4ccb4a2d6f09e8f342a04faa32ad37b21b7ed2cbf3aea432d8d0
+  pdf_sha256: 332e7c14cafaaa391f9376d13c10441358bc95423c473f8cb3123e2f52f56090
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '06'
+  case_id: state_vs_mohd_amjad_on_16_march_2023
+  case_name: State v. Mohd Amjad
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: state_vs_mohd_amjad_on_16_march_2023.html
+  pdf_filename: state_vs_mohd_amjad_on_16_march_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 259388ce77af4cc153978000fe5cf23830a0be6560bd6b97464664aac0ba9934
+  pdf_sha256: 35183c6a31a1c49502021461fb0837c0db8ac5a981d54c8d74837080c17a0cea
+  relevance_classifier_status: approved
+  relevance_score: 0.7
+  classifier_reasoning: The judgment is substantively about robbery as the prosecution has filed a charge sheet against the
+    accused under Sections 392, 393, 394, and 397 of the Indian Penal Code, indicating that the core of the case revolves
+    around robbery and its aggravated forms.
+  manual_review_notes: null
+- folder: '07'
+  case_id: state_vs_inderjeet_singh_chaudhary_on_17_july_2023
+  case_name: State v. Inderjeet Singh Chaudhary
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: state_vs_inderjeet_singh_chaudhary_on_17_july_2023.html
+  pdf_filename: state_vs_inderjeet_singh_chaudhary_on_17_july_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: e978c79ba1da71e07ae6932e0e79c8820efbdc174fc06ca519fe817e5e4d2469
+  pdf_sha256: f52bccdc64e515f2cb22459b4e2268836d27c3ecb282123223923167526fc8ef
+  relevance_classifier_status: approved
+  relevance_score: 0.7
+  classifier_reasoning: The judgment substantively deals with charges of robbery and attempt to commit robbery under Sections
+    394 and 397 of the Indian Penal Code, as indicated by the FIR details and the chargesheet mentioned.
+  manual_review_notes: null
+- folder: 08
+  case_id: state_vs_venkat_rao_anna_etc_on_13_december_2023
+  case_name: State v. Venkat Rao Anna Etc
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: state_vs_venkat_rao_anna_etc_on_13_december_2023.html
+  pdf_filename: state_vs_venkat_rao_anna_etc_on_13_december_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 9f1334f57bee032a714e341b9e07f40a2edc43d7d94833de48e95043f0b62581
+  pdf_sha256: ea1f12faa1394a878e0c4b200dab9527470ec70993a0225b802e972b4a71fe6f
+  relevance_classifier_status: approved
+  relevance_score: 0.7
+  classifier_reasoning: The judgment substantively deals with charges of dacoity (Section 395 IPC) and wrongful confinement
+    (Section 365 IPC), indicating a focus on robbery-related offences.
+  manual_review_notes: null
+- folder: 09
+  case_id: state_vs_ajay_singh_on_18_october_2023
+  case_name: State v. Ajay Singh
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: state_vs_ajay_singh_on_18_october_2023.html
+  pdf_filename: state_vs_ajay_singh_on_18_october_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: b7d81aecdef88ad1eda3dbae9a41ed0c390f8f4cef4b11d632d03fbe8428aba2
+  pdf_sha256: f5859130987a4e6d9ba2bf8a15afa0a901359867fd8dd201b992003b1aff6304
+  relevance_classifier_status: approved
+  relevance_score: 0.7
+  classifier_reasoning: The judgment is substantively about robbery as it deals with charges under Sections 394 and 397 of
+    the Indian Penal Code, indicating a focus on the elements and consequences of robbery and its aggravated form.
+  manual_review_notes: null
+- folder: '10'
+  case_id: state_vs_1_adil_alam_khan_on_27_may_2023
+  case_name: State v. 1 Adil Alam Khan
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: state_vs_1_adil_alam_khan_on_27_may_2023.html
+  pdf_filename: state_vs_1_adil_alam_khan_on_27_may_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: bef42dff201dd768c9696f7a919695ca8b6c736308e3766f79c48bafe6e19b06
+  pdf_sha256: 6862bad1cee31fb979ae3fe46581a14ed9a61d9d0103e1e1eec666c0b609aa6e
+  relevance_classifier_status: approved
+  relevance_score: 0.75
+  classifier_reasoning: The judgment substantively deals with charges of robbery and voluntarily causing hurt during robbery
+    under Sections 392, 394, and 397 of the Indian Penal Code, making it relevant to the classification.
+  manual_review_notes: null
+- folder: '11'
+  case_id: errappa_erranna_s_o_prabhu_helur_vs_the_state_of_karnataka_on_17_april_2023
+  case_name: Errappa Erranna S O Prabhu Helur v. The State Of Karnataka
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: errappa_erranna_s_o_prabhu_helur_vs_the_state_of_karnataka_on_17_april_2023.html
+  pdf_filename: errappa_erranna_s_o_prabhu_helur_vs_the_state_of_karnataka_on_17_april_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 765d7f6da06df2b2227da3f1d8f1878a87407f2eab0f83ed14f388815e6fcc97
+  pdf_sha256: 29b61322c4a4c99159d6fbd0adee92d7b5f2cc4c980d962d34faaa7138e75d3f
+  relevance_classifier_status: approved
+  relevance_score: 0.7
+  classifier_reasoning: The judgment concerns a conviction for offences under Sections 302 and 392 of the IPC, with the appeal
+    specifically challenging the conviction and sentence for these offences, indicating a substantive focus on robbery.
+  manual_review_notes: null
+- folder: '12'
+  case_id: praveen_k_v_vs_the_state_of_karnataka_on_6_february_2023
+  case_name: Praveen K V v. The State Of Karnataka
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: praveen_k_v_vs_the_state_of_karnataka_on_6_february_2023.html
+  pdf_filename: praveen_k_v_vs_the_state_of_karnataka_on_6_february_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: dd17341a5d3245c7855edca7e8bdb9ee0499b771b512c873d7f649d88e08846a
+  pdf_sha256: e6d5522182cfbfc53db34d284a2662ebee689fa002b51caa94a7ea1f691889da
+  relevance_classifier_status: approved
+  relevance_score: 0.6
+  classifier_reasoning: The judgment is about conviction for offences under Sections 302 and 392 of the IPC, indicating that
+    robbery (Section 392) is a significant part of the case, though not the sole focus.
+  manual_review_notes: null
+- folder: '13'
+  case_id: mahesh_vs_the_state_of_karnataka_on_21_april_2023
+  case_name: Mahesh v. The State Of Karnataka
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: mahesh_vs_the_state_of_karnataka_on_21_april_2023.html
+  pdf_filename: mahesh_vs_the_state_of_karnataka_on_21_april_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 0cdca8cba0df17e505d28a0bce9634701be93e9d434aadf2c1b9977d4c2114d6
+  pdf_sha256: bd8ff5e11cb84dfdd92060488159a4a34bc53ff7faf5ce71ce241f14b607c310
+  relevance_classifier_status: approved
+  relevance_score: 0.7
+  classifier_reasoning: The judgment is substantively about robbery as it concerns a revision petition challenging the conviction
+    and sentence for an offence under Section 392 of the Indian Penal Code.
+  manual_review_notes: null
+- folder: '14'
+  case_id: shekara_ravikumara_vs_state_by_psi_on_10_february_2023
+  case_name: Shekara Ravikumara v. State By Psi
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: shekara_ravikumara_vs_state_by_psi_on_10_february_2023.html
+  pdf_filename: shekara_ravikumara_vs_state_by_psi_on_10_february_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: c854e1a6ac23bf4e271f7721e7e3062572b637db703e85b39978052b07432717
+  pdf_sha256: 96e6dbc7be231955ea9273678629399b54a69fcf916977b3d0e81672c40a77e2
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '15'
+  case_id: siddesh_pappanna_vs_state_by_town_police_on_10_august_2023
+  case_name: Siddesh Pappanna v. State By Town Police
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: siddesh_pappanna_vs_state_by_town_police_on_10_august_2023.html
+  pdf_filename: siddesh_pappanna_vs_state_by_town_police_on_10_august_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: ff78e48851669e2207f6b9b6d73a5017018ba444eb3030e36589c6daca31a11d
+  pdf_sha256: 3b296202942b418327fd67d0537b833eb527b7798ce4a5cc4cc988abddedea61
+  relevance_classifier_status: approved
+  relevance_score: 0.7
+  classifier_reasoning: The judgment is substantively about robbery as it directly addresses a conviction under Section 392
+    of the Indian Penal Code and the subsequent appeals and revisions related to this charge.
+  manual_review_notes: null
+- folder: '16'
+  case_id: rangaraju_vajapeyi_vs_state_of_karnataka_on_30_may_2023
+  case_name: Rangaraju Vajapeyi v. State Of Karnataka
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: rangaraju_vajapeyi_vs_state_of_karnataka_on_30_may_2023.html
+  pdf_filename: rangaraju_vajapeyi_vs_state_of_karnataka_on_30_may_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 8419fc86604e4250d309476fb5e8b6fc15ae1b2acab2bc59af18bbf4854b4607
+  pdf_sha256: 3d136394d5a44e6ea5e9679903958c2abb78c4c652db4a5fbbf108608971b498
+  relevance_classifier_status: rejected
+  relevance_score: 0.1
+  classifier_reasoning: The judgment primarily deals with charges of rape (Section 376 IPC) and murder (Section 302 IPC),
+    with no substantive discussion of robbery or its related offences.
+  manual_review_notes: null
+- folder: '17'
+  case_id: the_state_of_karnataka_vs_karunakara_shetty_on_7_september_2023
+  case_name: The State Of Karnataka v. Karunakara Shetty
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: the_state_of_karnataka_vs_karunakara_shetty_on_7_september_2023.html
+  pdf_filename: the_state_of_karnataka_vs_karunakara_shetty_on_7_september_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: b11c1111582563817b02cbe77b199803145906e479f98202a56d385e877ed1b0
+  pdf_sha256: 2c524932114ed65f587867d53e911038d900a6b6070223a237ab22c8d7e511ea
+  relevance_classifier_status: rejected
+  relevance_score: 0.1
+  classifier_reasoning: The judgment is primarily concerned with an appeal against a sentence for an offence under Section
+    324 of the IPC, and robbery is not the substantive issue.
+  manual_review_notes: null
+- folder: '18'
+  case_id: sri_manoj_kumar_vs_state_by_jeevan_bheema_on_30_august_2023
+  case_name: Sri Manoj Kumar v. State By Jeevan Bheema
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: sri_manoj_kumar_vs_state_by_jeevan_bheema_on_30_august_2023.html
+  pdf_filename: sri_manoj_kumar_vs_state_by_jeevan_bheema_on_30_august_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 3807416dcbfe3664f23ad6e50d169710bd146ba1b00f7bd82d9eabe7e6470586
+  pdf_sha256: 64c879a43ab977bc0c95abadab44e3ccddebffe84a9f4fc5250ff14a74f8bbfe
+  relevance_classifier_status: approved
+  relevance_score: 0.7
+  classifier_reasoning: The judgment is substantively about robbery as the appellants are convicted under Sections 395 and
+    397 of the IPC, which deal with dacoity and robbery or dacoity with attempt to cause death or grievous hurt or to ender
+    wrongful confinement, respectively.
+  manual_review_notes: null
+- folder: '19'
+  case_id: the_state_of_karnataka_vs_karunakara_shetty_on_7_september_2023
+  case_name: The State Of Karnataka v. Karunakara Shetty
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: the_state_of_karnataka_vs_karunakara_shetty_on_7_september_2023.html
+  pdf_filename: the_state_of_karnataka_vs_karunakara_shetty_on_7_september_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: ffee223274cd4f3ba5c3612b70c2721e6c71dcb1a31778746c8bb4e7d80f22d9
+  pdf_sha256: 19ddc1e655392864d20aed09da6e580602e5e0820ef95ea3f2396653e6b57c50
+  relevance_classifier_status: rejected
+  relevance_score: 0.1
+  classifier_reasoning: The judgment is primarily concerned with an appeal against a sentence for an offence under Section
+    324 of the IPC, not robbery or dacoity.
+  manual_review_notes: null
+- folder: '20'
+  case_id: deranda_aiyappa_dalu_vs_the_state_of_karnataka_on_6_july_2023
+  case_name: Deranda Aiyappa Dalu v. The State Of Karnataka
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: deranda_aiyappa_dalu_vs_the_state_of_karnataka_on_6_july_2023.html
+  pdf_filename: deranda_aiyappa_dalu_vs_the_state_of_karnataka_on_6_july_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: a9c0aa4c5df0a73557a3e0b3f01ea505fe1b6f2a854cb064b36e30e1d84ee884
+  pdf_sha256: d1b1c8af1d682309a02ebfb1a17c44503a1f983da29bb3566f22d813757841f3
+  relevance_classifier_status: approved
+  relevance_score: 0.6
+  classifier_reasoning: The judgment is substantively about robbery as Section 397 IPC is one of the primary offences for
+    which the conviction is challenged, alongside murder and other charges.
+  manual_review_notes: null
+- folder: '21'
+  case_id: rakesh_kumar_vs_state_of_haryana_and_others_on_30_january_2023
+  case_name: Rakesh Kumar v. State Of Haryana And Others
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: rakesh_kumar_vs_state_of_haryana_and_others_on_30_january_2023.html
+  pdf_filename: rakesh_kumar_vs_state_of_haryana_and_others_on_30_january_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 664cca48934df24da0ca263c8d3ccf6e463ee68f8d24ef90b93241656fea4c53
+  pdf_sha256: 0bb21b47ca2c24216ee449e3d75ce663ad4a207f1c703d916b08367669d7b20c
+  relevance_classifier_status: needs-review
+  relevance_score: 0.5
+  classifier_reasoning: The judgment mentions Section 394 IPC (robbery or dacoity with hurt) as one of the charges the petitioner
+    was convicted of, but the primary focus of the excerpt is on the petitioner's premature release and the deferral of his
+    case, not the substantive elements of the robbery offense itself.
+  manual_review_notes: null
+- folder: '22'
+  case_id: mahabir_vs_state_of_haryana_on_14_march_2023
+  case_name: Mahabir v. State Of Haryana
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: mahabir_vs_state_of_haryana_on_14_march_2023.html
+  pdf_filename: mahabir_vs_state_of_haryana_on_14_march_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 19696edf98778d3e1fc69131d6a80a8590af91d6b102868f511a8f8f751d07ac
+  pdf_sha256: 0920aa3b5b9d0fcada0c4040e760e2dae940c70018a7a30f9bd5296af805a34e
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '23'
+  case_id: karambir_etc_vs_state_of_hy_on_15_february_2023
+  case_name: Karambir Etc v. State Of Hy
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: karambir_etc_vs_state_of_hy_on_15_february_2023.html
+  pdf_filename: karambir_etc_vs_state_of_hy_on_15_february_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 40527213d4c4a1d3ee2ff0df07ba1b50c0569e2b52738f7609d276f8818eb72d
+  pdf_sha256: 95547bcba3599fb6f40f0333a928a3b143b206beef252997a4f6b4f8d7da63b4
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '24'
+  case_id: jangir_singh_jangira_vs_state_of_haryana_and_others_on_24_may_2023
+  case_name: Jangir Singh Jangira v. State Of Haryana And Others
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: jangir_singh_jangira_vs_state_of_haryana_and_others_on_24_may_2023.html
+  pdf_filename: jangir_singh_jangira_vs_state_of_haryana_and_others_on_24_may_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: ced048e193449650e72bae0a4b0c3e160b609ca71f5f8e2aef39994578cbc663
+  pdf_sha256: 1ed194d7534493ab5159752e7f4626c5fba9fc4a399a8281952b3ce2cdb0b62a
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '25'
+  case_id: manpreet_singh_alias_lavi_vs_state_of_punjab_on_6_september_2023
+  case_name: Manpreet Singh Alias Lavi v. State Of Punjab
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: manpreet_singh_alias_lavi_vs_state_of_punjab_on_6_september_2023.html
+  pdf_filename: manpreet_singh_alias_lavi_vs_state_of_punjab_on_6_september_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 737f44eae5eda1f0cf2547df31e1bf8f225780a91363220d570aebdf45346cde
+  pdf_sha256: a8d188e0929b3a0874e35b94bf858435b6f08676219268b7c1fdc9e0c701f792
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '26'
+  case_id: jagtar_singh_jagga_singh_vs_state_of_punjab_on_19_december_2023
+  case_name: Jagtar Singh Jagga Singh v. State Of Punjab
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: jagtar_singh_jagga_singh_vs_state_of_punjab_on_19_december_2023.html
+  pdf_filename: jagtar_singh_jagga_singh_vs_state_of_punjab_on_19_december_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 5aa44e98322e3734da0c7be29dd4231e014f247bed91e80640302d974bfa51c1
+  pdf_sha256: 42df4d18441381f2611923461937d83743778163a26954a6d106c4c28cbe8841
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '27'
+  case_id: jaspreet_singh_alias_jassi_singh_vs_state_of_punjab_on_17_november_2023
+  case_name: Jaspreet Singh Alias Jassi Singh v. State Of Punjab
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: jaspreet_singh_alias_jassi_singh_vs_state_of_punjab_on_17_november_2023.html
+  pdf_filename: jaspreet_singh_alias_jassi_singh_vs_state_of_punjab_on_17_november_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: f28263c724128557fe3d5f713a67935993dc1d921355c8fa1fab0e523b50f5da
+  pdf_sha256: aabc096118be20d3c59bb500f73228b70976d0e0712b88cf9f7a21278c301ca2
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '28'
+  case_id: amit_mitu_and_ors_vs_state_of_haryana_and_another_on_6_february_2023
+  case_name: Amit Mitu And Ors v. State Of Haryana And Another
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: amit_mitu_and_ors_vs_state_of_haryana_and_another_on_6_february_2023.html
+  pdf_filename: amit_mitu_and_ors_vs_state_of_haryana_and_another_on_6_february_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: d631011ae850075ff862e4e95f205c9e6451f5f337dcf3c7f9f938b5833273d9
+  pdf_sha256: c33a9ec5a093798fa8590251a1f2a901aa5b6b0eb57a39f044af61c617299365
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '29'
+  case_id: deepak_kumar_vs_state_of_punjab_and_others_on_27_february_2023
+  case_name: Deepak Kumar v. State Of Punjab And Others
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: deepak_kumar_vs_state_of_punjab_and_others_on_27_february_2023.html
+  pdf_filename: deepak_kumar_vs_state_of_punjab_and_others_on_27_february_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 492251f9ec8023efab27249c1cac0dcffbe9fbb15077f73e6d01ab453840f24a
+  pdf_sha256: acf499e34cc8c6dcbc57bd3107c18ff936a15daae83e96c1a783609dd346b671
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '30'
+  case_id: rajbir_singh_and_others_vs_state_of_haryana_and_another_on_24_april_2023
+  case_name: Rajbir Singh And Others v. State Of Haryana And Another
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: rajbir_singh_and_others_vs_state_of_haryana_and_another_on_24_april_2023.html
+  pdf_filename: rajbir_singh_and_others_vs_state_of_haryana_and_another_on_24_april_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 824b2dd8198992d7cd622cadacc503ce673040649434d4d3bbc46bf8cd686e97
+  pdf_sha256: 32c6f47abde51e982762d1b44abeeb08ed1c442867c13d9ef2d328dff9ff8531
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '31'
+  case_id: bablu_yadav_bablu_kumar_yadav_vs_the_state_of_bihar_on_7_july_2023
+  case_name: Bablu Yadav Bablu Kumar Yadav v. The State Of Bihar
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: bablu_yadav_bablu_kumar_yadav_vs_the_state_of_bihar_on_7_july_2023.html
+  pdf_filename: bablu_yadav_bablu_kumar_yadav_vs_the_state_of_bihar_on_7_july_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: fc7162dec1f9fa08f3fda86292fdc477a9183c93ac35dbda91702c683261aa6e
+  pdf_sha256: 79381d106f6799010f817fe028ac6e4a0f5aa3b2fc92c22a091ce8ad1c5072d9
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '32'
+  case_id: vijay_kumar_sahu_vijay_sah_vs_the_state_of_bihar_on_31_july_2023
+  case_name: Vijay Kumar Sahu Vijay Sah v. The State Of Bihar
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: vijay_kumar_sahu_vijay_sah_vs_the_state_of_bihar_on_31_july_2023.html
+  pdf_filename: vijay_kumar_sahu_vijay_sah_vs_the_state_of_bihar_on_31_july_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 908ea765dbd1f9f2a4094785152f7f804ef4e56af98d42743018b088b90331c3
+  pdf_sha256: 168499d89396d5b1fb125ecfbc203176b85dedd611a9acfa90eee3ac926ba254
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '33'
+  case_id: vikram_goswami_vs_the_state_of_bihar_on_27_july_2023
+  case_name: Vikram Goswami v. The State Of Bihar
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: vikram_goswami_vs_the_state_of_bihar_on_27_july_2023.html
+  pdf_filename: vikram_goswami_vs_the_state_of_bihar_on_27_july_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 3f0a21cce76c64b556a80375ef6d7656e619e89f4f208ba818548aa4944b3297
+  pdf_sha256: fc3ccd838ef9fb3ced6f7e59b766dcd14225f10d2c3a8c59c275895bd01bd3b4
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '34'
+  case_id: rambhu_chaudhary_vs_the_state_of_bihar_on_7_august_2023
+  case_name: Rambhu Chaudhary v. The State Of Bihar
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: rambhu_chaudhary_vs_the_state_of_bihar_on_7_august_2023.html
+  pdf_filename: rambhu_chaudhary_vs_the_state_of_bihar_on_7_august_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: aad77d6909df43be876e69708dbb1441fc964a09458406f292bd5909af5b9743
+  pdf_sha256: a3d99cc03264890f5f8cf0727c8b9e71fec0aa168afe399eb8c0f11c395fbd93
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '35'
+  case_id: sachin_kumar_vs_the_state_of_bihar_on_31_july_2023
+  case_name: Sachin Kumar v. The State Of Bihar
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: sachin_kumar_vs_the_state_of_bihar_on_31_july_2023.html
+  pdf_filename: sachin_kumar_vs_the_state_of_bihar_on_31_july_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 16b37afa04248646cc4e6d7a1bb47008dc2689630271e5473583150490f06b0f
+  pdf_sha256: 7800cba2836a16745a5c6694b48024b61e0e5ec5b6e2e4588017ed3ee3aef4dd
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '36'
+  case_id: kamlesh_kumar_vs_the_state_of_bihar_on_11_july_2023
+  case_name: Kamlesh Kumar v. The State Of Bihar
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: kamlesh_kumar_vs_the_state_of_bihar_on_11_july_2023.html
+  pdf_filename: kamlesh_kumar_vs_the_state_of_bihar_on_11_july_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: f117ce1e573407b91dc97cddadd0a677924b4a30d4d35bee384d8343c900e97c
+  pdf_sha256: 60c78d5766ef87230c3f6e6944e2819e33bdc5e36b24e0ac798afbacf11d1921
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '37'
+  case_id: nawin_kharwar_vs_the_state_of_bihar_on_22_march_2023
+  case_name: Nawin Kharwar v. The State Of Bihar
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: nawin_kharwar_vs_the_state_of_bihar_on_22_march_2023.html
+  pdf_filename: nawin_kharwar_vs_the_state_of_bihar_on_22_march_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 0e034a9c4c0e8382ba7104c34c21fafcf36f154bed1431230fe83239488c2f7e
+  pdf_sha256: 396d689a6068db880f25f5eb33d9ecdacca6fea7e35b4bb1aafa34b49b1ee44e
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '38'
+  case_id: jitendra_upadhyay_jailor_vs_the_state_of_bihar_on_24_february_2023
+  case_name: Jitendra Upadhyay Jailor v. The State Of Bihar
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: jitendra_upadhyay_jailor_vs_the_state_of_bihar_on_24_february_2023.html
+  pdf_filename: jitendra_upadhyay_jailor_vs_the_state_of_bihar_on_24_february_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 9565d8ad0819cf4587750011c5770fe15fddddbeb81355855be2ac50622dbd42
+  pdf_sha256: f4531890d941b19866e408daae82b8a0270d98aa9244ddce727984d70b47368a
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '39'
+  case_id: prabhakar_kumar_singh_lalla_lala_vs_the_state_of_bihar_on_17_july_2023
+  case_name: Prabhakar Kumar Singh Lalla Lala v. The State Of Bihar
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: prabhakar_kumar_singh_lalla_lala_vs_the_state_of_bihar_on_17_july_2023.html
+  pdf_filename: prabhakar_kumar_singh_lalla_lala_vs_the_state_of_bihar_on_17_july_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: da1d172edf0f914ae7f5338982e97f52d9bf64b50dd7d844d1a947e083aaf556
+  pdf_sha256: c6aeed6f18bde8ab8970f0a91acc1b23898d402b59ebe42666085a8b7adda1fb
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '40'
+  case_id: sangam_kumar_bhulla_vs_the_state_of_bihar_on_26_july_2023
+  case_name: Sangam Kumar Bhulla v. The State Of Bihar
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: sangam_kumar_bhulla_vs_the_state_of_bihar_on_26_july_2023.html
+  pdf_filename: sangam_kumar_bhulla_vs_the_state_of_bihar_on_26_july_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 015083c9f674c833f50b66437294bb1e4420dee11630ed00e266443464de7081
+  pdf_sha256: a3edd12600e23f15be8a01f637fb0f65baa3895c4a8cee9224ae2f247e1aedf9
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '41'
+  case_id: bechan_giri_vs_union_of_india_and_4_others_on_17_july_2023
+  case_name: Bechan Giri v. Union Of India And 4 Others
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: bechan_giri_vs_union_of_india_and_4_others_on_17_july_2023.html
+  pdf_filename: bechan_giri_vs_union_of_india_and_4_others_on_17_july_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: b397a1af8a0b692eef7ca0b3e15f60f6bf9590eeb9aac22ac41cb214c1d6f8c7
+  pdf_sha256: d0b504d4ea54f6e7fa9a174508a4274640047c9f1d9b2f5ee15518477a452f96
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '42'
+  case_id: kailash_vs_state_of_up_on_6_january_2023
+  case_name: Kailash v. State Of Up
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: kailash_vs_state_of_up_on_6_january_2023.html
+  pdf_filename: kailash_vs_state_of_up_on_6_january_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 3219cf7a6bec45afb3e9d85bfb43a27bd4ce95bccdd6c1315a9dd05e072df663
+  pdf_sha256: f9e1b476e82a11f8b8457b8419a22e982bcf2a54a975c3371b7c6158444ea8f9
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '43'
+  case_id: amar_singh_and_another_vs_state_of_up_on_25_april_2023
+  case_name: Amar Singh And Another v. State Of Up
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: amar_singh_and_another_vs_state_of_up_on_25_april_2023.html
+  pdf_filename: amar_singh_and_another_vs_state_of_up_on_25_april_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 394399c7f05adab8bffdbf6d067632053626a35f8f93b012504f6f934a042c2b
+  pdf_sha256: dca815413bd048a6618b5a2790f3e9a78f50765cf9cbf42d93c32be2b79adaa8
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '44'
+  case_id: vijendra_singh_vs_state_of_up_on_10_april_2023
+  case_name: Vijendra Singh v. State Of Up
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: vijendra_singh_vs_state_of_up_on_10_april_2023.html
+  pdf_filename: vijendra_singh_vs_state_of_up_on_10_april_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: aa32bf902d73814e945585f9d32524228995e04da9c50339a8169e9b1ca16b19
+  pdf_sha256: 38924d6fc2c6732a0b91f4a8d8951773a828601a757afd0d2415592516a37d5b
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '45'
+  case_id: amitabh_dixit_vs_the_state_of_up_on_12_january_2023
+  case_name: Amitabh Dixit v. The State Of Up
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: amitabh_dixit_vs_the_state_of_up_on_12_january_2023.html
+  pdf_filename: amitabh_dixit_vs_the_state_of_up_on_12_january_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: fa53066865bc3bace4477391c159455d3708848f6b45d253e80dcb0f178e69e7
+  pdf_sha256: ed56c2ba573d42887ea20e6ee3c306c5b7a03d332a02840f06e15955f9fda587
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '46'
+  case_id: rama_kant_dixit_vs_state_of_up_on_8_may_2023
+  case_name: Rama Kant Dixit v. State Of Up
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: rama_kant_dixit_vs_state_of_up_on_8_may_2023.html
+  pdf_filename: rama_kant_dixit_vs_state_of_up_on_8_may_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 106fdedd18abbd1a606d448d8e7ec9e49fd1119a96cfd09f74cb0dc4948559ab
+  pdf_sha256: ad1bc19f6bf4ad3c2bf9f3231f9be1610fccece1e4583561ecf1a3fbfcfa3033
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '47'
+  case_id: smt_guddi_and_9_others_vs_state_of_up_and_anr_on_8_november_2023
+  case_name: Smt Guddi And 9 Others v. State Of Up And Anr
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: smt_guddi_and_9_others_vs_state_of_up_and_anr_on_8_november_2023.html
+  pdf_filename: smt_guddi_and_9_others_vs_state_of_up_and_anr_on_8_november_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 18b0bc25658384f14c11d6dce4f2549ce2fe9a007ad2773b07a99493f888aaef
+  pdf_sha256: d49a9a4a344afe0b196f5e2cdeccc658ed72f7a7da46c3ff582466b479827337
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '48'
+  case_id: chaman_vs_state_of_up_on_17_august_2023
+  case_name: Chaman v. State Of Up
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: chaman_vs_state_of_up_on_17_august_2023.html
+  pdf_filename: chaman_vs_state_of_up_on_17_august_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 444e84b4d9515587cfd5788a8597e5bcff22913fc70dbae473daa815c263ec44
+  pdf_sha256: e89d067e5cf03a21127c43e0a261a0b8f27ffebc5498b9d96fa02515223b4dcc
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '49'
+  case_id: devi_dayal_and_others_vs_state_of_up_on_15_march_2023
+  case_name: Devi Dayal And Others v. State Of Up
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: devi_dayal_and_others_vs_state_of_up_on_15_march_2023.html
+  pdf_filename: devi_dayal_and_others_vs_state_of_up_on_15_march_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 0c06ec458560f67f82a1d21e2ee36c3eb14106a218813ecd92eccfbe66b6a603
+  pdf_sha256: a96cd3cd2098fe7388624cf10b7143c08aa2c3c91b6ce90c292691ab20fb9159
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '50'
+  case_id: ram_kripal_singh_and_another_vs_state_of_up_and_another_on_28_february_2023
+  case_name: Ram Kripal Singh And Another v. State Of Up And Another
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: ram_kripal_singh_and_another_vs_state_of_up_and_another_on_28_february_2023.html
+  pdf_filename: ram_kripal_singh_and_another_vs_state_of_up_and_another_on_28_february_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 06efecb93fec75cfc708f1fb4d23a1f691cb10c1d76891da7eb9402a4214649e
+  pdf_sha256: e1adcd0c80d9d47cc71909f1685ef3920f9cac0f7ba7e9654b8a963c414c3dfe
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '51'
+  case_id: mahalakshmi_vs_the_state_rep_by_on_30_october_2023
+  case_name: Mahalakshmi v. The State Rep By
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: mahalakshmi_vs_the_state_rep_by_on_30_october_2023.html
+  pdf_filename: mahalakshmi_vs_the_state_rep_by_on_30_october_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: e65637a58359006df14674940596e7a1bbc4a8a16b88254533d8ee4524a5ff88
+  pdf_sha256: 69d8b1f94a812b5c910ef6d38365ee323f4b59cc3578c5f712d2c5b9ca2cbbad
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '52'
+  case_id: annamayil_vs_state_of_tamil_nadu_on_30_october_2023
+  case_name: Annamayil v. State Of Tamil Nadu
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: annamayil_vs_state_of_tamil_nadu_on_30_october_2023.html
+  pdf_filename: annamayil_vs_state_of_tamil_nadu_on_30_october_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 2fc8552edc0a719a520e2a66a0dad28e56832a28765f0cc9907dcdfc9bf43b14
+  pdf_sha256: 007bf0750d46063e0e0f27d8ed52ec7a8514627bb304e10ba3a12e0d0eed2bc7
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '53'
+  case_id: sathyakala_vs_the_state_rep_by_its_on_23_august_2023
+  case_name: Sathyakala v. The State Rep By Its
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: sathyakala_vs_the_state_rep_by_its_on_23_august_2023.html
+  pdf_filename: sathyakala_vs_the_state_rep_by_its_on_23_august_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: ee74494ea583281c14c9ac1737ccfe8b7a00ee93407a4769dcf8b30bb12d2a40
+  pdf_sha256: a6f3326ae770f80d689af7c31713d80b428168dd203326c978342c75ee3c45b6
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '54'
+  case_id: msakthi_sakthivel_revision_vs_state_through_on_6_june_2023
+  case_name: Msakthi Sakthivel Revision v. State Through
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: msakthi_sakthivel_revision_vs_state_through_on_6_june_2023.html
+  pdf_filename: msakthi_sakthivel_revision_vs_state_through_on_6_june_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 5df923a8ddc335786258bad26b9e5a9d005d618117bbafae5ec74cff1f14eefe
+  pdf_sha256: 61e9545cca05e274ddcf194e54a5856c5684df82b1bfeb6ccdd3fd472e12a90e
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '55'
+  case_id: r_kannan_vs_the_state_of_tamil_nadu_on_3_april_2023
+  case_name: R Kannan v. The State Of Tamil Nadu
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: r_kannan_vs_the_state_of_tamil_nadu_on_3_april_2023.html
+  pdf_filename: r_kannan_vs_the_state_of_tamil_nadu_on_3_april_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 5ffc987f1f14d977d40af3ee9d00363c05dc308ff6840eced67bdfe8e99c1886
+  pdf_sha256: 4c583633c799e5825f865c837877d8da32d857ef4becf389f2df13d91e82a522
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '56'
+  case_id: marudambal_vs_the_state_of_tamil_nadu_represented_by_on_20_november_2023
+  case_name: Marudambal v. The State Of Tamil Nadu Represented By
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: marudambal_vs_the_state_of_tamil_nadu_represented_by_on_20_november_2023.html
+  pdf_filename: marudambal_vs_the_state_of_tamil_nadu_represented_by_on_20_november_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: b5b38ddbb2ce3061085c9b4923a1671b7189e8cf22c7d069523c26aac462707d
+  pdf_sha256: d1fe118035125be3d1d13eecdeae93e588379cf54df6367f2c155f4dcf898cc1
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '57'
+  case_id: dhanalakshmi_vs_the_state_of_tamil_nadu_represented_by_on_21_november_2023
+  case_name: Dhanalakshmi v. The State Of Tamil Nadu Represented By
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: dhanalakshmi_vs_the_state_of_tamil_nadu_represented_by_on_21_november_2023.html
+  pdf_filename: dhanalakshmi_vs_the_state_of_tamil_nadu_represented_by_on_21_november_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 7915e6b5cb85ce1bf925479fe7f8815e8ee9569be44c6d460329ac28901c3426
+  pdf_sha256: c4ea92332dc8808b506eb7c27c750c0e99ffe35dfb033f581e9c706a168f63f3
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '58'
+  case_id: mrjbsolomon_peter_kamaldoss_vs_state_of_tamil_nadu_rep_on_25_april_2023
+  case_name: Mrjbsolomon Peter Kamaldoss v. State Of Tamil Nadu Rep
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: mrjbsolomon_peter_kamaldoss_vs_state_of_tamil_nadu_rep_on_25_april_2023.html
+  pdf_filename: mrjbsolomon_peter_kamaldoss_vs_state_of_tamil_nadu_rep_on_25_april_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 7939ce39455639c7965943a505110fc27782293e5d1540481e9417e2bd996a4c
+  pdf_sha256: 7ef65cf9c0211fd4e2d3471a38ec924ffa980c25a2854525dd3144b2768aff7d
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '59'
+  case_id: mrakram_khan_vs_the_state_rep_by_its_on_19_july_2023
+  case_name: Mrakram Khan v. The State Rep By Its
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: mrakram_khan_vs_the_state_rep_by_its_on_19_july_2023.html
+  pdf_filename: mrakram_khan_vs_the_state_rep_by_its_on_19_july_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 506028ea4ab0a9a1a59adadb94b3b5c96b827f789b8b246dacf27c0ec397a398
+  pdf_sha256: acb69d928600bad1c3791baf8dc96a872ebac82330be7976f9c679d6ff044ced
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '60'
+  case_id: gurujlal_panika_vs_the_state_of_madhya_pradesh_on_21_december_2023
+  case_name: Gurujlal Panika v. The State Of Madhya Pradesh
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: gurujlal_panika_vs_the_state_of_madhya_pradesh_on_21_december_2023.html
+  pdf_filename: gurujlal_panika_vs_the_state_of_madhya_pradesh_on_21_december_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 348bd1a777c95939581f0c262b20dba1baf6bc85975d3443c5ef29d92c69b4ac
+  pdf_sha256: f7df28306be972ac795e45e15214416e5b21253f541bb05e845b249f8cb72460
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '61'
+  case_id: lala_alias_rajkumar_kewat_vs_the_state_of_madhya_pradesh_on_21_december_2023
+  case_name: Lala Alias Rajkumar Kewat v. The State Of Madhya Pradesh
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: lala_alias_rajkumar_kewat_vs_the_state_of_madhya_pradesh_on_21_december_2023.html
+  pdf_filename: lala_alias_rajkumar_kewat_vs_the_state_of_madhya_pradesh_on_21_december_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 4c508f9e6257a781b16131656a2457e66cdbaee32f620a40f502c7c6824ad6ba
+  pdf_sha256: 5d593b9dabbc0a038df7c00ace87d836683ac3f1098495ea58a873d5238e7054
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '62'
+  case_id: ramesh_vs_the_state_of_madhya_pradesh_on_24_july_2023
+  case_name: Ramesh v. The State Of Madhya Pradesh
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: ramesh_vs_the_state_of_madhya_pradesh_on_24_july_2023.html
+  pdf_filename: ramesh_vs_the_state_of_madhya_pradesh_on_24_july_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: f7763f1ca5f947a5d81f5b67616386de7730e35aa20861fc30c876ab276a0803
+  pdf_sha256: 2524b59baef6d3a4f334c7a914ec5859dab7330527afb37467b956b50950a183
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '63'
+  case_id: lala_lakhan_jaiswal_vs_the_state_of_madhya_pradesh_on_3_july_2023
+  case_name: Lala Lakhan Jaiswal v. The State Of Madhya Pradesh
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: lala_lakhan_jaiswal_vs_the_state_of_madhya_pradesh_on_3_july_2023.html
+  pdf_filename: lala_lakhan_jaiswal_vs_the_state_of_madhya_pradesh_on_3_july_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 010ca17b4adde94190ac1bb8099975d41b56ae555d5a6517c0846cd8ed954421
+  pdf_sha256: 7f0db27f8855ec59abec2e1e8d548b9970f3452a83e189cc7910805e47dd1459
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '64'
+  case_id: babulal_sirsham_vs_the_state_of_madhya_pradesh_on_21_july_2023
+  case_name: Babulal Sirsham v. The State Of Madhya Pradesh
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: babulal_sirsham_vs_the_state_of_madhya_pradesh_on_21_july_2023.html
+  pdf_filename: babulal_sirsham_vs_the_state_of_madhya_pradesh_on_21_july_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 872e1987ce35df5d6a177358a91d789a2abd1e0462e34cbe862f0bd223959c1b
+  pdf_sha256: 3d184f9c0afb134fbd984de54c8a046b8fede3321d13389955d0c29b81db88fa
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '65'
+  case_id: vinod_kumar_vs_the_state_of_madhya_pradesh_on_12_september_2023
+  case_name: Vinod Kumar v. The State Of Madhya Pradesh
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: vinod_kumar_vs_the_state_of_madhya_pradesh_on_12_september_2023.html
+  pdf_filename: vinod_kumar_vs_the_state_of_madhya_pradesh_on_12_september_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: baa3a2ecb2bdc6235a53b065c0d57fe76b3a059fc587334fac58262c64688f8c
+  pdf_sha256: 08ab237fdc1581ccb12b97914394221082081137b22dc284aa398b1106fb3019
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '66'
+  case_id: mohit_kol_vs_the_state_of_madhya_pradesh_on_19_july_2023
+  case_name: Mohit Kol v. The State Of Madhya Pradesh
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: mohit_kol_vs_the_state_of_madhya_pradesh_on_19_july_2023.html
+  pdf_filename: mohit_kol_vs_the_state_of_madhya_pradesh_on_19_july_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 488188ece366b8a1afc146f66c34e99c6b1745b156f2a0d15407c0aec76d4875
+  pdf_sha256: 3c42b0d01a90fa80aa243d081025ee320bf49d609f8c66450cfdd0608ba5b92f
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '67'
+  case_id: lucky_singh_baghel_tinku_vs_the_state_of_madhya_pradesh_on_19_july_2023
+  case_name: Lucky Singh Baghel Tinku v. The State Of Madhya Pradesh
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: lucky_singh_baghel_tinku_vs_the_state_of_madhya_pradesh_on_19_july_2023.html
+  pdf_filename: lucky_singh_baghel_tinku_vs_the_state_of_madhya_pradesh_on_19_july_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 39b310e37581e14cd6bb79bcbcc62cda646bf700fb9a52e62e7cfb16d3bf1938
+  pdf_sha256: ff40bdd896131f532033e60cd9f781cc77fcdb9c7caba05db933b1e48d01be32
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '68'
+  case_id: ramveer_singh_gurjar_vs_the_state_of_madhya_pradesh_thr_on_2_march_2023
+  case_name: Ramveer Singh Gurjar v. The State Of Madhya Pradesh Thr
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: ramveer_singh_gurjar_vs_the_state_of_madhya_pradesh_thr_on_2_march_2023.html
+  pdf_filename: ramveer_singh_gurjar_vs_the_state_of_madhya_pradesh_thr_on_2_march_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 68f4615f9e89cf6856a0ac7b39ab35511f776eaa987092489c34179d01509b50
+  pdf_sha256: 8c91d1746d5d7198bcad279ccf8d6ddeefeeb6e2e82a774e4c94e6e789081630
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '69'
+  case_id: shahid_raza_vs_the_state_of_madhya_pradesh_on_25_august_2023
+  case_name: Shahid Raza v. The State Of Madhya Pradesh
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: shahid_raza_vs_the_state_of_madhya_pradesh_on_25_august_2023.html
+  pdf_filename: shahid_raza_vs_the_state_of_madhya_pradesh_on_25_august_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: 9448a8fec18f80b94273c380b8f00770b033165f8b24c6c6d22b4ceb898eb533
+  pdf_sha256: 29b3b17d052077ead8e311f1712062cde67d257099de62229d1aa39df05a6f39
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null
+- folder: '70'
+  case_id: darasingh_dharasingh_satwantsingh_vs_state_of_mah_thr_acp_on_22_august_2023
+  case_name: Darasingh Dharasingh Satwantsingh v. State Of Mah Thr Acp
+  citation: 'TODO: citation (e.g., ''(2007) 12 SCC 641 / AIR 2007 SC 3234'')'
+  court: 'TODO: Supreme Court of India | Delhi High Court | ...'
+  year: 2023
+  primary_section: 'TODO: e.g. ''397 IPC'' or ''309 BNS'''
+  other_sections: []
+  outcome: other
+  indian_kanoon_url: 'TODO: https://indiankanoon.org/doc/<id>/'
+  indian_kanoon_doc_id: null
+  html_filename: darasingh_dharasingh_satwantsingh_vs_state_of_mah_thr_acp_on_22_august_2023.html
+  pdf_filename: darasingh_dharasingh_satwantsingh_vs_state_of_mah_thr_acp_on_22_august_2023.pdf
+  retrieved_date: '2026-05-14'
+  html_sha256: e97df227f117417b6bbb0c99de07a9c7eed2159bb0a49318dc1c5a7b2c6a2baa
+  pdf_sha256: 9cb28a7fab5d17174a44012df643400543148438a13155d8bd263b80ed700509
+  relevance_classifier_status: pending
+  relevance_score: null
+  classifier_reasoning: null
+  manual_review_notes: null

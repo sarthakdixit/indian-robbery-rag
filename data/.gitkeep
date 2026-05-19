@@ -1,0 +1,23 @@
+# This file exists so the `data/` directory is tracked by git before the
+
+# corpus is downloaded.
+
+#
+
+# The data/ directory is the canonical home for the raw corpus:
+
+# - Bare-act PDFs at the top level: bns_2023.pdf, ipc_1860.pdf, bnss_2023.pdf
+
+# - Judgment HTML+PDF pairs in numbered subfolders: 01/, 02/, ..., 70/
+
+#
+
+# See ../sources.yaml for the manifest and ../ingestion/collect/README.md
+
+# for the download playbook.
+
+#
+
+# data/ IS committed to the repo (the raw corpus is part of the deliverable).
+
+# chroma_db/ is gitignored (it is a build artifact, rebuilt by `make ingest`).
