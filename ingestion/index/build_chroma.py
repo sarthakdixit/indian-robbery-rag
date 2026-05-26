@@ -66,8 +66,15 @@ def configure_logging(verbose: bool) -> None:
 
 
 def load_chunks(path: Path) -> dict[str, dict[str, Any]]:
-    """Return chunk_id -> chunk dict."""
+    """Return chunk_id -> chunk dict.
+
+    Duplicate chunk_ids are a hard error: silently overwriting would let
+    upstream chunker bugs hide as "Chroma has fewer chunks than chunks.jsonl"
+    later in the pipeline. The chunker is expected to produce unique ids
+    (e.g. act:section:sub_index, judgment:folder:p_start-p_end).
+    """
     chunks: dict[str, dict[str, Any]] = {}
+    duplicates: dict[str, int] = {}
     with path.open(encoding="utf-8") as f:
         for line_no, line in enumerate(f, start=1):
             line = line.strip()
@@ -78,7 +85,23 @@ def load_chunks(path: Path) -> dict[str, dict[str, Any]]:
             if not cid:
                 logger.warning("chunks line %d: missing chunk_id", line_no)
                 continue
+            if cid in chunks:
+                duplicates[cid] = duplicates.get(cid, 1) + 1
+                continue
             chunks[cid] = obj
+
+    if duplicates:
+        logger.error(
+            "%d duplicate chunk_id(s) in %s; keeping first occurrence of each",
+            len(duplicates), path,
+        )
+        for cid, count in sorted(duplicates.items()):
+            logger.error("  %s (seen %d times)", cid, count)
+        logger.error(
+            "Fix the chunker so chunk_ids are unique, then re-run. "
+            "Continuing with the deduped set so downstream steps can run."
+        )
+
     return chunks
 
 

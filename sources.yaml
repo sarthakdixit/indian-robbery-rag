@@ -61,9 +61,10 @@ judgments:
   retrieved_date: '2026-05-14'
   html_sha256: 104cfad2394ae60f6128ba44a93113e4f3bc9b4bd665dc2e5fafa0b988cb2ae4
   pdf_sha256: f2dccd58d299b7945d98165e8a3ea2ff6fd5130789ddf5f3f86e9bdbcb21b2da
-  relevance_classifier_status: pending
-  relevance_score: null
-  classifier_reasoning: null
+  relevance_classifier_status: approved
+  relevance_score: 0.7
+  classifier_reasoning: The judgment substantively deals with charges of robbery under Section 394 of the Indian Penal Code,
+    analyzing the elements of the offense and the evidence presented.
   manual_review_notes: null
 - folder: '03'
   case_id: state_vs_mukesh_kumar_on_18_november_2023
@@ -130,9 +131,10 @@ judgments:
   retrieved_date: '2026-05-14'
   html_sha256: 90923c111d3c4ccb4a2d6f09e8f342a04faa32ad37b21b7ed2cbf3aea432d8d0
   pdf_sha256: 332e7c14cafaaa391f9376d13c10441358bc95423c473f8cb3123e2f52f56090
-  relevance_classifier_status: pending
-  relevance_score: null
-  classifier_reasoning: null
+  relevance_classifier_status: approved
+  relevance_score: 0.8
+  classifier_reasoning: The judgment substantively deals with charges of dacoity (Section 395 IPC) and robbery armed with
+    a deadly weapon (Section 397 IPC), indicating the court's decision will turn on the elements of these offences.
   manual_review_notes: null
 - folder: '06'
   case_id: state_vs_mohd_amjad_on_16_march_2023
@@ -319,9 +321,10 @@ judgments:
   retrieved_date: '2026-05-14'
   html_sha256: c854e1a6ac23bf4e271f7721e7e3062572b637db703e85b39978052b07432717
   pdf_sha256: 96e6dbc7be231955ea9273678629399b54a69fcf916977b3d0e81672c40a77e2
-  relevance_classifier_status: pending
-  relevance_score: null
-  classifier_reasoning: null
+  relevance_classifier_status: approved
+  relevance_score: 0.7
+  classifier_reasoning: The judgment concerns a revision petition against conviction and sentence for the offence punishable
+    under Section 392 read with Section 34 of the Indian Penal Code (robbery).
   manual_review_notes: null
 - folder: '15'
   case_id: siddesh_pappanna_vs_state_by_town_police_on_10_august_2023
@@ -488,9 +491,10 @@ judgments:
   retrieved_date: '2026-05-14'
   html_sha256: 19696edf98778d3e1fc69131d6a80a8590af91d6b102868f511a8f8f751d07ac
   pdf_sha256: 0920aa3b5b9d0fcada0c4040e760e2dae940c70018a7a30f9bd5296af805a34e
-  relevance_classifier_status: pending
-  relevance_score: null
-  classifier_reasoning: null
+  relevance_classifier_status: approved
+  relevance_score: 0.7
+  classifier_reasoning: The judgment substantively deals with charges under Sections 399 and 402 of the Indian Penal Code,
+    which relate to preparing to commit robbery and assembling for the purpose of committing robbery, respectively.
   manual_review_notes: null
 - folder: '23'
   case_id: karambir_etc_vs_state_of_hy_on_15_february_2023
@@ -508,9 +512,10 @@ judgments:
   retrieved_date: '2026-05-14'
   html_sha256: 40527213d4c4a1d3ee2ff0df07ba1b50c0569e2b52738f7609d276f8818eb72d
   pdf_sha256: 95547bcba3599fb6f40f0333a928a3b143b206beef252997a4f6b4f8d7da63b4
-  relevance_classifier_status: pending
-  relevance_score: null
-  classifier_reasoning: null
+  relevance_classifier_status: rejected
+  relevance_score: 0.1
+  classifier_reasoning: The judgment primarily deals with an appeal against conviction under the Arms Act, with robbery (Section
+    412 IPC) mentioned only in the FIR details and not being the substantive focus of the court's analysis.
   manual_review_notes: null
 - folder: '24'
   case_id: jangir_singh_jangira_vs_state_of_haryana_and_others_on_24_may_2023
@@ -528,9 +533,10 @@ judgments:
   retrieved_date: '2026-05-14'
   html_sha256: ced048e193449650e72bae0a4b0c3e160b609ca71f5f8e2aef39994578cbc663
   pdf_sha256: 1ed194d7534493ab5159752e7f4626c5fba9fc4a399a8281952b3ce2cdb0b62a
-  relevance_classifier_status: pending
-  relevance_score: null
-  classifier_reasoning: null
+  relevance_classifier_status: rejected
+  relevance_score: 0.1
+  classifier_reasoning: The judgment primarily concerns a conviction for murder under Section 302 IPC, with robbery being
+    mentioned only incidentally in the context of the FIR and the petitioner's weapon.
   manual_review_notes: null
 - folder: '25'
   case_id: manpreet_singh_alias_lavi_vs_state_of_punjab_on_6_september_2023
@@ -548,9 +554,11 @@ judgments:
   retrieved_date: '2026-05-14'
   html_sha256: 737f44eae5eda1f0cf2547df31e1bf8f225780a91363220d570aebdf45346cde
   pdf_sha256: a8d188e0929b3a0874e35b94bf858435b6f08676219268b7c1fdc9e0c701f792
-  relevance_classifier_status: pending
-  relevance_score: null
-  classifier_reasoning: null
+  relevance_classifier_status: approved
+  relevance_score: 0.6
+  classifier_reasoning: The case involves a bail application under Section 439 Cr.P.C. for an FIR registered under Sections
+    399/402 IPC, which deal with preparing to commit dacoity and dacoity respectively, indicating the case is substantively
+    about robbery-related offences.
   manual_review_notes: null
 - folder: '26'
   case_id: jagtar_singh_jagga_singh_vs_state_of_punjab_on_19_december_2023
@@ -568,9 +576,10 @@ judgments:
   retrieved_date: '2026-05-14'
   html_sha256: 5aa44e98322e3734da0c7be29dd4231e014f247bed91e80640302d974bfa51c1
   pdf_sha256: 42df4d18441381f2611923461937d83743778163a26954a6d106c4c28cbe8841
-  relevance_classifier_status: pending
-  relevance_score: null
-  classifier_reasoning: null
+  relevance_classifier_status: approved
+  relevance_score: 0.7
+  classifier_reasoning: The case involves a bail application where the primary contention is whether the alleged offence constitutes
+    robbery, with the defense arguing it was a quarrel and the prosecution asserting it was robbery.
   manual_review_notes: null
 - folder: '27'
   case_id: jaspreet_singh_alias_jassi_singh_vs_state_of_punjab_on_17_november_2023
@@ -588,9 +597,11 @@ judgments:
   retrieved_date: '2026-05-14'
   html_sha256: f28263c724128557fe3d5f713a67935993dc1d921355c8fa1fab0e523b50f5da
   pdf_sha256: aabc096118be20d3c59bb500f73228b70976d0e0712b88cf9f7a21278c301ca2
-  relevance_classifier_status: pending
-  relevance_score: null
-  classifier_reasoning: null
+  relevance_classifier_status: approved
+  relevance_score: 0.7
+  classifier_reasoning: The judgment is substantively about robbery as it discusses the bail application for an FIR initially
+    under Section 379-B IPC, with Sections 394, 325, and 323 IPC added later, and the petitioner's counsel explicitly argues
+    that the case is not one of robbery.
   manual_review_notes: null
 - folder: '28'
   case_id: amit_mitu_and_ors_vs_state_of_haryana_and_another_on_6_february_2023
@@ -608,9 +619,10 @@ judgments:
   retrieved_date: '2026-05-14'
   html_sha256: d631011ae850075ff862e4e95f205c9e6451f5f337dcf3c7f9f938b5833273d9
   pdf_sha256: c33a9ec5a093798fa8590251a1f2a901aa5b6b0eb57a39f044af61c617299365
-  relevance_classifier_status: pending
-  relevance_score: null
-  classifier_reasoning: null
+  relevance_classifier_status: rejected
+  relevance_score: 0.1
+  classifier_reasoning: The judgment primarily deals with quashing an FIR based on a compromise, and the sections mentioned
+    (419, 420, 467, 468, 471 IPC) relate to cheating and forgery, not robbery.
   manual_review_notes: null
 - folder: '29'
   case_id: deepak_kumar_vs_state_of_punjab_and_others_on_27_february_2023
@@ -628,9 +640,9 @@ judgments:
   retrieved_date: '2026-05-14'
   html_sha256: 492251f9ec8023efab27249c1cac0dcffbe9fbb15077f73e6d01ab453840f24a
   pdf_sha256: acf499e34cc8c6dcbc57bd3107c18ff936a15daae83e96c1a783609dd346b671
-  relevance_classifier_status: pending
-  relevance_score: null
-  classifier_reasoning: null
+  relevance_classifier_status: rejected
+  relevance_score: 0.1
+  classifier_reasoning: The judgment is about parole for a conviction under the NDPS Act, and robbery is not discussed.
   manual_review_notes: null
 - folder: '30'
   case_id: rajbir_singh_and_others_vs_state_of_haryana_and_another_on_24_april_2023
@@ -648,9 +660,10 @@ judgments:
   retrieved_date: '2026-05-14'
   html_sha256: 824b2dd8198992d7cd622cadacc503ce673040649434d4d3bbc46bf8cd686e97
   pdf_sha256: 32c6f47abde51e982762d1b44abeeb08ed1c442867c13d9ef2d328dff9ff8531
-  relevance_classifier_status: pending
-  relevance_score: null
-  classifier_reasoning: null
+  relevance_classifier_status: rejected
+  relevance_score: 0.1
+  classifier_reasoning: The judgment mentions sections related to cheating and forgery, but the core issue is quashing an
+    FIR based on a compromise, not the substantive elements of robbery.
   manual_review_notes: null
 - folder: '31'
   case_id: bablu_yadav_bablu_kumar_yadav_vs_the_state_of_bihar_on_7_july_2023
@@ -668,9 +681,10 @@ judgments:
   retrieved_date: '2026-05-14'
   html_sha256: fc7162dec1f9fa08f3fda86292fdc477a9183c93ac35dbda91702c683261aa6e
   pdf_sha256: 79381d106f6799010f817fe028ac6e4a0f5aa3b2fc92c22a091ce8ad1c5072d9
-  relevance_classifier_status: pending
-  relevance_score: null
-  classifier_reasoning: null
+  relevance_classifier_status: rejected
+  relevance_score: 0.2
+  classifier_reasoning: The judgment mentions Section 394 IPC (robbery) but the primary focus of the appeal is on Sections
+    302 IPC (murder) and the SC/ST Act, with robbery being a secondary charge.
   manual_review_notes: null
 - folder: '32'
   case_id: vijay_kumar_sahu_vijay_sah_vs_the_state_of_bihar_on_31_july_2023
@@ -688,9 +702,10 @@ judgments:
   retrieved_date: '2026-05-14'
   html_sha256: 908ea765dbd1f9f2a4094785152f7f804ef4e56af98d42743018b088b90331c3
   pdf_sha256: 168499d89396d5b1fb125ecfbc203176b85dedd611a9acfa90eee3ac926ba254
-  relevance_classifier_status: pending
-  relevance_score: null
-  classifier_reasoning: null
+  relevance_classifier_status: approved
+  relevance_score: 0.7
+  classifier_reasoning: The judgment is substantively about robbery as it concerns a bail application where the core allegations
+    involve robbery under Section 394 IPC, and the court analyzes the evidence and circumstances related to the robbery charge.
   manual_review_notes: null
 - folder: '33'
   case_id: vikram_goswami_vs_the_state_of_bihar_on_27_july_2023
@@ -708,9 +723,10 @@ judgments:
   retrieved_date: '2026-05-14'
   html_sha256: 3f0a21cce76c64b556a80375ef6d7656e619e89f4f208ba818548aa4944b3297
   pdf_sha256: fc3ccd838ef9fb3ced6f7e59b766dcd14225f10d2c3a8c59c275895bd01bd3b4
-  relevance_classifier_status: pending
-  relevance_score: null
-  classifier_reasoning: null
+  relevance_classifier_status: approved
+  relevance_score: 0.6
+  classifier_reasoning: The judgment discusses a bail application where the primary offence alleged is robbery under Section
+    394 IPC, making it substantively relevant to the topic.
   manual_review_notes: null
 - folder: '34'
   case_id: rambhu_chaudhary_vs_the_state_of_bihar_on_7_august_2023
@@ -728,9 +744,11 @@ judgments:
   retrieved_date: '2026-05-14'
   html_sha256: aad77d6909df43be876e69708dbb1441fc964a09458406f292bd5909af5b9743
   pdf_sha256: a3d99cc03264890f5f8cf0727c8b9e71fec0aa168afe399eb8c0f11c395fbd93
-  relevance_classifier_status: pending
-  relevance_score: null
-  classifier_reasoning: null
+  relevance_classifier_status: approved
+  relevance_score: 0.6
+  classifier_reasoning: The judgment discusses a bail application for an offence under Section 392 of the Indian Penal Code
+    (robbery), with Section 411 IPC also added, and the court's reasoning considers the nature of the allegations and the
+    evidence presented.
   manual_review_notes: null
 - folder: '35'
   case_id: sachin_kumar_vs_the_state_of_bihar_on_31_july_2023
@@ -748,9 +766,10 @@ judgments:
   retrieved_date: '2026-05-14'
   html_sha256: 16b37afa04248646cc4e6d7a1bb47008dc2689630271e5473583150490f06b0f
   pdf_sha256: 7800cba2836a16745a5c6694b48024b61e0e5ec5b6e2e4588017ed3ee3aef4dd
-  relevance_classifier_status: pending
-  relevance_score: null
-  classifier_reasoning: null
+  relevance_classifier_status: approved
+  relevance_score: 0.6
+  classifier_reasoning: The judgment discusses robbery (Section 392 IPC) as one of the primary charges alongside murder, indicating
+    that the court's analysis will likely involve substantive aspects of the robbery offence.
   manual_review_notes: null
 - folder: '36'
   case_id: kamlesh_kumar_vs_the_state_of_bihar_on_11_july_2023
@@ -768,9 +787,10 @@ judgments:
   retrieved_date: '2026-05-14'
   html_sha256: f117ce1e573407b91dc97cddadd0a677924b4a30d4d35bee384d8343c900e97c
   pdf_sha256: 60c78d5766ef87230c3f6e6944e2819e33bdc5e36b24e0ac798afbacf11d1921
-  relevance_classifier_status: pending
-  relevance_score: null
-  classifier_reasoning: null
+  relevance_classifier_status: needs-review
+  relevance_score: 0.5
+  classifier_reasoning: The judgment discusses robbery (Sections 394 IPC) as one of the charges, but the primary focus appears
+    to be on the murder charge (Section 302 IPC) and the petitioner's bail application, with robbery being a secondary element.
   manual_review_notes: null
 - folder: '37'
   case_id: nawin_kharwar_vs_the_state_of_bihar_on_22_march_2023
@@ -788,9 +808,10 @@ judgments:
   retrieved_date: '2026-05-14'
   html_sha256: 0e034a9c4c0e8382ba7104c34c21fafcf36f154bed1431230fe83239488c2f7e
   pdf_sha256: 396d689a6068db880f25f5eb33d9ecdacca6fea7e35b4bb1aafa34b49b1ee44e
-  relevance_classifier_status: pending
-  relevance_score: null
-  classifier_reasoning: null
+  relevance_classifier_status: approved
+  relevance_score: 0.6
+  classifier_reasoning: The judgment discusses bail in a case involving charges of robbery (Section 394 IPC) and murder, with
+    the court analyzing the robbery aspect in relation to the bail application.
   manual_review_notes: null
 - folder: '38'
   case_id: jitendra_upadhyay_jailor_vs_the_state_of_bihar_on_24_february_2023
@@ -808,9 +829,11 @@ judgments:
   retrieved_date: '2026-05-14'
   html_sha256: 9565d8ad0819cf4587750011c5770fe15fddddbeb81355855be2ac50622dbd42
   pdf_sha256: f4531890d941b19866e408daae82b8a0270d98aa9244ddce727984d70b47368a
-  relevance_classifier_status: pending
-  relevance_score: null
-  classifier_reasoning: null
+  relevance_classifier_status: approved
+  relevance_score: 0.7
+  classifier_reasoning: The case involves a bail application where the primary offences alleged are under Sections 392 (robbery)
+    and 411 (dishonestly receiving stolen property) of the Indian Penal Code, and the court's discussion focuses on the evidence
+    connecting the petitioner to the alleged robbery.
   manual_review_notes: null
 - folder: '39'
   case_id: prabhakar_kumar_singh_lalla_lala_vs_the_state_of_bihar_on_17_july_2023
@@ -828,9 +851,10 @@ judgments:
   retrieved_date: '2026-05-14'
   html_sha256: da1d172edf0f914ae7f5338982e97f52d9bf64b50dd7d844d1a947e083aaf556
   pdf_sha256: c6aeed6f18bde8ab8970f0a91acc1b23898d402b59ebe42666085a8b7adda1fb
-  relevance_classifier_status: pending
-  relevance_score: null
-  classifier_reasoning: null
+  relevance_classifier_status: approved
+  relevance_score: 0.7
+  classifier_reasoning: The judgment is substantively about robbery as it concerns a bail application where the primary offence
+    alleged is under Section 394 IPC (robbery).
   manual_review_notes: null
 - folder: '40'
   case_id: sangam_kumar_bhulla_vs_the_state_of_bihar_on_26_july_2023

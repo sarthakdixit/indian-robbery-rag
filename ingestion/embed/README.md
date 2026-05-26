@@ -69,6 +69,18 @@ Matryoshka Representation Learning truncation to 768 or 1536. We pick
 768 to keep the persisted index small (4× smaller than 3072) and
 ChromaDB queries fast, at minimal quality cost.
 
+## Normalization
+
+Important detail: `gemini-embedding-001` only returns unit-normalized
+vectors at its native 3072-dim output. When we request 768-dim
+truncated vectors, the returned vectors have norms around 0.58 — not 1.0.
+The `GeminiEmbeddingsClient` L2-normalizes vectors before returning them
+so every downstream consumer (ChromaDB cosine, semantic cache threshold,
+scope-rejection threshold) can safely assume unit norm.
+
+If the model ever returns native 3072-dim, the `REQUIRES_NORMALIZATION`
+flag is False and no normalization runs.
+
 ## Task types matter
 
 Gemini's embedding model produces different vectors depending on the

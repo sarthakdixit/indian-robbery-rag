@@ -151,6 +151,11 @@ def is_step_up_to_date(step: Step) -> bool:
 
     A step with no outputs (checker steps like verify_corpus and
     verify_index) is never considered up-to-date — those always run.
+
+    The `embed` step needs an extra check on top of mtime: a quota stop
+    leaves embeddings.jsonl on disk with fewer records than chunks.jsonl
+    has chunks. Pure mtime would call that "done" even though it's only
+    partial. We count lines and compare.
     """
     if not step.outputs:
         return False
@@ -165,7 +170,36 @@ def is_step_up_to_date(step: Step) -> bool:
 
     oldest_output = min(p.stat().st_mtime for p in step.outputs)
     newest_input = newest_mtime(step.inputs)
-    return oldest_output >= newest_input
+    if oldest_output < newest_input:
+        return False
+
+    if step.name == "embed":
+        # Partial-progress detection: embed writes one record per chunk it
+        # successfully embeds. If embeddings.jsonl has fewer records than
+        # chunks.jsonl has chunks, the embed step stopped early (most
+        # likely on quota) and needs to resume.
+        try:
+            chunks_count = _count_nonblank_lines(CHUNKS_JSONL)
+            embeddings_count = _count_nonblank_lines(EMBEDDINGS_JSONL)
+        except OSError:
+            return False
+        if embeddings_count < chunks_count:
+            logger.info(
+                "embed: %d embeddings / %d chunks — not complete, will re-run",
+                embeddings_count, chunks_count,
+            )
+            return False
+
+    return True
+
+
+def _count_nonblank_lines(path: Path) -> int:
+    count = 0
+    with path.open(encoding="utf-8") as f:
+        for line in f:
+            if line.strip():
+                count += 1
+    return count
 
 
 def run_step(step: Step, dry_run: bool) -> tuple[int, float]:

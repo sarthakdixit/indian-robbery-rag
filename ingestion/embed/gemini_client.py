@@ -55,7 +55,34 @@ QUOTA_EXHAUSTED_FINGERPRINTS: tuple[str, ...] = (
     "exceeded your current quota",
 )
 
+# gemini-embedding-001 only returns L2-normalized vectors at its native
+# 3072-dim output. When we ask for a Matryoshka-truncated dimension like
+# 768, the truncated vector is NOT normalized — its L2 norm is typically
+# ~0.5 to ~0.7. Per Google's documentation:
+#
+#     "For other dimensions, including 768 and 1536, you need to
+#      normalize the embeddings."
+#
+# We normalize at the client boundary so every downstream consumer
+# (ChromaDB, the semantic cache, the scope-rejection threshold) can
+# safely assume unit norm. Cosine similarity == dot product on
+# normalized vectors, which simplifies the math everywhere downstream.
+REQUIRES_NORMALIZATION: bool = EMBEDDING_DIM < 3072
+
 logger = logging.getLogger(__name__)
+
+
+def _normalize_inplace(vec: list[float]) -> list[float]:
+    """L2-normalize a vector to unit length. Returns the same list, mutated."""
+    norm_sq = sum(x * x for x in vec)
+    if norm_sq <= 0.0:
+        # Zero vector — pathological, but bail rather than divide by zero.
+        # Caller treats this as an EmbeddingsError elsewhere.
+        return vec
+    inv_norm = 1.0 / (norm_sq ** 0.5)
+    for i, x in enumerate(vec):
+        vec[i] = x * inv_norm
+    return vec
 
 
 @dataclass(frozen=True)
@@ -180,6 +207,11 @@ class GeminiEmbeddingsClient:
                         f"embedding {i} has dim={len(values)}, expected {EMBEDDING_DIM}"
                     )
                 )
+            # MRL-truncated vectors come back unnormalized. Normalize at the
+            # client boundary so callers see unit-norm vectors regardless of
+            # which output dimension we requested.
+            if REQUIRES_NORMALIZATION:
+                values = _normalize_inplace(list(values))
             vectors.append(values)
 
         return EmbeddingsOk(vectors=vectors)
