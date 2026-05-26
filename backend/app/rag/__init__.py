@@ -1,0 +1,1 @@
+"""RAG pipeline package: retrieval, scope, fusion, generation, citations."""

@@ -28,7 +28,7 @@ judgments:
   case_name: Briefly Stated The Facts Of The Present v. Unknown
   citation: AIR 1956 SC 415
   court: Delhi District Court
-  year: 1956
+  year: 2023
   primary_section: 397 IPC
   other_sections: []
   outcome: other
@@ -48,7 +48,7 @@ judgments:
   case_name: State v. Vikas Gupta
   citation: (2001) 7 SCC 690
   court: Delhi District Court
-  year: 2001
+  year: 2023
   primary_section: 390 IPC
   other_sections: []
   outcome: other
@@ -68,7 +68,7 @@ judgments:
   case_name: State v. Mukesh Kumar
   citation: (1999) 1 SCC 57
   court: Delhi District Court
-  year: 1999
+  year: 2023
   primary_section: 395 IPC
   other_sections: []
   outcome: other
@@ -88,7 +88,7 @@ judgments:
   case_name: State v. Yogendar Montu
   citation: "(1991) 3\n               SCC 627"
   court: Delhi District Court
-  year: 1991
+  year: 2023
   primary_section: 397 IPC
   other_sections: []
   outcome: other
@@ -108,7 +108,7 @@ judgments:
   case_name: State v. Sanjay
   citation: (2007) 14 SCC 768
   court: Delhi District Court
-  year: 2007
+  year: 2023
   primary_section: 395 IPC
   other_sections: []
   outcome: other
@@ -128,7 +128,7 @@ judgments:
   case_name: State v. Mohd Amjad
   citation: (2014) 3 SCC 401
   court: Delhi District Court
-  year: 2014
+  year: 2023
   primary_section: 308 BNS
   other_sections: []
   outcome: other
@@ -188,7 +188,7 @@ judgments:
   case_name: State v. Ajay Singh
   citation: (1974) 3 SCC 767
   court: Delhi District Court
-  year: 1974
+  year: 2023
   primary_section: 397 IPC
   other_sections: []
   outcome: other
@@ -208,8 +208,8 @@ judgments:
   case_name: State v. 1 Adil Alam Khan
   citation: (2008) 3 SCC 94
   court: Delhi District Court
-  year: 2008
-  primary_section: 392 IPC
+  year: 2023
+  primary_section: 397 IPC
   other_sections: []
   outcome: other
   indian_kanoon_url: https://indiankanoon.org/doc/162379559/
@@ -228,7 +228,7 @@ judgments:
   case_name: Errappa Erranna S O Prabhu Helur v. The State Of Karnataka
   citation: (1973) 2 SCC 793
   court: Karnataka High Court
-  year: 1973
+  year: 2023
   primary_section: 392 IPC
   other_sections: []
   outcome: other
@@ -248,7 +248,7 @@ judgments:
   case_name: Praveen K V v. The State Of Karnataka
   citation: (1973) 2 SCC 793
   court: Karnataka High Court
-  year: 1973
+  year: 2023
   primary_section: 392 IPC
   other_sections: []
   outcome: other
@@ -288,7 +288,7 @@ judgments:
   case_name: Shekara Ravikumara v. State By Psi
   citation: (2008) 14 SCC 457
   court: Karnataka High Court
-  year: 2008
+  year: 2023
   primary_section: 392 IPC
   other_sections: []
   outcome: other
@@ -368,8 +368,8 @@ judgments:
   case_name: Sri Manoj Kumar v. State By Jeevan Bheema
   citation: (1989) 3 SCC 24
   court: Karnataka High Court
-  year: 1989
-  primary_section: 395 IPC
+  year: 2023
+  primary_section: 397 IPC
   other_sections: []
   outcome: other
   indian_kanoon_url: https://indiankanoon.org/doc/87236065/
@@ -408,7 +408,7 @@ judgments:
   case_name: Deranda Aiyappa Dalu v. The State Of Karnataka
   citation: (2012) 8 SCC 289
   court: Karnataka High Court
-  year: 2012
+  year: 2023
   primary_section: 304 BNS
   other_sections: []
   outcome: other
@@ -448,7 +448,7 @@ judgments:
   case_name: Mahabir v. State Of Haryana
   citation: (1996) 11 SCC 709
   court: Punjab-Haryana High Court
-  year: 1996
+  year: 2023
   primary_section: 399 IPC
   other_sections: []
   outcome: other

@@ -1,0 +1,842 @@
+[
+  {
+    "folder": "01",
+    "case_name_for_reference_only": "Briefly Stated The Facts Of The Present v. Unknown",
+    "html_path": "data/01/briefly_stated_the_facts_of_the_present_vs_unknown_on_31_may_2023.html",
+    "court": {
+      "value": "Delhi District Court",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": "AIR 1956 SC 415",
+      "confidence": "medium",
+      "note": "body regex match (not in header)"
+    },
+    "year": {
+      "value": 1956,
+      "confidence": "medium",
+      "note": "from body citation"
+    },
+    "primary_section": {
+      "value": "397 IPC",
+      "confidence": "medium",
+      "note": "1 mentions vs runner-up 313 with 1 mentions"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/116275232/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 116275232)"
+    }
+  },
+  {
+    "folder": "02",
+    "case_name_for_reference_only": "State v. Vikas Gupta",
+    "html_path": "data/02/state_vs_vikas_gupta_on_29_november_2023.html",
+    "court": {
+      "value": "Delhi District Court",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": "(2001) 7 SCC 690",
+      "confidence": "medium",
+      "note": "body regex match (not in header)"
+    },
+    "year": {
+      "value": 2001,
+      "confidence": "medium",
+      "note": "from body citation"
+    },
+    "primary_section": {
+      "value": "390 IPC",
+      "confidence": "high",
+      "note": "3 mentions vs runner-up 1"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/151470546/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 151470546)"
+    }
+  },
+  {
+    "folder": "03",
+    "case_name_for_reference_only": "State v. Mukesh Kumar",
+    "html_path": "data/03/state_vs_mukesh_kumar_on_18_november_2023.html",
+    "court": {
+      "value": "Delhi District Court",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": "(1999) 1 SCC 57",
+      "confidence": "medium",
+      "note": "body regex match (not in header)"
+    },
+    "year": {
+      "value": 1999,
+      "confidence": "medium",
+      "note": "from body citation"
+    },
+    "primary_section": {
+      "value": "395 IPC",
+      "confidence": "medium",
+      "note": "13 mentions vs runner-up 391 with 8 mentions"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/22412519/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 22412519)"
+    }
+  },
+  {
+    "folder": "04",
+    "case_name_for_reference_only": "State v. Yogendar Montu",
+    "html_path": "data/04/state_vs_yogendar_montu_on_31_october_2023.html",
+    "court": {
+      "value": "Delhi District Court",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": "(1991) 3\n               SCC 627",
+      "confidence": "medium",
+      "note": "body regex match (not in header)"
+    },
+    "year": {
+      "value": 1991,
+      "confidence": "medium",
+      "note": "from body citation"
+    },
+    "primary_section": {
+      "value": "397 IPC",
+      "confidence": "medium",
+      "note": "21 mentions vs runner-up 398 with 10 mentions"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/51918422/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 51918422)"
+    }
+  },
+  {
+    "folder": "05",
+    "case_name_for_reference_only": "State v. Sanjay",
+    "html_path": "data/05/state_vs_sanjay_on_20_october_2023.html",
+    "court": {
+      "value": "Delhi District Court",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": "(2007) 14 SCC 768",
+      "confidence": "medium",
+      "note": "body regex match (not in header)"
+    },
+    "year": {
+      "value": 2007,
+      "confidence": "medium",
+      "note": "from body citation"
+    },
+    "primary_section": {
+      "value": "395 IPC",
+      "confidence": "medium",
+      "note": "7 mentions vs runner-up 397 with 6 mentions"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/8276832/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 8276832)"
+    }
+  },
+  {
+    "folder": "06",
+    "case_name_for_reference_only": "State v. Mohd Amjad",
+    "html_path": "data/06/state_vs_mohd_amjad_on_16_march_2023.html",
+    "court": {
+      "value": "Delhi District Court",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": "(2014) 3 SCC 401",
+      "confidence": "medium",
+      "note": "body regex match (not in header)"
+    },
+    "year": {
+      "value": 2014,
+      "confidence": "medium",
+      "note": "from body citation"
+    },
+    "primary_section": {
+      "value": "308 BNS",
+      "confidence": "medium",
+      "note": "14 mentions vs runner-up 397 with 5 mentions"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/4835177/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 4835177)"
+    }
+  },
+  {
+    "folder": "07",
+    "case_name_for_reference_only": "State v. Inderjeet Singh Chaudhary",
+    "html_path": "data/07/state_vs_inderjeet_singh_chaudhary_on_17_july_2023.html",
+    "court": {
+      "value": "Delhi District Court",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": null,
+      "confidence": "low",
+      "note": "no recognized citation pattern found"
+    },
+    "year": {
+      "value": 2023,
+      "confidence": "medium",
+      "note": "filename date suffix"
+    },
+    "primary_section": {
+      "value": "397 IPC",
+      "confidence": "medium",
+      "note": "2 mentions vs runner-up 394 with 1 mentions"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/33945043/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 33945043)"
+    }
+  },
+  {
+    "folder": "08",
+    "case_name_for_reference_only": "State v. Venkat Rao Anna Etc",
+    "html_path": "data/08/state_vs_venkat_rao_anna_etc_on_13_december_2023.html",
+    "court": {
+      "value": "Delhi District Court",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": null,
+      "confidence": "low",
+      "note": "no recognized citation pattern found"
+    },
+    "year": {
+      "value": 2023,
+      "confidence": "medium",
+      "note": "filename date suffix"
+    },
+    "primary_section": {
+      "value": "395 IPC",
+      "confidence": "high",
+      "note": "3 mentions vs runner-up 1"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/9579433/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 9579433)"
+    }
+  },
+  {
+    "folder": "09",
+    "case_name_for_reference_only": "State v. Ajay Singh",
+    "html_path": "data/09/state_vs_ajay_singh_on_18_october_2023.html",
+    "court": {
+      "value": "Delhi District Court",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": "(1974) 3 SCC 767",
+      "confidence": "medium",
+      "note": "body regex match (not in header)"
+    },
+    "year": {
+      "value": 1974,
+      "confidence": "medium",
+      "note": "from body citation"
+    },
+    "primary_section": {
+      "value": "397 IPC",
+      "confidence": "medium",
+      "note": "2 mentions vs runner-up 304 with 1 mentions"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/40777123/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 40777123)"
+    }
+  },
+  {
+    "folder": "10",
+    "case_name_for_reference_only": "State v. 1 Adil Alam Khan",
+    "html_path": "data/10/state_vs_1_adil_alam_khan_on_27_may_2023.html",
+    "court": {
+      "value": "Delhi District Court",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": "(2008) 3 SCC 94",
+      "confidence": "medium",
+      "note": "body regex match (not in header)"
+    },
+    "year": {
+      "value": 2008,
+      "confidence": "medium",
+      "note": "from body citation"
+    },
+    "primary_section": {
+      "value": "392 IPC",
+      "confidence": "medium",
+      "note": "8 mentions vs runner-up 397 with 8 mentions"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/162379559/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 162379559)"
+    }
+  },
+  {
+    "folder": "11",
+    "case_name_for_reference_only": "Errappa Erranna S O Prabhu Helur v. The State Of Karnataka",
+    "html_path": "data/11/errappa_erranna_s_o_prabhu_helur_vs_the_state_of_karnataka_on_17_april_2023.html",
+    "court": {
+      "value": "Karnataka High Court",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": "(1973) 2 SCC 793",
+      "confidence": "medium",
+      "note": "body regex match (not in header)"
+    },
+    "year": {
+      "value": 1973,
+      "confidence": "medium",
+      "note": "from body citation"
+    },
+    "primary_section": {
+      "value": "392 IPC",
+      "confidence": "high",
+      "note": "7 mentions vs runner-up 1"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/144305706/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 144305706)"
+    }
+  },
+  {
+    "folder": "12",
+    "case_name_for_reference_only": "Praveen K V v. The State Of Karnataka",
+    "html_path": "data/12/praveen_k_v_vs_the_state_of_karnataka_on_6_february_2023.html",
+    "court": {
+      "value": "Karnataka High Court",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": "(1973) 2 SCC 793",
+      "confidence": "medium",
+      "note": "body regex match (not in header)"
+    },
+    "year": {
+      "value": 1973,
+      "confidence": "medium",
+      "note": "from body citation"
+    },
+    "primary_section": {
+      "value": "392 IPC",
+      "confidence": "high",
+      "note": "10 mentions vs runner-up 2"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/179634868/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 179634868)"
+    }
+  },
+  {
+    "folder": "13",
+    "case_name_for_reference_only": "Mahesh v. The State Of Karnataka",
+    "html_path": "data/13/mahesh_vs_the_state_of_karnataka_on_21_april_2023.html",
+    "court": {
+      "value": "Karnataka High Court",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": null,
+      "confidence": "low",
+      "note": "no recognized citation pattern found"
+    },
+    "year": {
+      "value": 2023,
+      "confidence": "medium",
+      "note": "filename date suffix"
+    },
+    "primary_section": {
+      "value": "392 IPC",
+      "confidence": "high",
+      "note": "7 mentions vs runner-up 2"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/170711659/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 170711659)"
+    }
+  },
+  {
+    "folder": "14",
+    "case_name_for_reference_only": "Shekara Ravikumara v. State By Psi",
+    "html_path": "data/14/shekara_ravikumara_vs_state_by_psi_on_10_february_2023.html",
+    "court": {
+      "value": "Karnataka High Court",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": "(2008) 14 SCC 457",
+      "confidence": "medium",
+      "note": "body regex match (not in header)"
+    },
+    "year": {
+      "value": 2008,
+      "confidence": "medium",
+      "note": "from body citation"
+    },
+    "primary_section": {
+      "value": "392 IPC",
+      "confidence": "medium",
+      "note": "5 mentions vs runner-up 397 with 3 mentions"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/94038014/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 94038014)"
+    }
+  },
+  {
+    "folder": "15",
+    "case_name_for_reference_only": "Siddesh Pappanna v. State By Town Police",
+    "html_path": "data/15/siddesh_pappanna_vs_state_by_town_police_on_10_august_2023.html",
+    "court": {
+      "value": "Karnataka High Court",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": null,
+      "confidence": "low",
+      "note": "no recognized citation pattern found"
+    },
+    "year": {
+      "value": 2023,
+      "confidence": "medium",
+      "note": "filename date suffix"
+    },
+    "primary_section": {
+      "value": "392 IPC",
+      "confidence": "high",
+      "note": "6 mentions vs runner-up 2"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/16854334/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 16854334)"
+    }
+  },
+  {
+    "folder": "18",
+    "case_name_for_reference_only": "Sri Manoj Kumar v. State By Jeevan Bheema",
+    "html_path": "data/18/sri_manoj_kumar_vs_state_by_jeevan_bheema_on_30_august_2023.html",
+    "court": {
+      "value": "Karnataka High Court",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": "(1989) 3 SCC 24",
+      "confidence": "medium",
+      "note": "body regex match (not in header)"
+    },
+    "year": {
+      "value": 1989,
+      "confidence": "medium",
+      "note": "from body citation"
+    },
+    "primary_section": {
+      "value": "395 IPC",
+      "confidence": "medium",
+      "note": "2 mentions vs runner-up 397 with 2 mentions"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/87236065/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 87236065)"
+    }
+  },
+  {
+    "folder": "20",
+    "case_name_for_reference_only": "Deranda Aiyappa Dalu v. The State Of Karnataka",
+    "html_path": "data/20/deranda_aiyappa_dalu_vs_the_state_of_karnataka_on_6_july_2023.html",
+    "court": {
+      "value": "Karnataka High Court",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": "(2012) 8 SCC 289",
+      "confidence": "medium",
+      "note": "body regex match (not in header)"
+    },
+    "year": {
+      "value": 2012,
+      "confidence": "medium",
+      "note": "from body citation"
+    },
+    "primary_section": {
+      "value": "304 BNS",
+      "confidence": "high",
+      "note": "7 mentions vs runner-up 2"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/105415290/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 105415290)"
+    }
+  },
+  {
+    "folder": "22",
+    "case_name_for_reference_only": "Mahabir v. State Of Haryana",
+    "html_path": "data/22/mahabir_vs_state_of_haryana_on_14_march_2023.html",
+    "court": {
+      "value": "Punjab-Haryana High Court",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": "(1996) 11 SCC 709",
+      "confidence": "medium",
+      "note": "body regex match (not in header)"
+    },
+    "year": {
+      "value": 1996,
+      "confidence": "medium",
+      "note": "from body citation"
+    },
+    "primary_section": {
+      "value": "399 IPC",
+      "confidence": "medium",
+      "note": "4 mentions vs runner-up 402 with 3 mentions"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/16186405/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 16186405)"
+    }
+  },
+  {
+    "folder": "25",
+    "case_name_for_reference_only": "Manpreet Singh Alias Lavi v. State Of Punjab",
+    "html_path": "data/25/manpreet_singh_alias_lavi_vs_state_of_punjab_on_6_september_2023.html",
+    "court": {
+      "value": "Punjab-Haryana High Court",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": null,
+      "confidence": "low",
+      "note": "no recognized citation pattern found"
+    },
+    "year": {
+      "value": 2023,
+      "confidence": "medium",
+      "note": "filename date suffix"
+    },
+    "primary_section": {
+      "value": "402 IPC",
+      "confidence": "medium",
+      "note": "2 mentions vs runner-up 392 with 1 mentions"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/88720649/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 88720649)"
+    }
+  },
+  {
+    "folder": "26",
+    "case_name_for_reference_only": "Jagtar Singh Jagga Singh v. State Of Punjab",
+    "html_path": "data/26/jagtar_singh_jagga_singh_vs_state_of_punjab_on_19_december_2023.html",
+    "court": {
+      "value": "Punjab-Haryana High Court",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": null,
+      "confidence": "low",
+      "note": "no recognized citation pattern found"
+    },
+    "year": {
+      "value": 2023,
+      "confidence": "medium",
+      "note": "filename date suffix"
+    },
+    "primary_section": {
+      "value": null,
+      "confidence": "low",
+      "note": "no in-scope section references found"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/179022702/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 179022702)"
+    }
+  },
+  {
+    "folder": "27",
+    "case_name_for_reference_only": "Jaspreet Singh Alias Jassi Singh v. State Of Punjab",
+    "html_path": "data/27/jaspreet_singh_alias_jassi_singh_vs_state_of_punjab_on_17_november_2023.html",
+    "court": {
+      "value": "Punjab-Haryana High Court",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": null,
+      "confidence": "low",
+      "note": "no recognized citation pattern found"
+    },
+    "year": {
+      "value": 2023,
+      "confidence": "medium",
+      "note": "filename date suffix"
+    },
+    "primary_section": {
+      "value": null,
+      "confidence": "low",
+      "note": "no in-scope section references found"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/196487862/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 196487862)"
+    }
+  },
+  {
+    "folder": "32",
+    "case_name_for_reference_only": "Vijay Kumar Sahu Vijay Sah v. The State Of Bihar",
+    "html_path": "data/32/vijay_kumar_sahu_vijay_sah_vs_the_state_of_bihar_on_31_july_2023.html",
+    "court": {
+      "value": "Patna High Court - Orders",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": null,
+      "confidence": "low",
+      "note": "no recognized citation pattern found"
+    },
+    "year": {
+      "value": 2023,
+      "confidence": "medium",
+      "note": "filename date suffix"
+    },
+    "primary_section": {
+      "value": null,
+      "confidence": "low",
+      "note": "no in-scope section references found"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/59986970/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 59986970)"
+    }
+  },
+  {
+    "folder": "33",
+    "case_name_for_reference_only": "Vikram Goswami v. The State Of Bihar",
+    "html_path": "data/33/vikram_goswami_vs_the_state_of_bihar_on_27_july_2023.html",
+    "court": {
+      "value": "Patna High Court - Orders",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": null,
+      "confidence": "low",
+      "note": "no recognized citation pattern found"
+    },
+    "year": {
+      "value": 2023,
+      "confidence": "medium",
+      "note": "filename date suffix"
+    },
+    "primary_section": {
+      "value": "394 IPC",
+      "confidence": "high",
+      "note": "only section found (1 mentions)"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/20829251/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 20829251)"
+    }
+  },
+  {
+    "folder": "34",
+    "case_name_for_reference_only": "Rambhu Chaudhary v. The State Of Bihar",
+    "html_path": "data/34/rambhu_chaudhary_vs_the_state_of_bihar_on_7_august_2023.html",
+    "court": {
+      "value": "Patna High Court - Orders",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": null,
+      "confidence": "low",
+      "note": "no recognized citation pattern found"
+    },
+    "year": {
+      "value": 2023,
+      "confidence": "medium",
+      "note": "filename date suffix"
+    },
+    "primary_section": {
+      "value": "392 IPC",
+      "confidence": "high",
+      "note": "only section found (1 mentions)"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/122941045/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 122941045)"
+    }
+  },
+  {
+    "folder": "35",
+    "case_name_for_reference_only": "Sachin Kumar v. The State Of Bihar",
+    "html_path": "data/35/sachin_kumar_vs_the_state_of_bihar_on_31_july_2023.html",
+    "court": {
+      "value": "Patna High Court - Orders",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": null,
+      "confidence": "low",
+      "note": "no recognized citation pattern found"
+    },
+    "year": {
+      "value": 2023,
+      "confidence": "medium",
+      "note": "filename date suffix"
+    },
+    "primary_section": {
+      "value": null,
+      "confidence": "low",
+      "note": "no in-scope section references found"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/101384988/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 101384988)"
+    }
+  },
+  {
+    "folder": "37",
+    "case_name_for_reference_only": "Nawin Kharwar v. The State Of Bihar",
+    "html_path": "data/37/nawin_kharwar_vs_the_state_of_bihar_on_22_march_2023.html",
+    "court": {
+      "value": "Patna High Court - Orders",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": null,
+      "confidence": "low",
+      "note": "no recognized citation pattern found"
+    },
+    "year": {
+      "value": 2023,
+      "confidence": "medium",
+      "note": "filename date suffix"
+    },
+    "primary_section": {
+      "value": "394 IPC",
+      "confidence": "high",
+      "note": "only section found (1 mentions)"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/104573377/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 104573377)"
+    }
+  },
+  {
+    "folder": "38",
+    "case_name_for_reference_only": "Jitendra Upadhyay Jailor v. The State Of Bihar",
+    "html_path": "data/38/jitendra_upadhyay_jailor_vs_the_state_of_bihar_on_24_february_2023.html",
+    "court": {
+      "value": "Patna High Court - Orders",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": null,
+      "confidence": "low",
+      "note": "no recognized citation pattern found"
+    },
+    "year": {
+      "value": 2023,
+      "confidence": "medium",
+      "note": "filename date suffix"
+    },
+    "primary_section": {
+      "value": null,
+      "confidence": "low",
+      "note": "no in-scope section references found"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/78522881/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 78522881)"
+    }
+  },
+  {
+    "folder": "39",
+    "case_name_for_reference_only": "Prabhakar Kumar Singh Lalla Lala v. The State Of Bihar",
+    "html_path": "data/39/prabhakar_kumar_singh_lalla_lala_vs_the_state_of_bihar_on_17_july_2023.html",
+    "court": {
+      "value": "Patna High Court - Orders",
+      "confidence": "high",
+      "note": "docsource_main (<h3>)"
+    },
+    "citation": {
+      "value": null,
+      "confidence": "low",
+      "note": "no recognized citation pattern found"
+    },
+    "year": {
+      "value": 2023,
+      "confidence": "medium",
+      "note": "filename date suffix"
+    },
+    "primary_section": {
+      "value": null,
+      "confidence": "low",
+      "note": "no in-scope section references found"
+    },
+    "indian_kanoon_url": {
+      "value": "https://indiankanoon.org/doc/128756850/",
+      "confidence": "high",
+      "note": "browser saved-from comment (doc_id 128756850)"
+    }
+  }
+]
