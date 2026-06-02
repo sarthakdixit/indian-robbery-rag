@@ -158,6 +158,8 @@ class Generator:
         chunks: list[RetrievedChunk],
         max_output_tokens: int | None = None,
     ) -> VerifiedAnswer:
+        import dataclasses
+
         user_prompt = build_user_prompt(query, chunks)
 
         result = await self._client.generate(
@@ -167,6 +169,15 @@ class Generator:
         )
 
         verified = verify_and_strip(result.answer_text, chunks)
+        # Splice the token counts onto the verified answer. `verify_and_strip`
+        # only knows about citation parsing; tokens come from the LLM client.
+        # Carrying them through to the Pipeline (and then to the QueryLogWriter
+        # in Chunk 4.4) lets us surface estimated cost on the admin dashboard.
+        verified = dataclasses.replace(
+            verified,
+            prompt_tokens=result.prompt_tokens,
+            output_tokens=result.output_tokens,
+        )
 
         logger.info(
             "generation: model=%s prompt_tokens=%s output_tokens=%s "

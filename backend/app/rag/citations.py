@@ -59,11 +59,18 @@ class VerifiedAnswer:
     `stripped_citation_numbers` records which citation numbers were
     removed — useful for the admin dashboard so we can spot LLM
     behavior issues over time.
+
+    `prompt_tokens` and `output_tokens` are pass-through from the
+    Gemini SDK's `usage_metadata` and are used by Chunk 4.4's
+    QueryLogWriter for cost accounting. Either may be None if the
+    SDK didn't surface usage info on this particular response.
     """
 
     answer_text: str
     used_chunks: list[RetrievedChunk]
     stripped_citation_numbers: list[int]
+    prompt_tokens: int | None = None
+    output_tokens: int | None = None
 
 
 def extract_citation_numbers(text: str) -> list[int]:

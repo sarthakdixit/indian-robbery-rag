@@ -96,6 +96,48 @@ class Settings(BaseSettings):
     # --- HTTP / lifecycle (Batch 4 will use these) ------------------------
     request_timeout_seconds: float = 30.0
 
+    # --- Salt for IP hashing ----------------------------------------------
+    # Used by RequestContextMiddleware to compute hashed_ip = SHA-256(salt:ip).
+    # The default value here is committed to the repo, which is fine because
+    # the salt's purpose is only to prevent trivial rainbow-table lookups of
+    # IP -> hash by external parties, not to be cryptographically secret.
+    # For cloud deployments, override via the IP_HASH_SALT env var (read from
+    # Key Vault). For local dev, the default suffices.
+    ip_hash_salt: SecretStr = SecretStr("local-dev-salt-replace-in-cloud")
+
+    # --- Turnstile -------------------------------------------------------
+    # Server-side secret paired with the frontend's site key. For
+    # production, set via env var (TURNSTILE_SECRET_KEY) populated from
+    # Key Vault. For local dev, Cloudflare's documented "always passes"
+    # test key is the default — this lets the CloudflareTurnstileVerifier
+    # be exercised locally if needed, without any account setup.
+    # See https://developers.cloudflare.com/turnstile/troubleshooting/testing/
+    turnstile_secret_key: SecretStr = SecretStr(
+        "1x0000000000000000000000000000000AA",
+    )
+
+    # --- Telemetry -------------------------------------------------------
+    # Application Insights connection string is only used in cloud mode.
+    # The local default is a placeholder; cloud deploy must set it via
+    # env var APP_INSIGHTS_CONNECTION_STRING (or AZ_KEY_VAULT in Batch 7).
+    app_insights_connection_string: str = "InstrumentationKey=local-stub-not-used"
+
+    # --- Local persistence -------------------------------------------------
+    # SQLite file backing the local DocumentStore (rate limits, global
+    # counters, query log when wired up in Batch 4.4). Production swaps to
+    # Cosmos via the DI container's Selector.
+    sqlite_path: Path = Field(default=_REPO_ROOT / "local_data" / "app.db")
+
+    # --- Rate limiting & cap -----------------------------------------------
+    # design.md FR-5 / §4 AP-2,AP-3. Numbers chosen to keep the demo from
+    # burning the Gemini free tier in a single afternoon while still being
+    # usable by a few interested visitors.
+    per_ip_daily_query_limit: int = 5
+    global_daily_query_cap: int = 200
+    # Circuit breaker (local LLM call counter). Set below the Gemini free
+    # tier ceiling so we self-throttle BEFORE hitting Gemini's 429s.
+    local_llm_daily_limit: int = 180
+
 
 def get_settings() -> Settings:
     """Return a Settings instance.

@@ -81,6 +81,15 @@ class PipelineSuccess(BaseModel):
     cache_hit: bool
     latency_ms: float
 
+    # Telemetry fields — populated by the pipeline but excluded from the
+    # HTTP response. The route's QueryLogWriter reads them. The frontend
+    # never sees them (and per AGENT-frontend.md its Zod schema doesn't
+    # name them, which is fine because the response simply omits them).
+    # `None` is correct for cache hits (we don't re-tokenize) and for
+    # responses where the Gemini SDK didn't report usage_metadata.
+    prompt_tokens: int | None = Field(default=None, exclude=True)
+    output_tokens: int | None = Field(default=None, exclude=True)
+
 
 class PipelineOutOfScope(BaseModel):
     """The query was rejected as out-of-scope.
@@ -169,8 +178,15 @@ class Pipeline:
         self._cache = exact_cache
         self._corpus_version = corpus_version
 
-    async def answer(self, query: str) -> PipelineResponse:
-        request_id = uuid.uuid4().hex
+    async def answer(
+        self, query: str, *, request_id: str | None = None,
+    ) -> PipelineResponse:
+        # If the HTTP layer is calling us, it has already minted a request_id
+        # in middleware and stashed it on request.state. Re-using that id
+        # keeps logs, response headers, and response bodies aligned.
+        # For the CLI entry point (no HTTP context), we generate our own.
+        if request_id is None:
+            request_id = uuid.uuid4().hex
         t_start = time.perf_counter()
 
         # 1. Exact-cache lookup.
@@ -217,6 +233,8 @@ class Pipeline:
             request_id=request_id,
             cache_hit=False,
             latency_ms=latency_ms,
+            prompt_tokens=verified.prompt_tokens,
+            output_tokens=verified.output_tokens,
         )
 
         # 5. Cache.
