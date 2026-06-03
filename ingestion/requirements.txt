@@ -25,7 +25,7 @@ lxml>=5.0,<7.0      # bs4 backend; faster + more forgiving than html.parser
 pdfplumber>=0.11,<1.0
 
 # Manifest + config.
-PyYAML>=6.0,<7.0
+PyYAML>=6.0.3,<7.0
 pydantic>=2.5,<3.0
 
 # Stdlib pinning notes: sqlite3 (embedding cache), hashlib, struct, pathlib,
