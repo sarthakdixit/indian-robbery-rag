@@ -17,7 +17,7 @@ google-genai>=2.0,<3.0
 chromadb>=1.5,<2.0
 
 # BM25 keyword index. Actively maintained successor to rank-bm25.
-bm25s>=0.3,<1.0
+bm25s>=0.3.9,<1.0
 
 # Corpus normalization.
 beautifulsoup4>=4.12,<5.0
