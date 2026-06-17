@@ -229,14 +229,35 @@ def main() -> int:
         bm25_set = set(bm25_ids)
         only_chroma = chroma_set - bm25_set
         only_bm25 = bm25_set - chroma_set
-        if only_chroma or only_bm25:
-            logger.warning(
-                "chunk_id mismatch: %d only in Chroma, %d only in BM25",
-                len(only_chroma), len(only_bm25),
+
+        # `only_chroma` is a REAL problem: embeddings exist for chunks
+        # that don't appear in BM25, which means the index is internally
+        # inconsistent. This happens after a stale ChromaDB carries over
+        # chunk_ids that the chunker no longer produces (e.g., the
+        # parser dropped them). Hybrid retrieval would surface ghost
+        # results from these orphans. Fail loudly.
+        if only_chroma:
+            logger.error(
+                "chunk_id orphans in Chroma: %d embeddings reference chunks "
+                "not in BM25 (corpus may be stale; rebuild with `make ingest`). "
+                "Examples: %s",
+                len(only_chroma), sorted(only_chroma)[:5],
             )
             overall_ok = False
-        else:
-            logger.info("chunk_id sets match across Chroma and BM25 (%d each)", len(chroma_set))
+
+        # `only_bm25` is EXPECTED during incremental embedding: BM25
+        # indexes every chunk (no API needed), but Chroma only gets a
+        # chunk after its embedding has been computed. The remaining
+        # chunks are waiting for the next embed run. NOT a failure.
+        if only_bm25:
+            logger.info(
+                "chunk_id coverage: %d / %d chunks have embeddings in Chroma; "
+                "%d chunks are BM25-only (run embed_chunks.py to fill them in)",
+                len(chroma_set), len(bm25_set), len(only_bm25),
+            )
+        elif not only_chroma:
+            logger.info("chunk_id sets match across Chroma and BM25 (%d each)",
+                        len(chroma_set))
 
     if bm25_ok and bm25_count > 0:
         smoke_ok = check_smoke_queries(args.bm25_dir.resolve(), bm25_ids, args.chunks.resolve())

@@ -47,16 +47,27 @@ RRF_K: int = 60
 # the generation LLM. This protects the (tight) LLM quota from being
 # burned on questions like "best pizza in Mumbai."
 #
-# Picking the right value requires empirical calibration: a relevant
-# robbery question against a normalized gemini-embedding-001 index should
-# score 0.6-0.8 on top-1; an off-topic question should score 0.2-0.4.
-# We default to 0.45 to favour false negatives (over-accept) over false
-# positives (over-reject) until we have an eval set. The 0.55 figure in
-# design.md is a guess from the original planning document; this lower
-# value is more conservative.
+# Empirical calibration (scripts/measure_scope_threshold.py, 2026-06-02,
+# against 954-chunk index, gemini-embedding-001):
+#   - 12 hand-curated in-scope queries: range [0.694, 0.781], median 0.724
+#   - 12 hand-curated OOS queries: range [0.515, 0.559], median 0.531
+#   - Gap: 0.135 (in-scope min 0.694, OOS max 0.559)
 #
-# Override in Settings for environment-specific tuning.
-SCOPE_REJECTION_SIMILARITY_THRESHOLD: float = 0.45
+# We set the threshold to 0.60 — within the gap, asymmetrically biased
+# toward accepting (margin: 0.094 to in-scope min, 0.041 to OOS max).
+# Reasoning: false rejection of legitimate queries is worse than false
+# acceptance (the LLM is a backstop for false acceptance; there is no
+# backstop for false rejection).
+#
+# Recalibrate when:
+#  (a) The remaining ~1300 chunks (judgments) get embedded — more
+#      diverse content may shift the OOS distribution.
+#  (b) The Batch 8 eval set is run — 60 known-good queries will tell
+#      us whether 0.60 produces any false rejections.
+#
+# Prior value 0.45 was a conservative guess against the 7-chunk test
+# fixture from Chunk 3.2; it generalized poorly to the real index.
+SCOPE_REJECTION_SIMILARITY_THRESHOLD: float = 0.60
 
 
 # ---------------------------------------------------------------------------

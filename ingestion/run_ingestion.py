@@ -76,64 +76,134 @@ QUOTA_EXIT_CODE: int = 3
 logger = logging.getLogger("run_ingestion")
 
 
+def _package_source_files(module_dotted: str) -> tuple[Path, ...]:
+    """Return all .py files in the package that owns `module_dotted`.
+
+    Given a module path like "ingestion.normalize.parse_judgments", this
+    returns every .py file in `ingestion/normalize/` (the package
+    directory containing the module). The result is sorted for
+    deterministic mtime comparisons.
+
+    Why this exists: the orchestrator's staleness check compares output
+    mtimes against input mtimes. Without code in the inputs, editing
+    parse_acts_pdf.py does NOT invalidate normalized.jsonl, and a
+    subsequent `run_ingestion` cheerfully skips normalize with stale
+    outputs. Adding the package's source files as inputs makes any code
+    change in that package trigger a re-run.
+
+    Granularity trade-off: this invalidates a step when ANY file in its
+    package changes, including a comment-only edit. False positives (a
+    needless re-run) are cheap and visible; false negatives (a skipped
+    step that should have re-run) are catastrophic and silent. We err
+    on the side of false positives.
+
+    Cross-package imports are not tracked. If you start importing from
+    a shared utility module, add it to that step's `inputs` by hand or
+    extend this helper. Currently no such imports exist within
+    ingestion/.
+    """
+    parts = module_dotted.split(".")
+    if len(parts) < 2:
+        # Modules at the package root (none today) have no package dir
+        # to scan; return empty rather than scanning the entire repo.
+        return ()
+    package_dir = REPO_ROOT.joinpath(*parts[:-1])
+    if not package_dir.is_dir():
+        return ()
+    files = sorted(p for p in package_dir.glob("*.py") if not p.name.startswith("."))
+    return tuple(files)
+
+
 @dataclass(frozen=True)
 class Step:
+    """One stage of the ingestion pipeline.
+
+    `inputs` includes BOTH the data files the step reads AND the source
+    code that produces its output (via `_package_source_files`). This
+    means a code change to a step's package invalidates its cached
+    output and triggers a re-run on the next pipeline invocation. The
+    code-in-inputs pattern is what prevents the orchestrator from
+    skipping a step whose logic just changed.
+    """
+
     name: str
     module: str               # e.g. "ingestion.normalize.parse_judgments"
     outputs: tuple[Path, ...]  # paths that must exist + be newer than inputs to skip
-    inputs: tuple[Path, ...]   # paths whose mtime invalidates the outputs
+    inputs: tuple[Path, ...]   # paths (data + code) whose mtime invalidates the outputs
     extra_args: tuple[str, ...] = ()
 
 
+def _step(
+    name: str,
+    module: str,
+    outputs: tuple[Path, ...],
+    data_inputs: tuple[Path, ...],
+    extra_args: tuple[str, ...] = (),
+) -> Step:
+    """Build a Step whose `inputs` automatically includes the package's source files.
+
+    Callers list only the DATA inputs (jsonl files, yaml files, etc.);
+    the source code is appended here. This keeps the step definitions
+    readable while still tracking code changes.
+    """
+    return Step(
+        name=name,
+        module=module,
+        outputs=outputs,
+        inputs=data_inputs + _package_source_files(module),
+        extra_args=extra_args,
+    )
+
+
 PIPELINE: list[Step] = [
-    Step(
+    _step(
         name="verify_corpus",
         module="ingestion.collect.verify_corpus",
         outputs=(),  # no produced file; we always run this as a check
-        inputs=(SOURCES_YAML,),
+        data_inputs=(SOURCES_YAML,),
     ),
-    Step(
+    _step(
         name="classify",
         module="ingestion.classify.run_classifier",
         outputs=(),  # writes back to sources.yaml; no separate file
-        inputs=(SOURCES_YAML,),
+        data_inputs=(SOURCES_YAML,),
     ),
-    Step(
+    _step(
         name="normalize",
         module="ingestion.normalize.parse_judgments",
         outputs=(NORMALIZED_JSONL,),
-        inputs=(SOURCES_YAML,),
+        data_inputs=(SOURCES_YAML,),
     ),
-    Step(
+    _step(
         name="chunk",
         module="ingestion.chunk.run_chunking",
         outputs=(CHUNKS_JSONL,),
-        inputs=(NORMALIZED_JSONL, SOURCES_YAML),
+        data_inputs=(NORMALIZED_JSONL, SOURCES_YAML),
     ),
-    Step(
+    _step(
         name="embed",
         module="ingestion.embed.embed_chunks",
         outputs=(EMBEDDINGS_JSONL,),
-        inputs=(CHUNKS_JSONL,),
+        data_inputs=(CHUNKS_JSONL,),
     ),
-    Step(
+    _step(
         name="build_bm25",
         module="ingestion.index.build_bm25",
         outputs=(BM25_CHUNK_IDS,),  # the directory contents are derived; sentinel is the ids file
-        inputs=(CHUNKS_JSONL,),
+        data_inputs=(CHUNKS_JSONL,),
     ),
-    Step(
+    _step(
         name="build_chroma",
         module="ingestion.index.build_chroma",
         outputs=(CHROMA_DB_DIR,),
-        inputs=(CHUNKS_JSONL, EMBEDDINGS_JSONL, SOURCES_YAML),
+        data_inputs=(CHUNKS_JSONL, EMBEDDINGS_JSONL, SOURCES_YAML),
         extra_args=("--reset",),
     ),
-    Step(
+    _step(
         name="verify_index",
         module="ingestion.index.verify_index",
         outputs=(),  # no produced file; this is a check
-        inputs=(BM25_INDEX_DIR, CHROMA_DB_DIR),
+        data_inputs=(BM25_INDEX_DIR, CHROMA_DB_DIR),
     ),
 ]
 

@@ -240,7 +240,48 @@ def split_into_sections(
             )
         )
 
-    return sections, warnings
+    # Post-parse cleanup: bare-act PDFs contain three classes of false
+    # positives that match the section-heading regex:
+    #
+    #   (a) FOOTNOTES inside the body — e.g. a footnote "1. 1st day of
+    #       July, 2024, ..." appears below section 1, and the regex
+    #       grabs the "1. 1st" prefix as if it were section 1 again.
+    #   (b) THE APPENDIX at the very end — Statement of Objects and
+    #       Reasons, with items numbered 1., 2., 3., ... matching the
+    #       regex.
+    #   (c) PARSE ARTIFACTS — the same section heading detected twice
+    #       in adjacent positions because of PDF text-flow quirks.
+    #
+    # All three share one property: the spurious match has a section
+    # number that is NOT strictly greater than the highest legitimate
+    # number we've already seen. Real bare-act sections increase
+    # monotonically; junk does not. So we drop any match whose purely-
+    # numeric number is <= the running max.
+    #
+    # Letter-suffixed sections (e.g. 376A, 376B) are kept unconditionally
+    # — they don't update the running max (since `int("376A")` would
+    # fail) and shouldn't be dropped just because their numeric parent
+    # came first. This matches the existing logic at line 220-227.
+    running_max: int | None = None
+    kept_sections: list[RawSection] = []
+    skipped_numbers: list[str] = []
+    for sec in sections:
+        if sec.number.isdigit():
+            n = int(sec.number)
+            if running_max is not None and n <= running_max:
+                skipped_numbers.append(sec.number)
+                continue
+            running_max = n
+        kept_sections.append(sec)
+
+    if skipped_numbers:
+        warnings.append(
+            f"dropped {len(skipped_numbers)} non-monotonic section matches "
+            f"(footnotes/appendix/parse-artifacts); examples: "
+            f"{skipped_numbers[:8]}"
+        )
+
+    return kept_sections, warnings
 
 
 def parse_act_pdf(pdf_path: Path) -> ParseActResult:

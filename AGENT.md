@@ -46,20 +46,21 @@ Every external dependency has a **local adapter** and a **cloud adapter** behind
 
 ### 2.1 Mapping
 
-| Service | Cloud adapter | Local adapter | Activation |
-|---|---|---|---|
-| Cosmos DB | `CosmosDocumentStore` | `SQLiteDocumentStore` | `ENVIRONMENT=cloud` vs `local` |
-| Key Vault | `KeyVaultSecretsProvider` | `DotEnvSecretsProvider` | same |
-| Application Insights | `AppInsightsTelemetry` | `StdoutTelemetry` | same |
-| Cloudflare Turnstile | `CloudflareTurnstileVerifier` | `AlwaysValidTurnstileVerifier` | same |
-| Gemini API | `GeminiClient` | `GeminiClient` (same) | Gemini is always real; mock only in tests |
-| ChromaDB | `ChromaVectorStore` | `ChromaVectorStore` (same) | ChromaDB is embedded, identical everywhere |
+| Service              | Cloud adapter                 | Local adapter                  | Activation                                 |
+| -------------------- | ----------------------------- | ------------------------------ | ------------------------------------------ |
+| Cosmos DB            | `CosmosDocumentStore`         | `SQLiteDocumentStore`          | `ENVIRONMENT=cloud` vs `local`             |
+| Key Vault            | `KeyVaultSecretsProvider`     | `DotEnvSecretsProvider`        | same                                       |
+| Application Insights | `AppInsightsTelemetry`        | `StdoutTelemetry`              | same                                       |
+| Cloudflare Turnstile | `CloudflareTurnstileVerifier` | `AlwaysValidTurnstileVerifier` | same                                       |
+| Gemini API           | `GeminiClient`                | `GeminiClient` (same)          | Gemini is always real; mock only in tests  |
+| ChromaDB             | `ChromaVectorStore`           | `ChromaVectorStore` (same)     | ChromaDB is embedded, identical everywhere |
 
 ChromaDB and Gemini do not need local/cloud adapters because ChromaDB is embedded (it is always "local" to the running process) and Gemini's free tier is used in both environments. Mocks for these exist only for tests.
 
 ### 2.2 Required Capabilities of the Local Stack
 
 The local stack must support, with no Azure access:
+
 - Full RAG pipeline (retrieve, generate, cite, verify)
 - Rate limiting with persistent counters across restarts
 - Caching with persistence
@@ -113,21 +114,26 @@ class StorageContainer(containers.DeclarativeContainer):
 
 ### 3.3 Injecting Into FastAPI Routes
 
-Use the `@inject` decorator and `Provide[]` marker. Never instantiate adapters inside route handlers.
+Use the `@inject` decorator and wrap the `Provide[]` marker in `Depends()`. Never instantiate adapters inside route handlers.
 
 ```python
 from dependency_injector.wiring import inject, Provide
+from fastapi import Depends
 from backend.app.container import Container
 
 @router.post("/query")
 @inject
 async def query_endpoint(
     request: QueryRequest,
-    rate_limiter: RateLimiter = Provide[Container.security.rate_limiter],
-    pipeline: RAGPipeline = Provide[Container.rag.pipeline],
+    rate_limiter: RateLimiter = Depends(Provide[Container.rate_limiter]),
+    pipeline: Pipeline = Depends(Provide[Container.pipeline]),
 ) -> QueryResponse:
     ...
 ```
+
+**Why `Depends(Provide[...])` and not bare `Provide[...]`:** without the `Depends()` wrapper, FastAPI parses the dependency parameter as a request-body Pydantic field (because the default has no signal that it's a dependency). The handler then fails at request time with a confusing schema error. Wrapping `Provide[...]` in `Depends()` tells FastAPI "this is an injected dependency, not body data."
+
+**Why NOT the `Annotated[T, Depends(Provide[Container.x])]` form:** this is the pattern the dependency-injector docs sometimes suggest, but as of dependency-injector 4.49 it has a known bug (`'Provide' object has no attribute X'`; GitHub issues #767 and #850). The non-Annotated form above is reliable.
 
 ### 3.4 Rules
 
@@ -140,6 +146,7 @@ async def query_endpoint(
 ### 3.5 Adapter Contract
 
 Every cloud-replaceable dependency MUST:
+
 1. Have a `Protocol` definition in `backend/app/protocols/`.
 2. Have at least two implementations: `Local*` and `Cloud*` (or `Azure*`, `Cosmos*`, etc.).
 3. Be wired through the container with `providers.Selector`.
@@ -244,7 +251,7 @@ if query_count_for_ip > PER_IP_DAILY_QUERY_LIMIT:
 
 ### 5.2 "Why" Comments Are Allowed
 
-When the *reason* for code is non-obvious and cannot be encoded in names, a comment is justified. These should explain context, trade-offs, or external constraints.
+When the _reason_ for code is non-obvious and cannot be encoded in names, a comment is justified. These should explain context, trade-offs, or external constraints.
 
 ```python
 # Threshold tuned empirically against the eval set — pairs below 0.92 produced
@@ -258,6 +265,7 @@ SEMANTIC_CACHE_HIT_THRESHOLD: float = 0.92
 ### 5.3 Docstrings
 
 One-line docstrings allowed on **public** classes and functions (anything imported by another module). Skip docstrings on:
+
 - Private functions (leading underscore)
 - Methods whose name + signature is fully self-describing
 - Adapters that implement a Protocol (the Protocol carries the docstring)
@@ -565,7 +573,7 @@ Target ~80% line coverage on `backend/app/`. Coverage is informational, not a CI
 
 ### 11.6 No Snapshot Tests
 
-LLM outputs are non-deterministic. Test the *shape* of responses (citations present, fields populated), not exact text.
+LLM outputs are non-deterministic. Test the _shape_ of responses (citations present, fields populated), not exact text.
 
 ---
 
@@ -684,6 +692,7 @@ backend/
 ### 13.3 Import Order
 
 Enforced by Ruff:
+
 1. Standard library
 2. Third-party
 3. First-party (`backend.app.*`)
@@ -882,14 +891,14 @@ db = sqlite3.connect(settings.sqlite_path)
 
 ### 17.1 `dependency-injector` + FastAPI
 
-The `@inject` decorator MUST be applied AFTER FastAPI's route decorator:
+The `@inject` decorator MUST be applied AFTER FastAPI's route decorator, and the `Provide[]` marker MUST be wrapped in `Depends()` (see §3.3 for rationale):
 
 ```python
 @router.post("/query")        # First
 @inject                        # Second
 async def query_endpoint(
     request: QueryRequest,
-    pipeline: RAGPipeline = Provide[Container.rag.pipeline],
+    pipeline: Pipeline = Depends(Provide[Container.pipeline]),
 ) -> QueryResponse: ...
 ```
 
@@ -964,4 +973,4 @@ If any answer is "no", fix it before opening a PR.
 
 ---
 
-*End of agent guide. Last updated: added guidance for offline ingestion pipeline — BeautifulSoup HTML parsing of Indian Kanoon judgments, pdfplumber for indiacode.nic.in bare-act PDFs, and a sync Gemini-based relevance classifier with structured JSON output validation. Update this file when conventions change — and update the code to match.*
+_End of agent guide. Last updated: added guidance for offline ingestion pipeline — BeautifulSoup HTML parsing of Indian Kanoon judgments, pdfplumber for indiacode.nic.in bare-act PDFs, and a sync Gemini-based relevance classifier with structured JSON output validation. Update this file when conventions change — and update the code to match._
