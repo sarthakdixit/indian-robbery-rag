@@ -100,6 +100,36 @@ app.add_middleware(
     salt=_settings.ip_hash_salt.get_secret_value(),
 )
 
+# CORS — added LAST so it's OUTERMOST and handles preflight OPTIONS
+# requests before any other middleware sees them.
+#
+# In local dev the frontend runs at http://localhost:5173 (Vite default)
+# and the backend at http://localhost:8000. Cross-origin → CORS required.
+#
+# Allowed origins are environment-specific:
+#   local: localhost:5173 (Vite dev), localhost:4173 (Vite preview)
+#   cloud: the SWA hostname (set via env in Batch 7)
+#
+# `allow_credentials=False` is fine — we use header-based auth
+# (x-admin-password) on admin routes, not cookies. If we ever add
+# cookies, this needs to flip True AND allow_origins can't be ["*"].
+from fastapi.middleware.cors import CORSMiddleware  # noqa: E402
+
+_cors_origins: list[str] = [
+    "http://localhost:5173",  # Vite dev server
+    "http://localhost:4173",  # Vite preview server
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:4173",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=_cors_origins,
+    allow_credentials=False,
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["Content-Type", "x-admin-password"],
+    expose_headers=["x-request-id"],
+)
+
 
 # ---------------------------------------------------------------------------
 # Exception handler — AppError → typed JSON response
