@@ -1,0 +1,69 @@
+# Compose file for local development.
+#
+# `docker compose -f backend/docker-compose.yml up` from the repo root
+# is the simplest way to run the containerized backend. Compose hides
+# the long invocation:
+#   docker run --rm -p 8001:8000 -e GEMINI_API_KEY=... \
+#       -e ADMIN_PASSWORD=... -v ./local_data:/app/local_data \
+#       robbery-rag-backend:dev
+#
+# Why prefer compose over `make docker-run`:
+#   - Reads env vars from the repo-root .env automatically (Make doesn't)
+#   - Volume mount for local_data/ survives container restarts
+#   - `docker compose down` cleans up neatly
+#
+# Why `make` is still around:
+#   - Some CI workflows shell out to `make` and we want consistency
+#   - The check/lint/format gate has nothing to do with containers
+#
+# To run:
+#   1. Create .env at repo root (cp backend/.env.example .env, then fill in)
+#   2. Make sure `make ingest` has been run (indices baked into image)
+#   3. docker compose -f backend/docker-compose.yml up
+
+# Compose schema notes: the `version:` top-level field was deprecated
+# in Compose v2 (2023+). Modern Compose infers schema from contents.
+# The file uses features available in all recent versions.
+
+services:
+  backend:
+    # Built image tag. Matches the Makefile and Dockerfile defaults.
+    image: robbery-rag-backend:dev
+
+    # If the image isn't present, build it from the repo root context.
+    # `context: ..` resolves to the repo root because this compose file
+    # lives in backend/.
+    build:
+      context: ..
+      dockerfile: backend/Dockerfile
+
+    # Map host port 8001 to container port 8000. 8001 because 8000 may
+    # be in use by `make dev` (the host-side uvicorn).
+    ports:
+      - "8001:8000"
+
+    # Read env vars from repo-root .env. Missing required vars (like
+    # GEMINI_API_KEY) will fail at app startup with a clear pydantic
+    # validation error.
+    env_file:
+      - ../.env
+
+    # Explicit defaults for the env vars compose needs to set itself.
+    # `env_file` provides the values; `environment` would override.
+    environment:
+      ENVIRONMENT: local
+
+    # Mount the host's local_data/ into the container so SQLite state
+    # (rate limit counters, query logs) survives container restarts.
+    # Without this, every `up` starts with empty admin metrics.
+    volumes:
+      - ../local_data:/app/local_data
+
+    # The Dockerfile's HEALTHCHECK is already configured; compose picks
+    # it up automatically. `depends_on: condition: service_healthy`
+    # would let future services wait for backend, but we have no other
+    # services yet.
+
+    # `unless-stopped` survives reboots. For demo / dev, `no` is fine
+    # too — `--rm`-equivalent behavior. Pick whichever you prefer.
+    restart: unless-stopped

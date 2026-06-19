@@ -23,6 +23,8 @@ from backend.app.adapters.turnstile import (
     AlwaysValidTurnstileVerifier,
     CloudflareTurnstileVerifier,
 )
+from backend.app.admin.aggregations import QueryLogAggregator
+from backend.app.admin.auth import AdminAuth
 from backend.app.cache.exact_cache import ExactAnswerCache, InMemoryExactCache
 from backend.app.clients.gemini import (
     GeminiEmbeddingsAdapter,
@@ -177,6 +179,20 @@ class Container(containers.DeclarativeContainer):
 
     query_log_writer = providers.Singleton(
         QueryLogWriter,
+        store=document_store,
+    )
+
+    # --- Admin dashboard ----------------------------------------------------
+    # Both consumers of the query_log data the Batch 4.4 writer produces.
+    # `admin_auth` is the password gate; `query_log_aggregator` does the
+    # metric computations the admin endpoints surface.
+    admin_auth = providers.Singleton(
+        AdminAuth,
+        settings=config,
+    )
+
+    query_log_aggregator = providers.Singleton(
+        QueryLogAggregator,
         store=document_store,
     )
 

@@ -1,0 +1,18 @@
+# Dev-only dependencies. Install with:
+#   pip install -r backend/requirements-dev.txt
+#
+# NOT included in the runtime container — test runners, linters, and
+# type checkers have no place in production images. Keep this slim.
+#
+# Includes everything from requirements.txt (so a single `pip install`
+# bootstraps the full dev environment).
+-r requirements.txt
+
+# Testing
+pytest ~= 8.4.0
+pytest-asyncio ~= 0.25.0   # AGENT.md §11.1: pytest-asyncio required
+httpx ~= 0.28.0            # fastapi.TestClient needs it (also in runtime)
+
+# Linting + type checking (AGENT.md §14.1)
+ruff ~= 0.13.0
+mypy ~= 1.18.0

@@ -39,6 +39,7 @@ from backend.app.config import get_settings
 from backend.app.container import Container
 from backend.app.errors import AppError
 from backend.app.middleware.request_context import RequestContextMiddleware
+from backend.app.routes import admin as admin_routes
 from backend.app.routes import health as health_routes
 from backend.app.routes import query as query_routes
 
@@ -71,7 +72,7 @@ container = Container()
 container.wire(
     modules=[
         "backend.app.routes.query",
-        # Future chunks will add more route modules here.
+        "backend.app.routes.admin",
     ]
 )
 
@@ -125,6 +126,7 @@ async def app_error_handler(request: Request, exc: AppError) -> JSONResponse:
 # ---------------------------------------------------------------------------
 app.include_router(health_routes.router)
 app.include_router(query_routes.router)
+app.include_router(admin_routes.router)
 
 
 # Sanity log so a developer running `uvicorn ...` immediately sees the

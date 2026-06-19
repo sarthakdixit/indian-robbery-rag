@@ -1,0 +1,134 @@
+# Dockerfile-specific ignore file. Per Docker docs, when building with
+
+# `docker build -f backend/Dockerfile ...`, BuildKit looks for
+
+# backend/Dockerfile.dockerignore first, then falls back to .dockerignore
+
+# at the build-context root.
+
+#
+
+# (design.md §12 mentions `backend/.dockerignore` but that filename
+
+# isn't honored by Docker for an out-of-tree Dockerfile. The Dockerfile-
+
+# prefixed name is the correct one.)
+
+#
+
+# Patterns are evaluated against the build context, which we run from
+
+# the repo root. So paths here are repo-root-relative.
+
+# Version control
+
+.git
+.gitignore
+.gitattributes
+.github
+
+# Python build artifacts
+
+**pycache**
+_.pyc
+_.pyo
+_.pyd
+_.egg-info
+.pytest_cache
+.mypy_cache
+.ruff_cache
+.coverage
+htmlcov
+
+# Local Python environments
+
+.venv
+venv
+env
+.python-version
+
+# Local secrets (CRITICAL: never leak GEMINI_API_KEY into the image)
+
+.env
+.env.\*
+
+# Local SQLite state — image starts with empty SQLite, populated at runtime
+
+local_data
+_.db
+_.db-journal
+_.db-wal
+_.db-shm
+
+# Documentation — useful at the repo level, dead weight at runtime
+
+\*.md
+docs
+
+# Dev-time tooling that doesn't run in the container
+
+tests
+test\_\*.sh
+eval
+scripts
+
+# Frontend ships separately to Azure Static Web Apps; never goes in this image
+
+frontend
+
+# Azure IaC — Batch 7 infrastructure code, not for the container itself
+
+infra
+
+# Editor / IDE noise
+
+.vscode
+.idea
+.DS_Store
+\*.swp
+
+# Build outputs we never want
+
+dist
+build
+node_modules
+
+# Ingestion source code & intermediates — only the BUILT indices are needed
+
+# at runtime (chroma_db/, bm25_index/, bm25_chunk_ids.jsonl, chunks.jsonl).
+
+# The raw intermediates and source code aren't loaded by the running
+
+# backend, but chunks.jsonl IS — it's the chunk-text source the pipeline
+
+# uses to hydrate retrieved chunk_ids into prompt context.
+
+ingestion/**pycache**
+ingestion/normalize
+ingestion/chunk
+ingestion/embed
+ingestion/classify
+ingestion/collect
+ingestion/index/**pycache**
+ingestion/data/normalized.jsonl
+ingestion/data/embeddings.jsonl
+ingestion/Makefile
+ingestion/config.py
+ingestion/README.md
+ingestion/run_ingestion.py
+
+# Project-level files not needed inside the image
+
+sources.yaml
+CONTRIBUTING.md
+LICENSE
+README.md
+AGENT.md
+AGENT-frontend.md
+CLAUDE.md
+design.md
+Makefile
+docker-compose.yml
+.dockerignore
+backend/Dockerfile
+backend/Dockerfile.dockerignore

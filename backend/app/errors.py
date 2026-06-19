@@ -66,3 +66,16 @@ class TurnstileVerificationFailed(AppError):
 
     http_status = 403
     error_code = "turnstile_failed"
+
+
+class AdminAuthFailed(AppError):
+    """The `x-admin-password` header was missing or wrong.
+
+    Maps to HTTP 401 (not 403) because semantically the client did not
+    authenticate at all. 403 would imply "authenticated but not
+    authorized for this resource", which doesn't apply — there's no
+    notion of a non-admin authenticated user in this system.
+    """
+
+    http_status = 401
+    error_code = "admin_auth_failed"

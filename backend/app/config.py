@@ -122,6 +122,13 @@ class Settings(BaseSettings):
     # env var APP_INSIGHTS_CONNECTION_STRING (or AZ_KEY_VAULT in Batch 7).
     app_insights_connection_string: str = "InstrumentationKey=local-stub-not-used"
 
+    # --- Admin dashboard ------------------------------------------------
+    # Single shared password gating `/api/admin/*`. Not real auth — see
+    # AdminAuth class docstring for the threat model. For local dev the
+    # default is readable; cloud deploy MUST override via env var
+    # ADMIN_PASSWORD (sourced from Key Vault in Batch 7).
+    admin_password: SecretStr = SecretStr("local-dev-admin-changeme")
+
     # --- Local persistence -------------------------------------------------
     # SQLite file backing the local DocumentStore (rate limits, global
     # counters, query log when wired up in Batch 4.4). Production swaps to

@@ -85,3 +85,25 @@ class DocumentStore(Protocol):
     async def delete(self, partition_key: str, doc_id: str) -> None:
         """Remove a document. No-op if it doesn't exist."""
         ...
+
+    async def list_by_partition(
+        self, partition_key: str, limit: int = 1000,
+    ) -> list[dict[str, Any]]:
+        """Return all live (non-expired) document bodies in the given partition.
+
+        Returned in unspecified order — callers that need a particular
+        ordering (e.g., recent-first by timestamp) must sort the result
+        themselves. This keeps the Protocol portable across stores with
+        different native ordering semantics (Cosmos vs SQLite vs Redis).
+
+        `limit` caps the number of documents returned. For the admin
+        dashboard's per-day partitions (~200 docs/day max), the default
+        of 1000 is comfortably above any realistic load. Documents
+        beyond the limit are silently truncated; if pagination matters
+        for a future use case, extend this signature.
+
+        Returns an empty list (NOT None) when the partition has no
+        documents — partitions don't "exist" as first-class objects in
+        Cosmos's data model and the adapter shouldn't pretend otherwise.
+        """
+        ...

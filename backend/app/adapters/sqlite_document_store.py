@@ -188,6 +188,24 @@ class SQLiteDocumentStore:
         )
         await conn.commit()
 
+    async def list_by_partition(
+        self, partition_key: str, limit: int = 1000,
+    ) -> list[dict[str, Any]]:
+        conn = await self._ensure_connected()
+        now = self._now()
+        # Skip expired rows in the same query rather than reading them and
+        # filtering in Python — keeps memory bounded and matches Cosmos's
+        # native TTL filtering at query time.
+        async with conn.execute(
+            "SELECT body FROM documents "
+            "WHERE partition_key = ? "
+            "AND (valid_until IS NULL OR valid_until >= ?) "
+            "LIMIT ?",
+            (partition_key, now, limit),
+        ) as cursor:
+            rows = await cursor.fetchall()
+        return [json.loads(row[0]) for row in rows]
+
     async def close(self) -> None:
         """Cleanly close the connection. Idempotent."""
         if self._connection is not None:
