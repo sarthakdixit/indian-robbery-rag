@@ -45,7 +45,11 @@ export function apiErrorFromBody(_status: number, raw: unknown): ApiError {
   // Each branch narrows the union appropriately.
   switch (body.error_code) {
     case "rate_limit_exceeded":
-      return { code: "rate_limit_exceeded", message: body.message, ...(body.resetAt !== undefined && { resetAt: body.resetAt }) };
+      return {
+        code: "rate_limit_exceeded",
+        message: body.message,
+        ...(body.resetAt !== undefined && { resetAt: body.resetAt }),
+      };
     case "out_of_scope":
       return {
         code: "out_of_scope",

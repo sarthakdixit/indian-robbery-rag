@@ -20,9 +20,8 @@ export function RateLimitPanel({ message }: RateLimitPanelProps) {
       <AlertDescription>
         <p>{message}</p>
         <p className="mt-2 text-xs">
-          The limit resets daily. This protects the small free-tier API quota that
-          backs this demo. Come back tomorrow, or contact the maintainer if you need
-          extended access.
+          The limit resets daily. This protects the small free-tier API quota that backs this demo.
+          Come back tomorrow, or contact the maintainer if you need extended access.
         </p>
       </AlertDescription>
     </Alert>

@@ -24,10 +24,7 @@ type AnswerDisplayProps = {
 export function AnswerDisplay({ response, onSuggestionClick }: AnswerDisplayProps) {
   if (isOutOfScope(response)) {
     return (
-      <OutOfScopePanel
-        suggestions={response.suggestions}
-        onSuggestionClick={onSuggestionClick}
-      />
+      <OutOfScopePanel suggestions={response.suggestions} onSuggestionClick={onSuggestionClick} />
     );
   }
 

@@ -51,7 +51,12 @@ export function AdminLogin() {
         <CardTitle>Admin login</CardTitle>
       </CardHeader>
       <CardContent>
-        <form onSubmit={onSubmit} className="space-y-4">
+        <form
+          onSubmit={(e) => {
+            void onSubmit(e);
+          }}
+          className="space-y-4"
+        >
           <div>
             <label htmlFor="admin-password" className="text-sm font-medium">
               Password

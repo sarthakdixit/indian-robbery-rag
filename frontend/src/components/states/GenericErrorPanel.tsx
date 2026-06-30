@@ -43,15 +43,13 @@ function describe(error: ApiError): {
       return {
         Icon: AlertOctagon,
         title: "Bot check failed",
-        description:
-          "Cloudflare didn't accept the verification. Try refreshing the page.",
+        description: "Cloudflare didn't accept the verification. Try refreshing the page.",
       };
     case "demo_at_capacity":
       return {
         Icon: AlertOctagon,
         title: "Demo capacity reached",
-        description:
-          "We've hit the daily quota for the free demo. Try again tomorrow.",
+        description: "We've hit the daily quota for the free demo. Try again tomorrow.",
       };
     case "llm_unavailable":
       return {

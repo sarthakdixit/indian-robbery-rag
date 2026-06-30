@@ -22,7 +22,7 @@ export function TopQuestionsTable({ data }: TopQuestionsTableProps) {
                 className="flex items-center justify-between gap-4 border-b py-2 last:border-b-0"
               >
                 <span className="flex items-center gap-3 truncate">
-                  <span className="w-6 text-xs text-muted-foreground tabular-nums">
+                  <span className="w-6 text-xs tabular-nums text-muted-foreground">
                     {(idx + 1).toString()}.
                   </span>
                   <span className="truncate text-sm">{item.question}</span>

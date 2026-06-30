@@ -13,8 +13,8 @@ export function DisclaimerBanner() {
     >
       <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden />
       <p>
-        AI-generated answer for research only. Not legal advice. Verify against
-        cited sources before relying on anything here.
+        AI-generated answer for research only. Not legal advice. Verify against cited sources before
+        relying on anything here.
       </p>
     </div>
   );

@@ -24,30 +24,30 @@ backend dir).
 
 ## Scripts
 
-| Command | Purpose |
-|---|---|
-| `pnpm dev` | Vite dev server with HMR on :5173 |
-| `pnpm build` | Type-check + produce `dist/` for SWA deploy |
-| `pnpm preview` | Serve the built `dist/` locally |
-| `pnpm lint` | ESLint (strict + react-hooks + jsx-a11y) |
-| `pnpm format` | Prettier write |
-| `pnpm format:check` | Prettier check (CI gate) |
-| `pnpm typecheck` | `tsc --noEmit` |
-| `pnpm test` | Vitest run |
+| Command             | Purpose                                     |
+| ------------------- | ------------------------------------------- |
+| `pnpm dev`          | Vite dev server with HMR on :5173           |
+| `pnpm build`        | Type-check + produce `dist/` for SWA deploy |
+| `pnpm preview`      | Serve the built `dist/` locally             |
+| `pnpm lint`         | ESLint (strict + react-hooks + jsx-a11y)    |
+| `pnpm format`       | Prettier write                              |
+| `pnpm format:check` | Prettier check (CI gate)                    |
+| `pnpm typecheck`    | `tsc --noEmit`                              |
+| `pnpm test`         | Vitest run                                  |
 
 Pre-commit gate: `pnpm typecheck && pnpm lint && pnpm format:check && pnpm test`.
 
 ## Stack
 
-| Layer | Choice | Why |
-|---|---|---|
-| Server state | TanStack Query | Cache + retries handled |
-| Client state | Zustand | Tiny, no providers |
-| Forms | React Hook Form + Zod | Schema-driven validation |
-| Routing | React Router v6 | data-router pattern |
-| Styling | Tailwind + shadcn/ui | Unbranded, copyable components |
-| Bot protection | Cloudflare Turnstile | Free, invisible CAPTCHA |
-| HTTP | `fetch` (native) | No axios, see AGENT-frontend.md §2 |
+| Layer          | Choice                | Why                                |
+| -------------- | --------------------- | ---------------------------------- |
+| Server state   | TanStack Query        | Cache + retries handled            |
+| Client state   | Zustand               | Tiny, no providers                 |
+| Forms          | React Hook Form + Zod | Schema-driven validation           |
+| Routing        | React Router v6       | data-router pattern                |
+| Styling        | Tailwind + shadcn/ui  | Unbranded, copyable components     |
+| Bot protection | Cloudflare Turnstile  | Free, invisible CAPTCHA            |
+| HTTP           | `fetch` (native)      | No axios, see AGENT-frontend.md §2 |
 
 ## Layout
 

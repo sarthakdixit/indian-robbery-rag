@@ -25,11 +25,11 @@ export type QuerySuccess = z.infer<typeof QuerySuccessSchema>;
 export const QueryOutOfScopeSchema = z.object({
   error_code: z.literal("out_of_scope"),
   answer: z.string(),
-  citations: z.array(CitationSchema).default([]),
+  citations: z.array(CitationSchema),
   request_id: z.string(),
   cache_hit: z.boolean(),
   latency_ms: z.number(),
-  suggestions: z.array(z.string()).default([]),
+  suggestions: z.array(z.string()),
 });
 export type QueryOutOfScope = z.infer<typeof QueryOutOfScopeSchema>;
 
@@ -42,5 +42,5 @@ export type QueryResponse = z.infer<typeof QueryResponseSchema>;
 
 /** Type-narrowing helper. Use this to branch on the response shape. */
 export function isOutOfScope(response: QueryResponse): response is QueryOutOfScope {
-  return "error_code" in response && response.error_code === "out_of_scope";
+  return "error_code" in response;
 }

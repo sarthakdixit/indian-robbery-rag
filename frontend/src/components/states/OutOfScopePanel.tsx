@@ -23,8 +23,8 @@ export function OutOfScopePanel({ suggestions, onSuggestionClick }: OutOfScopePa
       <AlertTitle>That looks out of scope</AlertTitle>
       <AlertDescription>
         <p>
-          This assistant only covers <strong>robbery offences under Indian criminal
-          law</strong> (BNS §§309-311 or IPC §§390-402). Try one of these instead:
+          This assistant only covers <strong>robbery offences under Indian criminal law</strong>{" "}
+          (BNS §§309-311 or IPC §§390-402). Try one of these instead:
         </p>
         <ul className="mt-3 space-y-2">
           {shown.map((s) => (

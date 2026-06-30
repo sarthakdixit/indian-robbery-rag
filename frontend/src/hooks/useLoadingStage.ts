@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  COLD_START_MESSAGE_DELAY_MS,
-  COLD_START_STILL_GOING_DELAY_MS,
-} from "@/config/constants";
+import { COLD_START_MESSAGE_DELAY_MS, COLD_START_STILL_GOING_DELAY_MS } from "@/config/constants";
 
 export type LoadingStage = "idle" | "spinner" | "cold-start" | "still-going";
 

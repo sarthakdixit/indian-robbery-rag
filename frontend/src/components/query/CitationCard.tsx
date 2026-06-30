@@ -44,9 +44,7 @@ export function CitationCard({ citation }: CitationCardProps) {
           <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden />
         )}
 
-        <span className="font-mono text-sm text-muted-foreground">
-          [{citation.index}]
-        </span>
+        <span className="font-mono text-sm text-muted-foreground">[{citation.index}]</span>
 
         <Badge variant={citation.source_type === "act" ? "default" : "secondary"}>
           {citation.source_type === "act" ? "Act" : "Case"}
@@ -55,17 +53,12 @@ export function CitationCard({ citation }: CitationCardProps) {
         <span className="flex-1 truncate font-medium">{citation.citation}</span>
 
         {courtYearLabel !== null && (
-          <span className="hidden text-sm text-muted-foreground sm:inline">
-            {courtYearLabel}
-          </span>
+          <span className="hidden text-sm text-muted-foreground sm:inline">{courtYearLabel}</span>
         )}
       </button>
 
       {isExpanded && (
-        <div
-          id={`citation-body-${citation.index.toString()}`}
-          className="border-t bg-muted/30 p-4"
-        >
+        <div id={`citation-body-${citation.index.toString()}`} className="border-t bg-muted/30 p-4">
           <blockquote className="border-l-4 border-primary/30 pl-4 text-sm italic text-foreground/90">
             {citation.excerpt}
           </blockquote>

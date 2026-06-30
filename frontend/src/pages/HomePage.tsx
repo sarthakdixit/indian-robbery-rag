@@ -39,9 +39,9 @@ export function HomePage() {
           Robbery Law Research Assistant
         </h1>
         <p className="text-muted-foreground">
-          Ask a question about Indian robbery offences — BNS §§309-311 (2023) or
-          IPC §§390-402 (1860). Every answer is grounded in cited statutes and
-          High Court / Supreme Court judgments.
+          Ask a question about Indian robbery offences — BNS §§309-311 (2023) or IPC §§390-402
+          (1860). Every answer is grounded in cited statutes and High Court / Supreme Court
+          judgments.
         </p>
       </section>
 

@@ -1,4 +1,4 @@
-import { Github } from "lucide-react";
+import { FileCode2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export function Footer() {
@@ -17,7 +17,7 @@ export function Footer() {
           rel="noopener noreferrer"
           className="flex items-center gap-1.5 hover:text-foreground"
         >
-          <Github className="h-3.5 w-3.5" />
+          <FileCode2 className="h-3.5 w-3.5" />
           Source
         </a>
       </div>

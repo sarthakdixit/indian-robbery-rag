@@ -16,7 +16,7 @@ export const CitationSchema = z.object({
   pdf_url: z.string().url().nullable(),
   court: z.string().nullable(),
   year: z.number().int().nullable(),
-  metadata: z.record(z.string(), z.unknown()).default({}),
+  metadata: z.record(z.string(), z.unknown()),
 });
 
 export type Citation = z.infer<typeof CitationSchema>;

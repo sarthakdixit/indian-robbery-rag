@@ -54,7 +54,12 @@ export function QueryBox({ onSubmit, isPending, initialQuestion }: QueryBoxProps
   });
 
   return (
-    <form onSubmit={onFormSubmit} className="space-y-4">
+    <form
+      onSubmit={(e) => {
+        void onFormSubmit(e);
+      }}
+      className="space-y-4"
+    >
       <div>
         <label htmlFor="question" className="sr-only">
           Your question
@@ -69,11 +74,7 @@ export function QueryBox({ onSubmit, isPending, initialQuestion }: QueryBoxProps
           {...register("question")}
         />
         {errors.question?.message !== undefined && (
-          <p
-            id="question-error"
-            role="alert"
-            className="mt-1.5 text-sm text-destructive"
-          >
+          <p id="question-error" role="alert" className="mt-1.5 text-sm text-destructive">
             {errors.question.message}
           </p>
         )}

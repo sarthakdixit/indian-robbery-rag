@@ -9,15 +9,17 @@ const EnvSchema = z.object({
   VITE_ENVIRONMENT: z.enum(["local", "cloud"]).default("local"),
 });
 
+// import.meta.env's auto-generated index signature is `[key: string]: any`,
+// which trips no-unsafe-assignment when we read individual keys. Funnel
+// the whole object through Zod instead — Zod ignores unrecognized keys
+// and validates the ones we care about.
+const rawEnv: Record<string, unknown> = import.meta.env;
+
 /**
  * The validated, typed environment. Throws at module load if any var
  * fails validation (intentional — we want a hard fail at startup, not
  * a confusing runtime error later).
  */
-export const env = EnvSchema.parse({
-  VITE_API_BASE_URL: import.meta.env.VITE_API_BASE_URL,
-  VITE_TURNSTILE_SITE_KEY: import.meta.env.VITE_TURNSTILE_SITE_KEY,
-  VITE_ENVIRONMENT: import.meta.env.VITE_ENVIRONMENT,
-});
+export const env = EnvSchema.parse(rawEnv);
 
 export type Env = z.infer<typeof EnvSchema>;

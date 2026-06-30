@@ -74,7 +74,7 @@ jobs:
       - name: Vitest
         if: steps.frontend_exists.outputs.ready == 'true'
         working-directory: frontend
-        run: pnpm test --run
+        run: pnpm test
 
       - name: Production build
         if: steps.frontend_exists.outputs.ready == 'true'

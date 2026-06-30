@@ -43,9 +43,7 @@ export function SummaryCards({ summary }: SummaryCardsProps) {
         <li key={tile.label}>
           <Card>
             <CardContent className="pt-6">
-              <p className="text-xs uppercase tracking-wide text-muted-foreground">
-                {tile.label}
-              </p>
+              <p className="text-xs uppercase tracking-wide text-muted-foreground">{tile.label}</p>
               <p className="mt-1 text-2xl font-semibold tabular-nums">{tile.value}</p>
               {tile.sub !== undefined && (
                 <p className="mt-1 text-xs text-muted-foreground">{tile.sub}</p>

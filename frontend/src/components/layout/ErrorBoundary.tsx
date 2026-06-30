@@ -16,8 +16,8 @@ export function AppErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
         <AlertTitle>Something broke</AlertTitle>
         <AlertDescription>
           <p className="mb-3">
-            The page hit an unexpected error. This isn't supposed to happen — if
-            you can reproduce it, please open an issue.
+            The page hit an unexpected error. This isn't supposed to happen — if you can reproduce
+            it, please open an issue.
           </p>
           <details className="text-xs">
             <summary className="cursor-pointer">Technical detail</summary>

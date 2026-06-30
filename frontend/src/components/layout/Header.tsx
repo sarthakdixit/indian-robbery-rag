@@ -12,10 +12,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 items-center justify-between">
-        <Link
-          to="/"
-          className="flex items-center gap-2 text-base font-semibold tracking-tight"
-        >
+        <Link to="/" className="flex items-center gap-2 text-base font-semibold tracking-tight">
           <Scale className="h-5 w-5" />
           <span>Robbery Law Research</span>
         </Link>
@@ -30,9 +27,7 @@ export function Header() {
                   className={({ isActive }) =>
                     cn(
                       "rounded-md px-3 py-1.5 text-sm transition-colors hover:bg-accent",
-                      isActive
-                        ? "text-foreground font-medium"
-                        : "text-muted-foreground",
+                      isActive ? "font-medium text-foreground" : "text-muted-foreground",
                     )
                   }
                 >

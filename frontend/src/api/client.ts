@@ -1,10 +1,6 @@
 import { z } from "zod";
 import { env } from "@/config/env";
-import {
-  type QueryRequest,
-  type QueryResponse,
-  QueryResponseSchema,
-} from "./schemas/query";
+import { type QueryRequest, type QueryResponse, QueryResponseSchema } from "./schemas/query";
 import {
   type SummaryResponse,
   SummaryResponseSchema,
@@ -51,25 +47,22 @@ export class ApiClient {
   // -------------------------------------------------------------------
 
   async getAdminSummary(password: string, days?: number): Promise<SummaryResponse> {
-    const path = days !== undefined ? `/api/admin/summary?days=${days}` : "/api/admin/summary";
+    const path =
+      days !== undefined ? `/api/admin/summary?days=${days.toString()}` : "/api/admin/summary";
     return this.getJson(path, { "x-admin-password": password }, SummaryResponseSchema);
   }
 
   async getTopQuestions(password: string, limit = 10): Promise<TopQuestionsResponse> {
     return this.getJson(
-      `/api/admin/top-questions?limit=${limit}`,
+      `/api/admin/top-questions?limit=${limit.toString()}`,
       { "x-admin-password": password },
       TopQuestionsResponseSchema,
     );
   }
 
-  async getRecentQueries(
-    password: string,
-    limit = 50,
-    offset = 0,
-  ): Promise<RecentQueriesResponse> {
+  async getRecentQueries(password: string, limit = 50, offset = 0): Promise<RecentQueriesResponse> {
     return this.getJson(
-      `/api/admin/recent-queries?limit=${limit}&offset=${offset}`,
+      `/api/admin/recent-queries?limit=${limit.toString()}&offset=${offset.toString()}`,
       { "x-admin-password": password },
       RecentQueriesResponseSchema,
     );
@@ -93,11 +86,7 @@ export class ApiClient {
     return this.handleResponse(response, schema);
   }
 
-  private async postJson<T>(
-    path: string,
-    body: unknown,
-    schema: z.ZodSchema<T>,
-  ): Promise<T> {
+  private async postJson<T>(path: string, body: unknown, schema: z.ZodSchema<T>): Promise<T> {
     let response: Response;
     try {
       response = await fetch(`${this.baseUrl}${path}`, {

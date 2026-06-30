@@ -26,8 +26,7 @@ export function LoadingPanel({ isPending }: LoadingPanelProps) {
         </p>
         {stage === "cold-start" || stage === "still-going" ? (
           <p className="max-w-sm text-xs text-muted-foreground">
-            The backend may be cold-starting. Subsequent queries are typically much
-            faster.
+            The backend may be cold-starting. Subsequent queries are typically much faster.
           </p>
         ) : null}
       </CardContent>

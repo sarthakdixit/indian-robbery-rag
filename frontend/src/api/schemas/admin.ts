@@ -48,8 +48,8 @@ export const RecentQueryEntrySchema = z.object({
   rejected: z.boolean(),
   cache_hit: z.boolean(),
   latency_ms: z.number(),
-  citation_count: z.number().int().nonnegative().default(0),
-  estimated_cost_usd: z.number().nonnegative().default(0),
+  citation_count: z.number().int().nonnegative(),
+  estimated_cost_usd: z.number().nonnegative(),
 });
 export type RecentQueryEntry = z.infer<typeof RecentQueryEntrySchema>;
 
