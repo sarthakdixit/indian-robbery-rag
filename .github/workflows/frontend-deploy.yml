@@ -21,8 +21,12 @@ concurrency:
 
 # SWA uses a deployment token rather than OIDC. The token is scoped to
 # this one SWA resource; it can deploy but cannot read or modify anything
-# else in Azure. Copy it from the Azure portal once (SWA -> Manage deployment token)
-# and add it as a GitHub repository secret named AZURE_STATIC_WEB_APPS_API_TOKEN.
+# else in Azure. Stored as the AZURE_STATIC_WEB_APPS_API_TOKEN secret.
+#
+# Two-phase build: we install + build on the GitHub Actions runner
+# (which has pnpm available), then SWA's deploy action uploads the
+# pre-built dist/ folder. Skipping SWA's Oryx-based build avoids
+# Oryx's lack of pnpm support.
 permissions:
   contents: read
   pull-requests: write
@@ -50,7 +54,6 @@ jobs:
           if [ -n "$missing" ]; then
             echo "ready=false" >> "$GITHUB_OUTPUT"
             echo "::notice::Deploy skipped. Missing prerequisites: ${missing%, }"
-            echo "::notice::Frontend code lands in Batch 6. SWA resource and its deployment token land in Batch 7."
           else
             echo "ready=true" >> "$GITHUB_OUTPUT"
           fi
@@ -67,6 +70,17 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Install dependencies and build
+        if: steps.deploy_ready.outputs.ready == 'true'
+        working-directory: frontend
+        env:
+          VITE_API_BASE_URL: ${{ vars.BACKEND_PUBLIC_URL || 'https://example.invalid' }}
+          VITE_TURNSTILE_SITE_KEY: ${{ vars.TURNSTILE_SITE_KEY || '1x00000000000000000000AA' }}
+          VITE_ENVIRONMENT: cloud
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm build
+
       - name: Deploy to Azure Static Web Apps
         if: steps.deploy_ready.outputs.ready == 'true'
         id: builddeploy
@@ -75,10 +89,6 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: ${{ github.event_name == 'pull_request' && github.event.action == 'closed' && 'close' || 'upload' }}
-          app_location: "frontend"
-          output_location: "dist"
-          app_build_command: "pnpm install --frozen-lockfile && pnpm build"
-        env:
-          VITE_API_BASE_URL: ${{ vars.BACKEND_PUBLIC_URL || 'https://example.invalid' }}
-          VITE_TURNSTILE_SITE_KEY: ${{ vars.TURNSTILE_SITE_KEY || '1x00000000000000000000AA' }}
-          VITE_ENVIRONMENT: cloud
+          app_location: "frontend/dist"
+          output_location: ""
+          skip_app_build: true
