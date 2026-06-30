@@ -102,15 +102,19 @@ pnpm-debug.log*
 
 # ====== Project-specific ======
 
-# Built ChromaDB index — rebuilt by `make ingest`, not committed.
-chroma_db/
-*.chroma
-
-# BM25 index — also a build artifact.
-bm25.pkl
-
-# Normalized chunks output from ingestion.
-chunks.jsonl
+# Built ingestion artifacts — historically gitignored per design.md §10.4
+# ("rebuilt by `make ingest`"), but now COMMITTED because the deploy
+# workflow's Docker build context needs them on the GitHub Actions
+# runner. The bm25_index/ artifacts were already committed; we now also
+# commit chroma_db/ and chunks.jsonl for consistency. Rebuilding still
+# works locally via `make ingest`; the committed copies are the source
+# of truth for production builds.
+#
+# These patterns are intentionally left commented as documentation:
+#   chroma_db/
+#   *.chroma
+#   bm25.pkl
+#   chunks.jsonl
 
 # Local SQLite database (used by the local DocumentStore adapter).
 local_data/
