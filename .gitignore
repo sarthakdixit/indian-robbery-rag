@@ -12,8 +12,9 @@ develop-eggs/
 dist/
 downloads/
 eggs/
-lib/
-lib64/
+# Python build artifacts (setuptools puts compiled libs here under build/)
+build/lib/
+build/lib64/
 parts/
 sdist/
 var/
