@@ -1,5 +1,22 @@
 name: backend-deploy
 
+# Triggers a Container App image update when backend code or its
+# dependencies change. The image is built and pushed to GitHub Container
+# Registry (GHCR), then `az containerapp update --image` rolls a new
+# revision.
+#
+# WHY GHCR (NOT ACR): Azure Container Registry Basic is ~₹420/month.
+# GHCR is free for public images and Container Apps can pull from GHCR
+# without auth. See infra/README.md "Architecture decisions" for context.
+#
+# OIDC: We use GitHub's federated identity to Azure AD — no stored
+# Azure secrets in the repo. See infra/azure-oidc-setup.md for the
+# one-time federation setup.
+#
+# CONCURRENCY: serialized, not cancelled-on-superseding-push. A
+# half-applied Container App revision update is messier than waiting
+# for the in-flight one to finish.
+
 on:
   push:
     branches: [main]
@@ -15,12 +32,13 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  id-token: write
-  contents: read
+  id-token: write # OIDC token for Azure login
+  contents: read # repo checkout
+  packages: write # push to GHCR
 
 jobs:
   deploy:
-    name: Build and deploy to Azure Container Apps
+    name: Build, push to GHCR, and update Container App
     runs-on: ubuntu-latest
     timeout-minutes: 20
     environment: production
@@ -29,6 +47,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Pre-flight: skip the whole deploy if the repo hasn't reached
+      # Batch 5/7 yet (no Dockerfile, no Azure resources). Keeps the
+      # workflow green during early development.
       - name: Check whether deploy is ready
         id: deploy_ready
         run: |
@@ -39,15 +60,64 @@ jobs:
           if [ -z "${{ vars.AZURE_SUBSCRIPTION_ID }}" ]; then missing="${missing}AZURE_SUBSCRIPTION_ID, "; fi
           if [ -z "${{ vars.AZURE_RESOURCE_GROUP }}" ]; then missing="${missing}AZURE_RESOURCE_GROUP, "; fi
           if [ -z "${{ vars.AZURE_CONTAINER_APP_NAME }}" ]; then missing="${missing}AZURE_CONTAINER_APP_NAME, "; fi
-          if [ -z "${{ vars.AZURE_CONTAINER_REGISTRY }}" ]; then missing="${missing}AZURE_CONTAINER_REGISTRY, "; fi
 
           if [ -n "$missing" ]; then
             echo "ready=false" >> "$GITHUB_OUTPUT"
             echo "::notice::Deploy skipped. Missing prerequisites: ${missing%, }"
-            echo "::notice::Backend Dockerfile lands in Batch 5. Azure resources land in Batch 7. OIDC setup is documented in infra/azure-oidc-setup.md."
+            echo "::notice::See infra/azure-oidc-setup.md for OIDC variable setup."
           else
             echo "ready=true" >> "$GITHUB_OUTPUT"
           fi
+
+      # Compute the image reference used by every downstream step. Two
+      # tags: SHA-pinned (for traceability + rollback) and 'latest'
+      # (for manual `./deploy.sh image .../latest` convenience).
+      #
+      # Note: GitHub usernames in image refs MUST be lowercase. The
+      # owner of this repo (`github.repository_owner`) is folded to
+      # lowercase via shell parameter expansion — usernames don't have
+      # case-collision risk on GitHub so this is safe.
+      - name: Compute image references
+        if: steps.deploy_ready.outputs.ready == 'true'
+        id: image
+        run: |
+          OWNER_LC=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          IMAGE_BASE="ghcr.io/${OWNER_LC}/indian-robbery-rag"
+          echo "image_sha=${IMAGE_BASE}:sha-${GITHUB_SHA::7}"  >> "$GITHUB_OUTPUT"
+          echo "image_latest=${IMAGE_BASE}:latest"             >> "$GITHUB_OUTPUT"
+          echo "image_base=${IMAGE_BASE}"                      >> "$GITHUB_OUTPUT"
+
+      # Buildx for cross-platform support + layer caching. Without
+      # this, every build is uncached and takes ~3-5 min; with
+      # gha cache, repeat builds with no Dockerfile change take ~30s.
+      - name: Set up Docker Buildx
+        if: steps.deploy_ready.outputs.ready == 'true'
+        uses: docker/setup-buildx-action@v3
+
+      # Authenticate to GHCR using the built-in GITHUB_TOKEN (no PAT
+      # required — `packages: write` permission above grants this).
+      - name: Log in to GHCR
+        if: steps.deploy_ready.outputs.ready == 'true'
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Build the backend image and push both tags. Cache layers via
+      # GitHub Actions cache backend (free, scoped to this repo).
+      - name: Build and push image
+        if: steps.deploy_ready.outputs.ready == 'true'
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: backend/Dockerfile
+          push: true
+          tags: |
+            ${{ steps.image.outputs.image_sha }}
+            ${{ steps.image.outputs.image_latest }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: Azure login via OIDC
         if: steps.deploy_ready.outputs.ready == 'true'
@@ -57,39 +127,59 @@ jobs:
           tenant-id: ${{ vars.AZURE_TENANT_ID }}
           subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
 
-      - name: Log in to Azure Container Registry
+      # `az containerapp update --image` creates a new revision pointing
+      # at the new image. Old revisions stay around (configurable; we
+      # use single-revision mode so old replicas drain immediately).
+      # The SHA-tagged ref makes the revision uniquely identifiable in
+      # Azure portal/CLI history.
+      - name: Update Container App image
         if: steps.deploy_ready.outputs.ready == 'true'
-        run: az acr login --name "${{ vars.AZURE_CONTAINER_REGISTRY }}"
-
-      - name: Build and push image
-        if: steps.deploy_ready.outputs.ready == 'true'
-        id: build
         run: |
-          IMAGE_TAG="${{ vars.AZURE_CONTAINER_REGISTRY }}.azurecr.io/indian-robbery-rag-backend:${{ github.sha }}"
-          docker build -t "$IMAGE_TAG" -f backend/Dockerfile .
-          docker push "$IMAGE_TAG"
-          echo "image_tag=$IMAGE_TAG" >> "$GITHUB_OUTPUT"
+          az containerapp update \
+              --name "${{ vars.AZURE_CONTAINER_APP_NAME }}" \
+              --resource-group "${{ vars.AZURE_RESOURCE_GROUP }}" \
+              --image "${{ steps.image.outputs.image_sha }}" \
+              --output table
 
-      - name: Update Container App revision
+      # Resolve the Container App's public FQDN if BACKEND_HEALTH_URL
+      # isn't explicitly set. Saves a manual repo-vars step for the
+      # common case (single Container App, default ingress).
+      - name: Resolve health-check URL
         if: steps.deploy_ready.outputs.ready == 'true'
-        uses: azure/container-apps-deploy-action@v2
-        with:
-          resourceGroup: ${{ vars.AZURE_RESOURCE_GROUP }}
-          containerAppName: ${{ vars.AZURE_CONTAINER_APP_NAME }}
-          imageToDeploy: ${{ steps.build.outputs.image_tag }}
+        id: health
+        run: |
+          if [ -n "${{ vars.BACKEND_HEALTH_URL }}" ]; then
+            echo "url=${{ vars.BACKEND_HEALTH_URL }}" >> "$GITHUB_OUTPUT"
+          else
+            FQDN=$(az containerapp show \
+                --name "${{ vars.AZURE_CONTAINER_APP_NAME }}" \
+                --resource-group "${{ vars.AZURE_RESOURCE_GROUP }}" \
+                --query properties.configuration.ingress.fqdn \
+                -o tsv)
+            echo "url=https://${FQDN}/api/health" >> "$GITHUB_OUTPUT"
+          fi
 
+      # Poll /api/health until the new revision is serving. Cold start
+      # on Container Apps with scale-to-zero can take 10-20s; we allow
+      # up to ~110s (10s initial + 5 attempts * 20s interval) before
+      # failing the workflow.
       - name: Smoke test deployed endpoint
-        if: steps.deploy_ready.outputs.ready == 'true' && vars.BACKEND_HEALTH_URL != ''
+        if: steps.deploy_ready.outputs.ready == 'true'
         run: |
-          echo "Waiting 30s for new revision to become active..."
-          sleep 30
+          URL="${{ steps.health.outputs.url }}"
+          echo "Health URL: $URL"
+          echo "Waiting 10s for new revision to start..."
+          sleep 10
           for attempt in 1 2 3 4 5; do
-            if curl -sf "${{ vars.BACKEND_HEALTH_URL }}" > /dev/null; then
-              echo "Health check passed on attempt $attempt."
+            if curl -sf -m 15 "$URL" > /dev/null; then
+              echo "::notice::Health check passed on attempt $attempt."
+              echo "Response body:"
+              curl -s "$URL" | head -c 500
               exit 0
             fi
-            echo "Attempt $attempt failed; retrying in 10s..."
-            sleep 10
+            echo "Attempt $attempt failed; retrying in 20s..."
+            sleep 20
           done
           echo "::error::Health check failed after 5 attempts. New revision may be unhealthy."
+          echo "::error::Check container logs: az containerapp logs show --name ${{ vars.AZURE_CONTAINER_APP_NAME }} --resource-group ${{ vars.AZURE_RESOURCE_GROUP }} --tail 100"
           exit 1

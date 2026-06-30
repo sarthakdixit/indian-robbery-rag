@@ -5,9 +5,10 @@
 # inside the container after any update — pip resolution differs
 # slightly from local venvs.
 #
-# Azure SDKs (azure-cosmos, azure-identity, azure-keyvault-secrets) are
-# NOT included here — Batch 7 will add them when wiring the cloud
-# adapters. Keeping the image lean until cloud adapters are imported.
+# Azure SDKs (cosmos, identity, monitor-opentelemetry) are included
+# even though they're only loaded in cloud mode. Their cost in the
+# image is acceptable (~30MB) and including them keeps the local-vs-
+# cloud swap a one-flag change.
 
 # --- HTTP / ASGI ----------------------------------------------------
 fastapi ~= 0.137.0
@@ -44,3 +45,21 @@ bm25s ~= 0.3.0
 # §17.3 mentions the legacy one; the actual code under backend/
 # imports `from google import genai`.
 google-genai ~= 2.8.0
+
+# --- Azure SDKs (cloud mode only) ---------------------------------
+# Lazy-imported by the cloud adapters; local mode never loads them
+# but they're bundled to keep the cloud swap a config flip rather
+# than an image rebuild.
+azure-cosmos ~= 4.15.0
+# aiohttp is REQUIRED for azure.cosmos.aio (the async client) but
+# azure-cosmos doesn't declare it as a hard dependency — it's an
+# optional `[aio]` extra that may not be available on every version.
+# We list it directly so the async transport works regardless of
+# which azure-cosmos point version pip resolves to.
+# See: https://github.com/Azure/azure-sdk-for-python/issues/41737
+aiohttp ~= 3.10.11
+# azure-identity is required by azure-monitor-opentelemetry (for
+# managed identity auth in App Insights ingestion). We don't import
+# it directly from our code.
+azure-identity ~= 1.20.0
+azure-monitor-opentelemetry ~= 1.8.0

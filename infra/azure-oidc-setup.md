@@ -1,172 +1,191 @@
 # Azure OIDC Federation Setup
 
-> **One-time manual setup.** Do this once before running the `backend-deploy` and `frontend-deploy` GitHub Actions workflows. Estimated time: 20-30 minutes.
+> **One-time manual setup.** Do this once before the `backend-deploy` workflow can update the Container App. Estimated time: 15-20 minutes.
 
 ## What This Solves
 
-GitHub Actions needs to authenticate to Azure to deploy. The old way uses long-lived service principal secrets stored in GitHub. The modern way — **OpenID Connect (OIDC) federation** — exchanges a short-lived GitHub token for an Azure access token at deploy time. No secrets stored anywhere.
+GitHub Actions needs to authenticate to Azure to deploy. The old way uses long-lived service principal secrets stored in GitHub. The modern way — **OpenID Connect (OIDC) federation** — exchanges a short-lived GitHub-issued token for an Azure access token at deploy time. No secrets stored anywhere.
 
-This is the pattern production teams use. It's also worth a sentence in interviews: _"I configured OIDC federation between GitHub and Azure so deploys use short-lived tokens instead of long-lived service principal secrets."_
+This is what production teams use. In interviews: _"I configured OIDC federation between GitHub and Azure so deploys use short-lived tokens instead of stored credentials."_
 
 ## Prerequisites
 
-- An Azure subscription (free tier is fine)
-- Azure CLI installed locally (`az --version`)
+- Azure CLI logged in (`az account show` returns your subscription)
 - Owner or User Access Administrator role on the subscription (needed to create role assignments)
-- This repository created on GitHub
-- A resource group created in Azure (will provision in Batch 7; for OIDC setup alone, any RG works)
+- Repo exists at `https://github.com/sarthakdixit/indian-robbery-rag`
+- Resource group `rg-robberyrag-dev` already provisioned (Batch 7.1+)
 
-## Step 1: Create an Azure AD application
+## What you'll create
+
+- An Azure AD application (one)
+- A service principal attached to it (one)
+- One role assignment (`Contributor` on `rg-robberyrag-dev`)
+- One federated credential (GitHub `environment:production` → this SP)
+- A GitHub Actions `production` environment
+- 5 GitHub Actions repository variables
+
+## Step 1 — Create the Azure AD application
 
 ```bash
 az ad app create --display-name "github-indian-robbery-rag"
 ```
 
-Note the `appId` from the output — this is your `AZURE_CLIENT_ID`.
-
-## Step 2: Create a service principal for the app
+Capture the `appId` from the output — this becomes `AZURE_CLIENT_ID` in GitHub.
 
 ```bash
-APP_ID="<paste appId from step 1>"
+# Store it in a shell var so we don't have to copy/paste repeatedly
+APP_ID=$(az ad app list --display-name "github-indian-robbery-rag" --query "[0].appId" -o tsv)
+echo "AZURE_CLIENT_ID = $APP_ID"
+```
+
+## Step 2 — Create the service principal
+
+```bash
 az ad sp create --id "$APP_ID"
 ```
 
-## Step 3: Grant the service principal the necessary roles
-
-You need three role assignments. Replace `<SUBSCRIPTION_ID>` and `<RESOURCE_GROUP>` with your values.
+## Step 3 — Grant Contributor on the resource group
 
 ```bash
-SUBSCRIPTION_ID="<your subscription id>"
-RG="<your resource group, e.g. rg-indian-robbery-rag>"
+SUBSCRIPTION_ID=$(az account show --query id -o tsv)
+RG=rg-robberyrag-dev
 
-# Contributor on the resource group — for Container Apps revision updates
 az role assignment create \
-  --role "Contributor" \
-  --assignee "$APP_ID" \
-  --scope "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RG"
-
-# AcrPush on Container Registry — for pushing images
-# (Run this after Batch 7 provisions the ACR. Until then, skip.)
-ACR_NAME="<your container registry name>"
-az role assignment create \
-  --role "AcrPush" \
-  --assignee "$APP_ID" \
-  --scope "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RG/providers/Microsoft.ContainerRegistry/registries/$ACR_NAME"
+    --role "Contributor" \
+    --assignee "$APP_ID" \
+    --scope "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RG"
 ```
 
-For least-privilege, prefer narrowing `Contributor` to specific resource-type roles (`Container Apps Contributor`, `Key Vault Secrets User`, etc.) once you know the exact resources. See [`infra/`](.) once Batch 7 lands.
+`Contributor` on the RG lets the workflow update Container App revisions. We don't need `AcrPush` (no ACR — we use GHCR which doesn't need Azure auth) or any Key Vault role (the Container App's user-assigned MI handles vault reads at runtime; CI doesn't touch the vault).
 
-## Step 4: Create federated credentials
+For tighter least-privilege you could swap `Contributor` for `Container Apps Contributor`, but `Contributor` is what most CI/CD examples use and won't surprise you if you add other resources to the same workflow later.
 
-This is the part that says "trust GitHub Actions to act as this service principal, but only for specific workflows in specific repos."
+## Step 4 — Create the federated credential
 
-Create a JSON file `federated-credential-main.json`:
+The workflow deploys to GitHub's `production` environment, so the federation subject must match the `environment:production` form (not the `ref:refs/heads/main` form). When a workflow declares `environment:` GitHub's OIDC token uses the environment subject in the `sub` claim, not the branch ref.
 
-```json
-{
-  "name": "github-main-branch",
-  "issuer": "https://token.actions.githubusercontent.com",
-  "subject": "repo:<YOUR_GH_ORG>/<YOUR_REPO_NAME>:ref:refs/heads/main",
-  "description": "GitHub Actions deploys from main branch",
-  "audiences": ["api://AzureADTokenExchange"]
-}
-```
-
-Apply it:
+Create `federated-credential.json`:
 
 ```bash
-az ad app federated-credential create \
-  --id "$APP_ID" \
-  --parameters @federated-credential-main.json
-```
-
-If you also want pull-request workflows to authenticate (e.g., for preview deployments), create a second credential with `subject: "repo:<ORG>/<REPO>:pull_request"`.
-
-For the production environment specifically (which the deploy workflow targets via `environment: production`), use:
-
-```json
+cat > /tmp/federated-credential.json << 'EOF'
 {
   "name": "github-production-env",
   "issuer": "https://token.actions.githubusercontent.com",
-  "subject": "repo:<YOUR_GH_ORG>/<YOUR_REPO_NAME>:environment:production",
+  "subject": "repo:sarthakdixit/indian-robbery-rag:environment:production",
   "description": "GitHub Actions deploys to production environment",
   "audiences": ["api://AzureADTokenExchange"]
 }
+EOF
+
+az ad app federated-credential create \
+    --id "$APP_ID" \
+    --parameters @/tmp/federated-credential.json
 ```
 
-## Step 5: Get the tenant ID
+If you later want PR-preview deploys, add a second credential with subject `repo:sarthakdixit/indian-robbery-rag:pull_request`.
+
+## Step 5 — Get the tenant ID
 
 ```bash
-az account show --query tenantId -o tsv
+TENANT_ID=$(az account show --query tenantId -o tsv)
+echo "AZURE_TENANT_ID = $TENANT_ID"
 ```
 
-This is your `AZURE_TENANT_ID`.
-
-## Step 6: Add GitHub repository variables
-
-In your GitHub repo: **Settings → Secrets and variables → Actions → Variables tab → New repository variable**.
-
-Add the following as **variables** (not secrets — these are not sensitive):
-
-| Variable name               | Value                                                             |
-| --------------------------- | ----------------------------------------------------------------- |
-| `AZURE_CLIENT_ID`           | The `appId` from Step 1                                           |
-| `AZURE_TENANT_ID`           | From Step 5                                                       |
-| `AZURE_SUBSCRIPTION_ID`     | Your subscription id                                              |
-| `AZURE_RESOURCE_GROUP`      | Your resource group name                                          |
-| `AZURE_CONTAINER_REGISTRY`  | Your ACR name (without `.azurecr.io`) — fill in after Batch 7     |
-| `AZURE_CONTAINER_APP_NAME`  | Your Container App name — fill in after Batch 7                   |
-| `AZURE_STATIC_WEB_APP_NAME` | Your SWA name — fill in after Batch 7                             |
-| `BACKEND_HEALTH_URL`        | `https://<container-app-fqdn>/api/health` — fill in after Batch 7 |
-
-The deploy workflow's "Check whether deploy is ready" step lists exactly what's missing, so partial setup is fine — the workflow gracefully no-ops until everything is set.
-
-## Step 7: Create the production environment in GitHub
+## Step 6 — Create the production environment in GitHub
 
 In your repo: **Settings → Environments → New environment** → name it `production`.
 
-Optionally add protection rules (required reviewers, wait timer). For a portfolio project, no protection rules is fine — the federated credential restricts who can deploy.
+Optional protection rules (required reviewers, wait timer) — skip for a portfolio project. The federated credential already restricts who can deploy.
 
-## Verifying Setup
+## Step 7 — Add GitHub Actions repository variables
 
-After everything is configured and Batch 7 has provisioned resources, push a small change to `backend/` or trigger the workflow manually:
+In your repo: **Settings → Secrets and variables → Actions → Variables tab → New repository variable**.
+
+These are **variables** (not secrets). They're not sensitive — they're identifiers that anyone reading the workflow YAML can see anyway.
+
+| Variable                   | Value                                  |
+| -------------------------- | -------------------------------------- |
+| `AZURE_CLIENT_ID`          | The `appId` from Step 1                |
+| `AZURE_TENANT_ID`          | From Step 5                            |
+| `AZURE_SUBSCRIPTION_ID`    | `0435696f-4caf-4b4e-ac74-35a2d7714c6b` |
+| `AZURE_RESOURCE_GROUP`     | `rg-robberyrag-dev`                    |
+| `AZURE_CONTAINER_APP_NAME` | `ca-yzqu7nbhph22c`                     |
+
+`BACKEND_HEALTH_URL` is optional — the workflow auto-resolves it from the Container App's ingress FQDN. Set it manually only if you have a custom domain.
+
+The workflow's "Check whether deploy is ready" step lists any missing variables, so partial setup is fine — the workflow gracefully no-ops until everything is set.
+
+## Verifying setup
+
+After everything is configured, push a small change to `backend/` (e.g., a comment in a Python file) or trigger the workflow manually:
 
 ```bash
 gh workflow run backend-deploy
+gh run watch
 ```
 
-The workflow should:
+Expected flow:
 
-1. Log in to Azure via OIDC (no secret prompts)
-2. Push a new image to ACR
-3. Update the Container App revision
-4. Smoke-test the health endpoint
+1. Checkout
+2. Pre-flight check — all 5 vars present, Dockerfile exists, ready=true
+3. Compute image refs → `ghcr.io/sarthakdixit/indian-robbery-rag:sha-<7chars>` + `:latest`
+4. Set up Buildx
+5. Log in to GHCR using the built-in `GITHUB_TOKEN` (no PAT needed; the workflow has `packages: write` permission)
+6. Build + push image
+7. Log in to Azure via OIDC (no secret prompts — federated)
+8. `az containerapp update --image ...`
+9. Resolve health URL from Container App FQDN
+10. Poll `/api/health` until it returns 200
 
-If the OIDC login fails with `AADSTS70021` or similar, check:
+The first build will take ~5 minutes (cold Docker layer cache). Subsequent builds without Dockerfile changes take ~30 seconds (cached layers).
 
-- The `subject` in your federated credential exactly matches the workflow's `ref` (e.g., `refs/heads/main`, not `refs/heads/master`)
-- The repo name in the `subject` is correct (case-sensitive)
-- The `production` environment exists in GitHub if your credential targets `environment:production`
+## After first push: make the GHCR package public
 
-## Cleanup / Rotation
+By default, GHCR creates new packages as **private**. Container Apps can pull private GHCR packages only with auth configured — which adds complexity we want to skip.
 
-To remove a federated credential:
+After the first successful workflow run:
+
+1. Go to `https://github.com/sarthakdixit?tab=packages`
+2. Click `indian-robbery-rag`
+3. **Package settings → Change package visibility → Public**
+
+After that, Container Apps can pull anonymously. The image is publicly readable (anyone can `docker pull ghcr.io/sarthakdixit/indian-robbery-rag:latest`); this is acceptable because the image contains only the FastAPI backend code, which is open-source in this repo anyway. Secrets are NOT baked into the image — they're injected at runtime from Key Vault.
+
+## Troubleshooting
+
+**`AADSTS70021: No matching federated identity record found`**
+The `subject` in your federated credential doesn't match the workflow's `sub` claim. Verify:
+
+- The repo name is exactly `sarthakdixit/indian-robbery-rag` (case-sensitive)
+- The environment name in the workflow (`environment: production`) matches the credential's `:environment:production` suffix
+- The `production` environment actually exists in GitHub Settings → Environments
+
+**`Forbidden: pull access denied` from Container Apps**
+The GHCR package is still private. Make it public per the section above.
+
+**`Insufficient privileges to complete the operation`**
+The deploying user (you) doesn't have permission to create role assignments. Need Owner or User Access Administrator on the subscription. Get a tenant admin to run Step 3, or ask them to grant you the role.
+
+## Cleanup / rotation
+
+To remove the federated credential:
 
 ```bash
 az ad app federated-credential list --id "$APP_ID"
-az ad app federated-credential delete --id "$APP_ID" --federated-credential-id "<credential id>"
+az ad app federated-credential delete \
+    --id "$APP_ID" \
+    --federated-credential-id "<credential id from list>"
 ```
 
-To rotate the service principal entirely, delete the AD app:
+To rotate the entire SP, delete the AD app and redo Steps 1-7:
 
 ```bash
 az ad app delete --id "$APP_ID"
 ```
-
-Then redo Steps 1-6 with a fresh app.
 
 ## References
 
 - [Azure docs: Configure an app to trust a GitHub repo](https://learn.microsoft.com/azure/active-directory/workload-identities/workload-identity-federation-create-trust)
 - [GitHub docs: Configuring OpenID Connect in Azure](https://docs.github.com/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-azure)
 - [`azure/login@v2` action](https://github.com/Azure/login)
+- [GHCR docs: Working with the Container registry](https://docs.github.com/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
