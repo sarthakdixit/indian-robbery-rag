@@ -66,8 +66,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: pnpm
-          cache-dependency-path: frontend/pnpm-lock.yaml
 
       - name: Deploy to Azure Static Web Apps
         if: steps.deploy_ready.outputs.ready == 'true'
