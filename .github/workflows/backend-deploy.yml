@@ -45,7 +45,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       # Pre-flight: skip the whole deploy if the repo hasn't reached
       # Batch 5/7 yet (no Dockerfile, no Azure resources). Keeps the
