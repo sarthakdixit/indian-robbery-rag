@@ -91,9 +91,9 @@ def main() -> int:
     # Human-readable checklist
     print(f"Audit of {args.manifest}")
     if args.only_approved:
-        print(f"Filter: relevance_classifier_status == approved")
+        print("Filter: relevance_classifier_status == approved")
     else:
-        print(f"Filter: ALL statuses")
+        print("Filter: ALL statuses")
     print(f"Found {len(pending)} judgment(s) needing fill-in.")
     print()
 
@@ -132,7 +132,7 @@ def main() -> int:
 
     args.template_out.write_text(json.dumps(template, indent=2, ensure_ascii=False))
     print(f"Wrote fills template to {args.template_out}")
-    print(f"Next: edit it with the real values, then run apply_sources_fills.py.")
+    print("Next: edit it with the real values, then run apply_sources_fills.py.")
     return 0
 
 

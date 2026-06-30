@@ -16,7 +16,6 @@ Pure read-only — no DB writes, no API calls, no chunks.jsonl change.
 
 from __future__ import annotations
 
-import re
 import sys
 from pathlib import Path
 
@@ -24,8 +23,6 @@ _REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(_REPO))
 
 from ingestion.normalize.parse_acts_pdf import (  # noqa: E402
-    SECTION_START_RE,
-    SECTION_START_RE_VERBOSE,
     choose_section_regex,
     clean_page,
     detect_repeating_lines,
@@ -63,7 +60,7 @@ def diagnose(pdf_path: Path, label: str) -> None:
     # All section matches without any dedup. Show first 25.
     matches = list(section_re.finditer(trimmed))
     print(f"\nTotal section-regex matches: {len(matches)}")
-    print(f"First 25 matches:")
+    print("First 25 matches:")
     print(f"  {'idx':>3}  {'num':>5}  {'pos':>7}  heading")
     for i, m in enumerate(matches[:25]):
         print(f"  {i:>3}  {m.group('num'):>5}  {m.start():>7}  "

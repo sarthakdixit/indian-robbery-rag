@@ -325,8 +325,8 @@ def main() -> int:
         print()
     print("Next steps:")
     if non_normalized_files > 0:
-        print(f"  1. python scripts/normalize_filenames.py --apply")
-        print(f"  2. python scripts/bootstrap_manifest.py  (re-run after normalization)")
+        print("  1. python scripts/normalize_filenames.py --apply")
+        print("  2. python scripts/bootstrap_manifest.py  (re-run after normalization)")
         print(f"  3. Open {output_path.name} and replace every 'TODO:' with real metadata.")
         print(f"  4. mv {output_path.name} sources.yaml")
         print("  5. python ingestion/collect/verify_corpus.py --write-hashes")

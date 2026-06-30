@@ -20,7 +20,6 @@ Run with: pytest backend/tests/test_smoke.py -v
 
 from __future__ import annotations
 
-import datetime as dt
 from pathlib import Path
 from typing import Any
 

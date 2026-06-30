@@ -25,7 +25,7 @@ from pathlib import Path
 _REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(_REPO_ROOT))
 
-from backend.app.config import Settings, get_settings  # noqa: E402
+from backend.app.config import get_settings  # noqa: E402
 from backend.app.container import Container  # noqa: E402
 
 
@@ -144,7 +144,7 @@ async def main() -> None:
         print(f"Clean separation. Gap = {gap:.4f}")
         print(f"Recommended threshold: {midpoint:.4f}")
         print()
-        print(f"At this threshold:")
+        print("At this threshold:")
         print(f"  - All {len(in_vals)} in-scope queries pass (lowest is {in_min:.4f})")
         print(f"  - All {len(oos_vals)} OOS queries are rejected (highest is {oos_max:.4f})")
     else:

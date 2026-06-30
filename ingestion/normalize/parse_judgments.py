@@ -24,7 +24,6 @@ Exit codes:
 from __future__ import annotations
 
 import argparse
-import json
 import logging
 import sys
 import traceback
@@ -36,7 +35,6 @@ try:
     from ingestion.collect.schema import (
         ActManifestEntry,
         JudgmentManifestEntry,
-        RelevanceStatus,
         SourcesManifest,
     )
     from ingestion.normalize.clean_html import extract_judgment
@@ -52,7 +50,6 @@ except ImportError:
     from ingestion.collect.schema import (
         ActManifestEntry,
         JudgmentManifestEntry,
-        RelevanceStatus,
         SourcesManifest,
     )
     from ingestion.normalize.clean_html import extract_judgment

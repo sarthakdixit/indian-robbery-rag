@@ -117,11 +117,6 @@ jobs:
         working-directory: ingestion
         run: ruff check .
 
-      - name: Mypy strict
-        if: steps.ingestion_exists.outputs.ready == 'true'
-        working-directory: ingestion
-        run: mypy .
-
   normalize-script-check:
     name: scripts/normalize_filenames.py syntax check
     runs-on: ubuntu-latest

@@ -220,7 +220,7 @@ def extract_citation_and_year(soup: BeautifulSoup, filename: str) -> tuple[Extra
     if fn_match:
         year_value = ExtractedField(value=int(fn_match.group(1)),
                                     confidence="medium",
-                                    note=f"filename date suffix")
+                                    note="filename date suffix")
     else:
         year_value = ExtractedField(value=None, confidence="low",
                                     note="no year found")
@@ -472,8 +472,8 @@ def main() -> int:
     args.template_out.write_text(json.dumps(results, indent=2, ensure_ascii=False))
     print()
     print(f"Wrote results to {args.template_out}")
-    print(f"Review medium/low confidence fields, then run apply_sources_fills.py "
-          f"(with adapted format — see next step).")
+    print("Review medium/low confidence fields, then run apply_sources_fills.py "
+          "(with adapted format — see next step).")
     return 0
 
 

@@ -43,29 +43,31 @@ from backend.app.security.rate_limit import GlobalCap, RateLimiter
 from backend.app.telemetry.query_log import QueryLogWriter
 
 
-def _cloud_document_store_placeholder() -> DocumentStore:
-    """Stub for the cloud document-store provider.
+def _cosmos_document_store_factory(settings: Settings) -> DocumentStore:
+    """Build CosmosDocumentStore from settings.
 
-    Replaced with `CosmosDocumentStore` in Batch 7 (Azure IaC). Raises
-    rather than silently falling back so a misconfigured cloud deploy
-    fails loudly.
+    The import is lazy so local-mode contributors don't need azure-cosmos
+    installed to boot. The factory is only called when the DI Selector
+    picks the `cloud` branch.
     """
-    raise NotImplementedError(
-        "Cloud document store (CosmosDocumentStore) not yet implemented; "
-        "ships with Batch 7 alongside the rest of the Azure adapters."
+    from backend.app.adapters.cosmos_document_store import CosmosDocumentStore
+
+    return CosmosDocumentStore(
+        connection_string=settings.cosmos_connection_string.get_secret_value(),
+        database_name=settings.cosmos_database_name,
+        container_name=settings.cosmos_container_name,
     )
 
 
-def _cloud_exact_cache_placeholder() -> ExactAnswerCache:
-    """Stub for the cloud exact-cache provider.
+def _cosmos_exact_cache_factory(store: DocumentStore) -> ExactAnswerCache:
+    """Build CosmosExactCache wrapping the shared document_store.
 
-    Raises rather than silently falling back so a misconfigured cloud
-    deploy fails loudly. Replaced with `CosmosExactCache` in Batch 4.
+    Like _cosmos_document_store_factory, the import is lazy so local-mode
+    works without azure-cosmos installed.
     """
-    raise NotImplementedError(
-        "Cloud exact cache (CosmosExactCache) not yet implemented; "
-        "ships with Batch 4 once the document store lands."
-    )
+    from backend.app.adapters.cosmos_exact_cache import CosmosExactCache
+
+    return CosmosExactCache(store=store)
 
 
 class Container(containers.DeclarativeContainer):
@@ -114,19 +116,24 @@ class Container(containers.DeclarativeContainer):
     # either path.
     _environment = providers.Callable(lambda s: s.environment, config)
 
-    exact_cache: providers.Provider[ExactAnswerCache] = providers.Selector(
-        _environment,
-        local=providers.Singleton(InMemoryExactCache),
-        cloud=providers.Singleton(_cloud_exact_cache_placeholder),
-    )
-
     document_store: providers.Provider[DocumentStore] = providers.Selector(
         _environment,
         local=providers.Singleton(
             SQLiteDocumentStore,
             db_path=providers.Callable(lambda s: s.sqlite_path, config),
         ),
-        cloud=providers.Singleton(_cloud_document_store_placeholder),
+        cloud=providers.Singleton(_cosmos_document_store_factory, settings=config),
+    )
+
+    exact_cache: providers.Provider[ExactAnswerCache] = providers.Selector(
+        _environment,
+        local=providers.Singleton(InMemoryExactCache),
+        # CosmosExactCache wraps the shared document_store — it doesn't
+        # open its own Cosmos connection. The factory pattern with lazy
+        # import keeps local-mode boot free of azure-cosmos dependency.
+        # Defined AFTER document_store because Python class-body scoping
+        # requires forward references to be resolved at definition time.
+        cloud=providers.Singleton(_cosmos_exact_cache_factory, store=document_store),
     )
 
     turnstile_verifier: providers.Provider[TurnstileVerifier] = providers.Selector(

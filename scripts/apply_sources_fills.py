@@ -180,7 +180,7 @@ def main() -> int:
             changes_made += 1
 
     print()
-    print(f"Summary:")
+    print("Summary:")
     print(f"  changes to apply:                  {changes_made}")
     print(f"  fields left blank in tmpl:         {changes_skipped_blank}")
     print(f"  fields with existing value:        {changes_skipped_existing}")
