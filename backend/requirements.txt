@@ -26,7 +26,7 @@ aiosqlite ~= 0.22.0
 
 # --- Outbound HTTP (Turnstile verification, future Cloudflare ----
 # API calls). Replaces `requests` (sync) which AGENT.md §7.1 forbids.
-httpx ~= 0.28.0
+httpx ~= 0.28.1
 
 # --- Logging ------------------------------------------------------
 # Pinned even though we still emit through stdlib logging — the
