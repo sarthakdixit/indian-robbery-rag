@@ -11,8 +11,8 @@
 # cloud swap a one-flag change.
 
 # --- HTTP / ASGI ----------------------------------------------------
-fastapi ~= 0.137.0
-uvicorn[standard] ~= 0.49.0
+fastapi ~= 0.139.0
+uvicorn[standard] ~= 0.50.0
 
 # --- Validation / settings ----------------------------------------
 pydantic ~= 2.13.0
