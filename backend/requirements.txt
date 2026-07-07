@@ -38,7 +38,7 @@ structlog ~= 26.1.0
 # ChromaDB ships prebuilt wheels for linux/amd64 (the slim base) so
 # no compile toolchain is needed in the runtime stage.
 chromadb ~= 1.5.0
-bm25s ~= 0.3.0
+bm25s ~= 0.3.9
 
 # --- Gemini SDK ---------------------------------------------------
 # Use the newer `google-genai` (NOT `google-generativeai`). AGENT.md
